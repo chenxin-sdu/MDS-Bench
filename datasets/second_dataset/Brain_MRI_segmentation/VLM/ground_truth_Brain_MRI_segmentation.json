@@ -1,0 +1,800 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Brain_MRI_segmentation",
+  "description": "Brain MRI segmentation GT（参照 prompt/seg_gt 与 BACH 示例风格）。采样规则：在 data 目录下按字典序 DFS 遍历整棵目录树，仅将原始图像文件视为 sample（*_mask 不作为 sample），遇到 sample 依次收集，累计到 20 个即停止；每个 sample 期望配对同名 *_mask.tif 作为分割标注。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Brain_MRI_segmentation",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "brain_tumor_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "annotation_type": "pixel_mask",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "tumor"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "TCGA_CS_4941_19960909_1",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_1_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_1_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_1.tif",
+        "original_filename": "TCGA_CS_4941_19960909_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "1": {
+      "source_stem": "TCGA_CS_4941_19960909_10",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_10_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_10_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_10.tif",
+        "original_filename": "TCGA_CS_4941_19960909_10.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "2": {
+      "source_stem": "TCGA_CS_4941_19960909_11",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_11_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_11_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_11.tif",
+        "original_filename": "TCGA_CS_4941_19960909_11.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "3": {
+      "source_stem": "TCGA_CS_4941_19960909_12",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_12_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_12_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_12.tif",
+        "original_filename": "TCGA_CS_4941_19960909_12.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "4": {
+      "source_stem": "TCGA_CS_4941_19960909_13",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_13_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_13_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_13.tif",
+        "original_filename": "TCGA_CS_4941_19960909_13.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "5": {
+      "source_stem": "TCGA_CS_4941_19960909_14",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_14_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_14_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_14.tif",
+        "original_filename": "TCGA_CS_4941_19960909_14.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "6": {
+      "source_stem": "TCGA_CS_4941_19960909_15",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_15_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_15_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_15.tif",
+        "original_filename": "TCGA_CS_4941_19960909_15.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "7": {
+      "source_stem": "TCGA_CS_4941_19960909_16",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_16_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_16_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_16.tif",
+        "original_filename": "TCGA_CS_4941_19960909_16.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "8": {
+      "source_stem": "TCGA_CS_4941_19960909_17",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_17_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_17_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_17.tif",
+        "original_filename": "TCGA_CS_4941_19960909_17.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "9": {
+      "source_stem": "TCGA_CS_4941_19960909_18",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_18_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_18_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_18.tif",
+        "original_filename": "TCGA_CS_4941_19960909_18.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "10": {
+      "source_stem": "TCGA_CS_4941_19960909_19",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_19_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_19_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_19.tif",
+        "original_filename": "TCGA_CS_4941_19960909_19.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "11": {
+      "source_stem": "TCGA_CS_4941_19960909_2",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_2_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_2_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_2.tif",
+        "original_filename": "TCGA_CS_4941_19960909_2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "12": {
+      "source_stem": "TCGA_CS_4941_19960909_20",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_20_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_20_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_20.tif",
+        "original_filename": "TCGA_CS_4941_19960909_20.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "13": {
+      "source_stem": "TCGA_CS_4941_19960909_21",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_21_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_21_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_21.tif",
+        "original_filename": "TCGA_CS_4941_19960909_21.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "14": {
+      "source_stem": "TCGA_CS_4941_19960909_22",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_22_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_22_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_22.tif",
+        "original_filename": "TCGA_CS_4941_19960909_22.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "15": {
+      "source_stem": "TCGA_CS_4941_19960909_23",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_23_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_23_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_23.tif",
+        "original_filename": "TCGA_CS_4941_19960909_23.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "16": {
+      "source_stem": "TCGA_CS_4941_19960909_3",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_3_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_3_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_3.tif",
+        "original_filename": "TCGA_CS_4941_19960909_3.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "17": {
+      "source_stem": "TCGA_CS_4941_19960909_4",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_4_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_4_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_4.tif",
+        "original_filename": "TCGA_CS_4941_19960909_4.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "18": {
+      "source_stem": "TCGA_CS_4941_19960909_5",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_5_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_5_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_5.tif",
+        "original_filename": "TCGA_CS_4941_19960909_5.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    },
+    "19": {
+      "source_stem": "TCGA_CS_4941_19960909_6",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Brain_MRI_segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA_CS_4941",
+        "label_file": null,
+        "mask_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_6_mask.tif",
+        "seg_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_6_mask.tif",
+        "source_file": "data/kaggle_3m/TCGA_CS_4941_19960909/TCGA_CS_4941_19960909_6.tif",
+        "original_filename": "TCGA_CS_4941_19960909_6.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco",
+          "classes": {
+            "0": "background",
+            "1": "tumor"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,724 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Abdominal-CT-Scans",
+  "description": "Kaggle Abdominal CT Scans 多器官分割数据集 (575 例)。原图位于 'Abdominal CT scans/images/image_NNN.nii/<inner>_0000.nii'，对应金标准位于 'Abdominal CT scans/labels/label_NNN.nii/<inner>.nii' （label 子目录前缀为 label_，内部文件去掉 _0000 通道号）。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Abdominal-CT-Scans",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "abdominal_multi_organ_segmentation_kaggle",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "spleen",
+    "right_kidney",
+    "left_kidney",
+    "gallbladder",
+    "esophagus",
+    "liver",
+    "stomach",
+    "aorta",
+    "inferior_vena_cava",
+    "pancreas"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "image_199_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_199",
+        "source_file": "data/Abdominal CT scans/images/image_199.nii/image_199_0000.nii",
+        "original_filename": "image_199_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_199.nii/image_199.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_199.nii/image_199.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_199.nii/image_199.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "image_023_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_458",
+        "source_file": "data/Abdominal CT scans/images/image_458.nii/image_023_0000.nii",
+        "original_filename": "image_023_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_458.nii/image_023.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_458.nii/image_023.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_458.nii/image_023.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "image_075_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_075",
+        "source_file": "data/Abdominal CT scans/images/image_075.nii/image_075_0000.nii",
+        "original_filename": "image_075_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_075.nii/image_075.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_075.nii/image_075.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_075.nii/image_075.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "image_243_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_243",
+        "source_file": "data/Abdominal CT scans/images/image_243.nii/image_243_0000.nii",
+        "original_filename": "image_243_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_243.nii/image_243.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_243.nii/image_243.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_243.nii/image_243.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "image_225_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_225",
+        "source_file": "data/Abdominal CT scans/images/image_225.nii/image_225_0000.nii",
+        "original_filename": "image_225_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_225.nii/image_225.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_225.nii/image_225.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_225.nii/image_225.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "image_121_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_121",
+        "source_file": "data/Abdominal CT scans/images/image_121.nii/image_121_0000.nii",
+        "original_filename": "image_121_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_121.nii/image_121.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_121.nii/image_121.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_121.nii/image_121.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "image_087_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_522",
+        "source_file": "data/Abdominal CT scans/images/image_522.nii/image_087_0000.nii",
+        "original_filename": "image_087_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_522.nii/image_087.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_522.nii/image_087.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_522.nii/image_087.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "image_096_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_096",
+        "source_file": "data/Abdominal CT scans/images/image_096.nii/image_096_0000.nii",
+        "original_filename": "image_096_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_096.nii/image_096.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_096.nii/image_096.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_096.nii/image_096.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "image_062_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_062",
+        "source_file": "data/Abdominal CT scans/images/image_062.nii/image_062_0000.nii",
+        "original_filename": "image_062_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_062.nii/image_062.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_062.nii/image_062.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_062.nii/image_062.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "image_431_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_431",
+        "source_file": "data/Abdominal CT scans/images/image_431.nii/image_431_0000.nii",
+        "original_filename": "image_431_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_431.nii/image_431.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_431.nii/image_431.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_431.nii/image_431.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "image_181_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_181",
+        "source_file": "data/Abdominal CT scans/images/image_181.nii/image_181_0000.nii",
+        "original_filename": "image_181_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_181.nii/image_181.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_181.nii/image_181.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_181.nii/image_181.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "image_416_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_416",
+        "source_file": "data/Abdominal CT scans/images/image_416.nii/image_416_0000.nii",
+        "original_filename": "image_416_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_416.nii/image_416.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_416.nii/image_416.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_416.nii/image_416.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "image_097_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_532",
+        "source_file": "data/Abdominal CT scans/images/image_532.nii/image_097_0000.nii",
+        "original_filename": "image_097_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_532.nii/image_097.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_532.nii/image_097.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_532.nii/image_097.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "image_086_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_086",
+        "source_file": "data/Abdominal CT scans/images/image_086.nii/image_086_0000.nii",
+        "original_filename": "image_086_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_086.nii/image_086.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_086.nii/image_086.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_086.nii/image_086.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "image_075_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_510",
+        "source_file": "data/Abdominal CT scans/images/image_510.nii/image_075_0000.nii",
+        "original_filename": "image_075_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_510.nii/image_075.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_510.nii/image_075.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_510.nii/image_075.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "image_185_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_185",
+        "source_file": "data/Abdominal CT scans/images/image_185.nii/image_185_0000.nii",
+        "original_filename": "image_185_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_185.nii/image_185.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_185.nii/image_185.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_185.nii/image_185.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "image_119_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_119",
+        "source_file": "data/Abdominal CT scans/images/image_119.nii/image_119_0000.nii",
+        "original_filename": "image_119_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_119.nii/image_119.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_119.nii/image_119.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_119.nii/image_119.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "image_064_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_064",
+        "source_file": "data/Abdominal CT scans/images/image_064.nii/image_064_0000.nii",
+        "original_filename": "image_064_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_064.nii/image_064.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_064.nii/image_064.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_064.nii/image_064.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "image_173_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_173",
+        "source_file": "data/Abdominal CT scans/images/image_173.nii/image_173_0000.nii",
+        "original_filename": "image_173_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_173.nii/image_173.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_173.nii/image_173.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_173.nii/image_173.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "image_268_0000",
+      "class": "Abdominal multi-organ CT segmentation (Kaggle)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Abdominal-CT-Scans"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "image_268",
+        "source_file": "data/Abdominal CT scans/images/image_268.nii/image_268_0000.nii",
+        "original_filename": "image_268_0000.nii",
+        "label_file": "data/Abdominal CT scans/labels/label_268.nii/image_268.nii",
+        "mask_file": "data/Abdominal CT scans/labels/label_268.nii/image_268.nii",
+        "seg_file": "data/Abdominal CT scans/labels/label_268.nii/image_268.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

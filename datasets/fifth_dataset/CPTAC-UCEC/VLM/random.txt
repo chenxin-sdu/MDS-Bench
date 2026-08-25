@@ -1,0 +1,20 @@
+0	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00872/03-01-2000-NA-AbdomenBrzuchMiednica Adult-77536/7.000000-Venous phase    1.5  I30f-82037/1-441.dcm
+1	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-02789/11-06-2010-NA-Thorax3CHESTABDPELVBMISM Adult-32249/5.000000-ABD  3.0  B31f-35015/1-063.dcm
+2	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00743/02-04-2001-NA-CT ABDOMEN AND PELVIS-91200/3.000000-Recon 2 ABD  PELVIS 1.25mm-67916/1-007.dcm
+3	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01219/10-02-2010-NA-Abdomen 3 phase-35161/8.000000-Body 1.0 CE-38060/1-271.dcm
+4	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01346/05-26-2000-NA-BODYMIEDNICA-60801/13.000000-t1fl3dtra fsdyn CM-43028/1-16.dcm
+5	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00520/12-30-1999-NA-AbdomenBRZUCH Adult-34167/8.000000-Venous Phase  1.5  B20f-55112/1-338.dcm
+6	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01879/08-16-2000-NA-MIEDNICA-16519/14.000000-t1fl3dtra fsdyn CM-82524/1-64.dcm
+7	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01763/06-01-2000-NA-MIEDNICA-68213/20.000000-t1fl3dtra fsdyn CM-78924/1-55.dcm
+8	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00858/01-08-2000-NA-MIEDNICA-65907/18.000000-t1fl3dtra fsdyn CM-96543/1-076.dcm
+9	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01761/06-08-2000-NA-MIEDNICA-08891/14.000000-t1fl3dtra fsdyn CM-15354/1-15.dcm
+10	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00866/03-06-2001-NA-CT RENAL MASS-CT ABDOM-36960/5.000000-Recon 2 I highest diagriliac crests-27015/1-046.dcm
+11	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_TumorAnnotations/CPTAC-UCEC/C3N-01878/08-03-2000-NA-MIEDNICA-17690/20.000000-Pre-Dose UTERUS - 1-49228/1-1.dcm
+12	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00734/11-15-2009-NA-CT CHEST ABDOMEN PELVIS W IV CONTRAST-59407/3.000000-ABDPELVIS  3.0  B30f-97916/1-069.dcm
+13	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-02637/12-08-2000-NA-AbdomenBrzuchMiednica Adult-76571/7.000000-Venous phase    1.5  I30f-35098/1-120.dcm
+14	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01878/08-03-2000-NA-MIEDNICA-17690/11.000000-t1fl3dtra fsdyn CM-71238/1-27.dcm
+15	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-00872/03-01-2000-NA-AbdomenBrzuchMiednica Adult-77536/7.000000-Venous phase    1.5  I30f-82037/1-198.dcm
+16	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-02632/11-08-2000-NA-MIEDNICA-08519/14.000000-t1fl3dtra fsdyn CM-88080/1-80.dcm
+17	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01007/04-01-2000-NA-MIEDNICA-78405/14.000000-t1fl3dtra fsdyn CM-88506/1-75.dcm
+18	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-01219/10-02-2010-NA-Abdomen 3 phase-35161/8.000000-Body 1.0 CE-38060/1-292.dcm
+19	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-UCEC/data/CPTAC-UCEC_SourceImages_SEGAndSeedPoints/CPTAC-UCEC/C3N-03005/03-07-2001-NA-AbdomenBrzuchMiednica Adult-31240/7.000000-Venous phase    1.5  I30f-13043/1-017.dcm

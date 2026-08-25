@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "isic-skin-cancer-train-npz",
+  "description": "ISIC 皮肤镜训练子集：每个 *.npz 含键 image（H×W×3 uint8）与 label（H×W uint8）。评估时语义二分类：0 为背景，非零像素合并为病灶（lesion）。采样：在 data/ 下对 *.npz 文件名按字典序排序，取前 20 个。掩膜与图像同包，mask_file/seg_file 指向相对 data 的 npz 文件名（数组键 label）。字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "Dermoscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "isic-skin-cancer-train-npz",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "skin_lesion_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Dermoscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "lesion"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "ISIC_0000000",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000000",
+        "label_file": null,
+        "mask_file": "ISIC_0000000.npz",
+        "seg_file": "ISIC_0000000.npz",
+        "source_file": "data/ISIC_0000000.npz",
+        "original_filename": "ISIC_0000000.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "ISIC_0000001",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000001",
+        "label_file": null,
+        "mask_file": "ISIC_0000001.npz",
+        "seg_file": "ISIC_0000001.npz",
+        "source_file": "data/ISIC_0000001.npz",
+        "original_filename": "ISIC_0000001.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "ISIC_0000003",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000003",
+        "label_file": null,
+        "mask_file": "ISIC_0000003.npz",
+        "seg_file": "ISIC_0000003.npz",
+        "source_file": "data/ISIC_0000003.npz",
+        "original_filename": "ISIC_0000003.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "ISIC_0000004",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000004",
+        "label_file": null,
+        "mask_file": "ISIC_0000004.npz",
+        "seg_file": "ISIC_0000004.npz",
+        "source_file": "data/ISIC_0000004.npz",
+        "original_filename": "ISIC_0000004.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "ISIC_0000006",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000006",
+        "label_file": null,
+        "mask_file": "ISIC_0000006.npz",
+        "seg_file": "ISIC_0000006.npz",
+        "source_file": "data/ISIC_0000006.npz",
+        "original_filename": "ISIC_0000006.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "ISIC_0000007",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000007",
+        "label_file": null,
+        "mask_file": "ISIC_0000007.npz",
+        "seg_file": "ISIC_0000007.npz",
+        "source_file": "data/ISIC_0000007.npz",
+        "original_filename": "ISIC_0000007.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "ISIC_0000008",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000008",
+        "label_file": null,
+        "mask_file": "ISIC_0000008.npz",
+        "seg_file": "ISIC_0000008.npz",
+        "source_file": "data/ISIC_0000008.npz",
+        "original_filename": "ISIC_0000008.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "ISIC_0000009",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000009",
+        "label_file": null,
+        "mask_file": "ISIC_0000009.npz",
+        "seg_file": "ISIC_0000009.npz",
+        "source_file": "data/ISIC_0000009.npz",
+        "original_filename": "ISIC_0000009.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "ISIC_0000011",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000011",
+        "label_file": null,
+        "mask_file": "ISIC_0000011.npz",
+        "seg_file": "ISIC_0000011.npz",
+        "source_file": "data/ISIC_0000011.npz",
+        "original_filename": "ISIC_0000011.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "ISIC_0000012",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000012",
+        "label_file": null,
+        "mask_file": "ISIC_0000012.npz",
+        "seg_file": "ISIC_0000012.npz",
+        "source_file": "data/ISIC_0000012.npz",
+        "original_filename": "ISIC_0000012.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "ISIC_0000013",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000013",
+        "label_file": null,
+        "mask_file": "ISIC_0000013.npz",
+        "seg_file": "ISIC_0000013.npz",
+        "source_file": "data/ISIC_0000013.npz",
+        "original_filename": "ISIC_0000013.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "ISIC_0000014",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000014",
+        "label_file": null,
+        "mask_file": "ISIC_0000014.npz",
+        "seg_file": "ISIC_0000014.npz",
+        "source_file": "data/ISIC_0000014.npz",
+        "original_filename": "ISIC_0000014.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "ISIC_0000015",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000015",
+        "label_file": null,
+        "mask_file": "ISIC_0000015.npz",
+        "seg_file": "ISIC_0000015.npz",
+        "source_file": "data/ISIC_0000015.npz",
+        "original_filename": "ISIC_0000015.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "ISIC_0000016",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000016",
+        "label_file": null,
+        "mask_file": "ISIC_0000016.npz",
+        "seg_file": "ISIC_0000016.npz",
+        "source_file": "data/ISIC_0000016.npz",
+        "original_filename": "ISIC_0000016.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "ISIC_0000017",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000017",
+        "label_file": null,
+        "mask_file": "ISIC_0000017.npz",
+        "seg_file": "ISIC_0000017.npz",
+        "source_file": "data/ISIC_0000017.npz",
+        "original_filename": "ISIC_0000017.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "ISIC_0000018",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000018",
+        "label_file": null,
+        "mask_file": "ISIC_0000018.npz",
+        "seg_file": "ISIC_0000018.npz",
+        "source_file": "data/ISIC_0000018.npz",
+        "original_filename": "ISIC_0000018.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "ISIC_0000019",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000019",
+        "label_file": null,
+        "mask_file": "ISIC_0000019.npz",
+        "seg_file": "ISIC_0000019.npz",
+        "source_file": "data/ISIC_0000019.npz",
+        "original_filename": "ISIC_0000019.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "ISIC_0000020",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000020",
+        "label_file": null,
+        "mask_file": "ISIC_0000020.npz",
+        "seg_file": "ISIC_0000020.npz",
+        "source_file": "data/ISIC_0000020.npz",
+        "original_filename": "ISIC_0000020.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "ISIC_0000021",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000021",
+        "label_file": null,
+        "mask_file": "ISIC_0000021.npz",
+        "seg_file": "ISIC_0000021.npz",
+        "source_file": "data/ISIC_0000021.npz",
+        "original_filename": "ISIC_0000021.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "ISIC_0000022",
+      "class": "lesion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "isic-skin-cancer-train-npz"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Dermoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "ISIC_0000022",
+        "label_file": null,
+        "mask_file": "ISIC_0000022.npz",
+        "seg_file": "ISIC_0000022.npz",
+        "source_file": "data/ISIC_0000022.npz",
+        "original_filename": "ISIC_0000022.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "CPTAC-CCRCC",
+  "description": "CPTAC-CCRCC: renal_cell_carcinoma_rtstruct_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "CPTAC-CCRCC",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "renal_cell_carcinoma_rtstruct_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "RIGHT KIDNEY",
+    "LEFT KIDNEY",
+    "RENAL TUMOR"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1-233",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01646",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-233.dcm",
+        "original_filename": "1-233.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-233.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-233.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-233.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1-463",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00380",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-463.dcm",
+        "original_filename": "1-463.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-463.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-463.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-463.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1-030",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00494",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/9.000000-F.TETNICZA  1.5  I31s  3-63158/1-030.dcm",
+        "original_filename": "1-030.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/9.000000-F.TETNICZA  1.5  I31s  3-63158/1-030.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/9.000000-F.TETNICZA  1.5  I31s  3-63158/1-030.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/9.000000-F.TETNICZA  1.5  I31s  3-63158/1-030.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1-077",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01536",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-077.dcm",
+        "original_filename": "1-077.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-077.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-077.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-077.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1-034",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-00815",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-034.dcm",
+        "original_filename": "1-034.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-034.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-034.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-034.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1-261",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00953",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-00953/02-13-2010-NA-CT CHEST WO IV CONTRAST-78654/4.000000-LUNG 2.0-32410/1-261.dcm",
+        "original_filename": "1-261.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-00953/02-13-2010-NA-CT CHEST WO IV CONTRAST-78654/4.000000-LUNG 2.0-32410/1-261.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-00953/02-13-2010-NA-CT CHEST WO IV CONTRAST-78654/4.000000-LUNG 2.0-32410/1-261.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-00953/02-13-2010-NA-CT CHEST WO IV CONTRAST-78654/4.000000-LUNG 2.0-32410/1-261.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1-341",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-01459",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-01459/02-12-2009-NA-CT-83628/2.000000-AX THN PORTAL-76848/1-341.dcm",
+        "original_filename": "1-341.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-01459/02-12-2009-NA-CT-83628/2.000000-AX THN PORTAL-76848/1-341.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-01459/02-12-2009-NA-CT-83628/2.000000-AX THN PORTAL-76848/1-341.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-01459/02-12-2009-NA-CT-83628/2.000000-AX THN PORTAL-76848/1-341.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1-548",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00380",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-548.dcm",
+        "original_filename": "1-548.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-548.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-548.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-548.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1-028",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02063",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02063/09-02-2009-NA-Abdomen01AbdNativeandContrast Adult-22278/10.000000-Venous Phase  2.0  B41s-25821/1-028.dcm",
+        "original_filename": "1-028.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02063/09-02-2009-NA-Abdomen01AbdNativeandContrast Adult-22278/10.000000-Venous Phase  2.0  B41s-25821/1-028.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02063/09-02-2009-NA-Abdomen01AbdNativeandContrast Adult-22278/10.000000-Venous Phase  2.0  B41s-25821/1-028.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02063/09-02-2009-NA-Abdomen01AbdNativeandContrast Adult-22278/10.000000-Venous Phase  2.0  B41s-25821/1-028.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1-23",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02439",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02439/10-13-2010-NA-PELVISPELVIS-67402/22.000000-VIBE T1 FS POST1-36187/1-23.dcm",
+        "original_filename": "1-23.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02439/10-13-2010-NA-PELVISPELVIS-67402/22.000000-VIBE T1 FS POST1-36187/1-23.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02439/10-13-2010-NA-PELVISPELVIS-67402/22.000000-VIBE T1 FS POST1-36187/1-23.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02439/10-13-2010-NA-PELVISPELVIS-67402/22.000000-VIBE T1 FS POST1-36187/1-23.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1-492",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-00815",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-492.dcm",
+        "original_filename": "1-492.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-492.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-492.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-492.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1-086",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01651",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01651/06-02-2000-NA-AbdomenJamaBrzuszna3FazyOpoznione Adult-87160/7.000000-Faza tetnicza  1.5  3D-99793/1-086.dcm",
+        "original_filename": "1-086.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01651/06-02-2000-NA-AbdomenJamaBrzuszna3FazyOpoznione Adult-87160/7.000000-Faza tetnicza  1.5  3D-99793/1-086.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01651/06-02-2000-NA-AbdomenJamaBrzuszna3FazyOpoznione Adult-87160/7.000000-Faza tetnicza  1.5  3D-99793/1-086.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01651/06-02-2000-NA-AbdomenJamaBrzuszna3FazyOpoznione Adult-87160/7.000000-Faza tetnicza  1.5  3D-99793/1-086.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "2-379",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-03018",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-03018/11-15-2000-NA-J.BRZUSZNA-38501/5.000000-0.625 C-71822/2-379.dcm",
+        "original_filename": "2-379.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-03018/11-15-2000-NA-J.BRZUSZNA-38501/5.000000-0.625 C-71822/2-379.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-03018/11-15-2000-NA-J.BRZUSZNA-38501/5.000000-0.625 C-71822/2-379.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-03018/11-15-2000-NA-J.BRZUSZNA-38501/5.000000-0.625 C-71822/2-379.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "1-202",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00494",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/11.000000-F. POZNA  1.5  I31s  3-66612/1-202.dcm",
+        "original_filename": "1-202.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/11.000000-F. POZNA  1.5  I31s  3-66612/1-202.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/11.000000-F. POZNA  1.5  I31s  3-66612/1-202.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/11.000000-F. POZNA  1.5  I31s  3-66612/1-202.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1-270",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01646",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-270.dcm",
+        "original_filename": "1-270.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-270.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-270.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-270.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1-364",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01536",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-364.dcm",
+        "original_filename": "1-364.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-364.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-364.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-364.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1-046",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02332",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-02332/01-14-2008-NA-NA-48097/6880.000000-NA-85813/1-046.dcm",
+        "original_filename": "1-046.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-02332/01-14-2008-NA-NA-48097/6880.000000-NA-85813/1-046.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-02332/01-14-2008-NA-NA-48097/6880.000000-NA-85813/1-046.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-02332/01-14-2008-NA-NA-48097/6880.000000-NA-85813/1-046.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1-062",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00313",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00313/09-04-1999-NA-TK SPECJ. JAMY BRZUSZN-56965/5.000000-Recon 2 C-11648/1-062.dcm",
+        "original_filename": "1-062.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00313/09-04-1999-NA-TK SPECJ. JAMY BRZUSZN-56965/5.000000-Recon 2 C-11648/1-062.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00313/09-04-1999-NA-TK SPECJ. JAMY BRZUSZN-56965/5.000000-Recon 2 C-11648/1-062.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00313/09-04-1999-NA-TK SPECJ. JAMY BRZUSZN-56965/5.000000-Recon 2 C-11648/1-062.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1-057",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01361",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01361/03-22-2000-NA-AbdomenJBRZUSZNA3FAZYOPOZNIONE Adult-86433/8.000000-FAZA ZYLNA  1.0  3D-50623/1-057.dcm",
+        "original_filename": "1-057.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01361/03-22-2000-NA-AbdomenJBRZUSZNA3FAZYOPOZNIONE Adult-86433/8.000000-FAZA ZYLNA  1.0  3D-50623/1-057.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01361/03-22-2000-NA-AbdomenJBRZUSZNA3FAZYOPOZNIONE Adult-86433/8.000000-FAZA ZYLNA  1.0  3D-50623/1-057.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01361/03-22-2000-NA-AbdomenJBRZUSZNA3FAZYOPOZNIONE Adult-86433/8.000000-FAZA ZYLNA  1.0  3D-50623/1-057.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1-160",
+      "class": "RIGHT KIDNEY | LEFT KIDNEY | RENAL TUMOR",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-CCRCC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01536",
+        "source_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/11.000000-DELAY-48904/1-160.dcm",
+        "original_filename": "1-160.dcm",
+        "label_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/11.000000-DELAY-48904/1-160.dcm",
+        "mask_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/11.000000-DELAY-48904/1-160.dcm",
+        "seg_file": "data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/11.000000-DELAY-48904/1-160.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

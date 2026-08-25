@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Hippocampus",
+  "description": "Medical Segmentation Decathlon 海马体分割任务。3D T1-MRI，标签：0 背景、1 前部（Anterior）、2 后部（Posterior）。样本 0-19 以本目录 random.txt 为准；仅 imagesTr 在 labelsTr 有公开金标准，imagesTs 无公开标签故 label/mask/seg 为 null。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Hippocampus",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "hippocampus_3d_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Hippocampus"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "Anterior",
+    "Posterior"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "hippocampus_381",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_381",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_381.nii",
+        "original_filename": "hippocampus_381.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_381.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_381.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_381.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "hippocampus_095",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_095",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_095.nii",
+        "original_filename": "hippocampus_095.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_095.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_095.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_095.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "hippocampus_327",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_327",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_327.nii",
+        "original_filename": "hippocampus_327.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_327.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_327.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_327.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "hippocampus_046",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_046",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_046.nii",
+        "original_filename": "hippocampus_046.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_046.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_046.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_046.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "hippocampus_015",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_015",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_015.nii",
+        "original_filename": "hippocampus_015.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_015.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_015.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_015.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "hippocampus_190",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_190",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_190.nii",
+        "original_filename": "hippocampus_190.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_190.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_190.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_190.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "hippocampus_239",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_239",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_239.nii",
+        "original_filename": "hippocampus_239.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "hippocampus_368",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_368",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_368.nii",
+        "original_filename": "hippocampus_368.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_368.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_368.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_368.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "hippocampus_111",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_111",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_111.nii",
+        "original_filename": "hippocampus_111.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "hippocampus_149",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_149",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_149.nii",
+        "original_filename": "hippocampus_149.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_149.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_149.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_149.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "hippocampus_131",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_131",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_131.nii",
+        "original_filename": "hippocampus_131.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "hippocampus_112",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_112",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_112.nii",
+        "original_filename": "hippocampus_112.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "hippocampus_020",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_020",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_020.nii",
+        "original_filename": "hippocampus_020.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_020.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_020.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_020.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "hippocampus_105",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_105",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_105.nii",
+        "original_filename": "hippocampus_105.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_105.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_105.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_105.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "hippocampus_298",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_298",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_298.nii",
+        "original_filename": "hippocampus_298.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_298.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_298.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_298.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "hippocampus_088",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_088",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_088.nii",
+        "original_filename": "hippocampus_088.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_088.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_088.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_088.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "hippocampus_317",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_317",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_317.nii",
+        "original_filename": "hippocampus_317.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_317.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_317.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_317.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "hippocampus_302",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_302",
+        "source_file": "data/Hippocampus/imagesTr/hippocampus_302.nii",
+        "original_filename": "hippocampus_302.nii",
+        "label_file": "data/Hippocampus/labelsTr/hippocampus_302.nii",
+        "mask_file": "data/Hippocampus/labelsTr/hippocampus_302.nii",
+        "seg_file": "data/Hippocampus/labelsTr/hippocampus_302.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "hippocampus_139",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_139",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_139.nii",
+        "original_filename": "hippocampus_139.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "hippocampus_202",
+      "class": "Hippocampus (Anterior, Posterior; MSD labels 0/1/2)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Hippocampus"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "hippocampus_202",
+        "source_file": "data/Hippocampus/imagesTs/hippocampus_202.nii",
+        "original_filename": "hippocampus_202.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

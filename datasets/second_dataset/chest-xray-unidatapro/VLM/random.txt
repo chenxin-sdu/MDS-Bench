@@ -1,0 +1,5 @@
+0 /data3/chenxin/Agent_test/second_dataset/chest-xray-unidatapro/data/dicoms/1.2.826.0.1.3680043.2.634.0.1459.20141229.122510.1.dcm
+1 /data3/chenxin/Agent_test/second_dataset/chest-xray-unidatapro/data/dicoms/1.2.826.0.1.3680043.2.634.0.21450.2018618.103049.2.dcm
+2 /data3/chenxin/Agent_test/second_dataset/chest-xray-unidatapro/data/dicoms/1.2.826.0.1.3680043.2.634.0.37655.2015128.9957.4.dcm
+3 /data3/chenxin/Agent_test/second_dataset/chest-xray-unidatapro/data/dicoms/1.2.826.0.1.3680043.2.634.0.43163.2014312.13120.4.dcm
+4 /data3/chenxin/Agent_test/second_dataset/chest-xray-unidatapro/data/dicoms/1.2.826.0.1.3680043.2.634.0.48573.201524.163417.4.dcm

@@ -1,0 +1,774 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "LUNA16",
+  "description": "LUNA16 (Lung Nodule Analysis 2016) 肺结节 3D 检测数据集。annotations.csv 含 (seriesuid, coordX, coordY, coordZ, diameter_mm) 球形结节标注；本目录 random.txt 指向 seg-lungs-LUNA16/ 下的肺野分割 .mhd（与 seriesuid 同名，用作 source / 候选）。约 14/20 例在 annotations.csv 中确实有结节，剩余 6 例为阴性，其 label_text/class_name/bbox_file 置 null。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "detection",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "detection": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "LUNA16",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "bbox_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "lung_nodule_detection",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "LUNA16"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "detection",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "detection",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "nodule"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.868211851413924881662621747734",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.868211851413924881662621747734",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.868211851413924881662621747734.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.868211851413924881662621747734.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001868211851413924881662621747734mhd"
+      ]
+    },
+    "1": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.217589936421986638139451480826",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.217589936421986638139451480826",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.217589936421986638139451480826.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.217589936421986638139451480826.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001217589936421986638139451480826mhd"
+      ]
+    },
+    "2": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.107109359065300889765026303943",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.107109359065300889765026303943",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.107109359065300889765026303943.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.107109359065300889765026303943.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001107109359065300889765026303943mhd"
+      ]
+    },
+    "3": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.177086402277715068525592995222",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.177086402277715068525592995222",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.177086402277715068525592995222.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.177086402277715068525592995222.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001177086402277715068525592995222mhd"
+      ]
+    },
+    "4": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.339142594937666268384335506819",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.339142594937666268384335506819",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.339142594937666268384335506819.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.339142594937666268384335506819.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001339142594937666268384335506819mhd"
+      ]
+    },
+    "5": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.233652865358649579816568545171",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.233652865358649579816568545171",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.233652865358649579816568545171.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.233652865358649579816568545171.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001233652865358649579816568545171mhd"
+      ]
+    },
+    "6": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.241570579760883349458693655367",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.241570579760883349458693655367",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.241570579760883349458693655367.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.241570579760883349458693655367.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001241570579760883349458693655367mhd"
+      ]
+    },
+    "7": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.277452631455527999380186898011",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.277452631455527999380186898011",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.277452631455527999380186898011.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.277452631455527999380186898011.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001277452631455527999380186898011mhd"
+      ]
+    },
+    "8": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334166493392278943610545989413",
+      "class": "Lung nodule detection on chest CT (negative case, no nodule)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334166493392278943610545989413",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.334166493392278943610545989413.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334166493392278943610545989413.mhd",
+        "label_text": null,
+        "class_name": null,
+        "bbox_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001334166493392278943610545989413mhd"
+      ]
+    },
+    "9": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.133378195429627807109985347209",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.133378195429627807109985347209",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.133378195429627807109985347209.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.133378195429627807109985347209.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001133378195429627807109985347209mhd"
+      ]
+    },
+    "10": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.141511313712034597336182402384",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.141511313712034597336182402384",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.141511313712034597336182402384.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.141511313712034597336182402384.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001141511313712034597336182402384mhd"
+      ]
+    },
+    "11": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.152684536713461901635595118048",
+      "class": "Lung nodule detection on chest CT (negative case, no nodule)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.152684536713461901635595118048",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.152684536713461901635595118048.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.152684536713461901635595118048.mhd",
+        "label_text": null,
+        "class_name": null,
+        "bbox_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001152684536713461901635595118048mhd"
+      ]
+    },
+    "12": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.121108220866971173712229588402",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.121108220866971173712229588402",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.121108220866971173712229588402.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.121108220866971173712229588402.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001121108220866971173712229588402mhd"
+      ]
+    },
+    "13": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.183056151780567460322586876100",
+      "class": "Lung nodule detection on chest CT (negative case, no nodule)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.183056151780567460322586876100",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.183056151780567460322586876100.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.183056151780567460322586876100.mhd",
+        "label_text": null,
+        "class_name": null,
+        "bbox_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001183056151780567460322586876100mhd"
+      ]
+    },
+    "14": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334105754605642100456249422350",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334105754605642100456249422350",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.334105754605642100456249422350.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.334105754605642100456249422350.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001334105754605642100456249422350mhd"
+      ]
+    },
+    "15": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.236698827306171960683086245994",
+      "class": "Lung nodule detection on chest CT (negative case, no nodule)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.236698827306171960683086245994",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.236698827306171960683086245994.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.236698827306171960683086245994.mhd",
+        "label_text": null,
+        "class_name": null,
+        "bbox_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001236698827306171960683086245994mhd"
+      ]
+    },
+    "16": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.885292267869246639232975687131",
+      "class": "Lung nodule detection on chest CT (negative case, no nodule)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.885292267869246639232975687131",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.885292267869246639232975687131.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.885292267869246639232975687131.mhd",
+        "label_text": null,
+        "class_name": null,
+        "bbox_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001885292267869246639232975687131mhd"
+      ]
+    },
+    "17": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.187108608022306504546286626125",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.187108608022306504546286626125",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.187108608022306504546286626125.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.187108608022306504546286626125.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001187108608022306504546286626125mhd"
+      ]
+    },
+    "18": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.771741891125176943862272696845",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.771741891125176943862272696845",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.771741891125176943862272696845.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.771741891125176943862272696845.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001771741891125176943862272696845mhd"
+      ]
+    },
+    "19": {
+      "source_stem": "1.3.6.1.4.1.14519.5.2.1.6279.6001.129007566048223160327836686225",
+      "class": "Lung nodule detection on chest CT (positive case)",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "LUNA16"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1.3.6.1.4.1.14519.5.2.1.6279.6001.129007566048223160327836686225",
+        "source_file": "data/seg-lungs-LUNA16/seg-lungs-LUNA16/1.3.6.1.4.1.14519.5.2.1.6279.6001.129007566048223160327836686225.mhd",
+        "original_filename": "1.3.6.1.4.1.14519.5.2.1.6279.6001.129007566048223160327836686225.mhd",
+        "label_text": "nodule",
+        "class_name": "nodule",
+        "bbox_file": "data/annotations.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "3d"
+        }
+      },
+      "expected_sources": [
+        "1361411451952162796001129007566048223160327836686225mhd"
+      ]
+    }
+  }
+}

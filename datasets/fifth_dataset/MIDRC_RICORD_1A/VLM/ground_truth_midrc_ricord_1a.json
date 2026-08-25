@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "MIDRC-RICORD-1A",
+  "description": "MIDRC-RICORD-1A: covid19_thoracic_finding_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "MIDRC-RICORD-1A",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "covid19_thoracic_finding_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "Infectious opacity",
+    "Lymphadenopathy",
+    "Pleural effusion"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1-037",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001336",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/605.000000-SAG 3X3-67448/1-037.dcm",
+        "original_filename": "1-037.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/605.000000-SAG 3X3-67448/1-037.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/605.000000-SAG 3X3-67448/1-037.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/605.000000-SAG 3X3-67448/1-037.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1-062",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001155",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/606.000000-SAG 3X3-03243/1-062.dcm",
+        "original_filename": "1-062.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/606.000000-SAG 3X3-03243/1-062.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/606.000000-SAG 3X3-03243/1-062.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/606.000000-SAG 3X3-03243/1-062.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1-056",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000022",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000022/06-07-2007-NA-NA-94495/2.000000-NA-98699/1-056.dcm",
+        "original_filename": "1-056.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000022/06-07-2007-NA-NA-94495/2.000000-NA-98699/1-056.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000022/06-07-2007-NA-NA-94495/2.000000-NA-98699/1-056.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000022/06-07-2007-NA-NA-94495/2.000000-NA-98699/1-056.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1-274",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-000800",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000800/05-11-2005-NA-CT CHEST WITHOUT CONTRAST-61055/3.000000-0.625mm bone alg-10315/1-274.dcm",
+        "original_filename": "1-274.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000800/05-11-2005-NA-CT CHEST WITHOUT CONTRAST-61055/3.000000-0.625mm bone alg-10315/1-274.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000800/05-11-2005-NA-CT CHEST WITHOUT CONTRAST-61055/3.000000-0.625mm bone alg-10315/1-274.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000800/05-11-2005-NA-CT CHEST WITHOUT CONTRAST-61055/3.000000-0.625mm bone alg-10315/1-274.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1-46",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001533",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001533/09-23-2001-NA-CT CHEST PULMONARY EMBOLISM CTPE-46200/604.000000-COR 3X3-51165/1-46.dcm",
+        "original_filename": "1-46.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001533/09-23-2001-NA-CT CHEST PULMONARY EMBOLISM CTPE-46200/604.000000-COR 3X3-51165/1-46.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001533/09-23-2001-NA-CT CHEST PULMONARY EMBOLISM CTPE-46200/604.000000-COR 3X3-51165/1-46.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001533/09-23-2001-NA-CT CHEST PULMONARY EMBOLISM CTPE-46200/604.000000-COR 3X3-51165/1-46.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1-114",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-660042-000107",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000107/11-20-2008-NA-NA-25678/4.000000-NA-25679/1-114.dcm",
+        "original_filename": "1-114.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000107/11-20-2008-NA-NA-25678/4.000000-NA-25679/1-114.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000107/11-20-2008-NA-NA-25678/4.000000-NA-25679/1-114.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000107/11-20-2008-NA-NA-25678/4.000000-NA-25679/1-114.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1-190",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-660042-000020",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000020/12-19-2004-NA-NA-.4353/2.000000-NA-.4354/1-190.dcm",
+        "original_filename": "1-190.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000020/12-19-2004-NA-NA-.4353/2.000000-NA-.4354/1-190.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000020/12-19-2004-NA-NA-.4353/2.000000-NA-.4354/1-190.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-660042-000020/12-19-2004-NA-NA-.4353/2.000000-NA-.4354/1-190.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1-029",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-000421",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/2.000000-CHEST WITHOUT CONTRAST-83326/1-029.dcm",
+        "original_filename": "1-029.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/2.000000-CHEST WITHOUT CONTRAST-83326/1-029.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/2.000000-CHEST WITHOUT CONTRAST-83326/1-029.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/2.000000-CHEST WITHOUT CONTRAST-83326/1-029.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1-047",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000206",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000206/02-28-2008-NA-NA-30027/2.000000-NA-50014/1-047.dcm",
+        "original_filename": "1-047.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000206/02-28-2008-NA-NA-30027/2.000000-NA-50014/1-047.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000206/02-28-2008-NA-NA-30027/2.000000-NA-50014/1-047.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000206/02-28-2008-NA-NA-30027/2.000000-NA-50014/1-047.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "3-1",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001012",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001012/12-12-2004-NA-CT CHEST WITHOUT CONTRAST-89755/1.000000-SCOUT CHEST-33968/3-1.dcm",
+        "original_filename": "3-1.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001012/12-12-2004-NA-CT CHEST WITHOUT CONTRAST-89755/1.000000-SCOUT CHEST-33968/3-1.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001012/12-12-2004-NA-CT CHEST WITHOUT CONTRAST-89755/1.000000-SCOUT CHEST-33968/3-1.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001012/12-12-2004-NA-CT CHEST WITHOUT CONTRAST-89755/1.000000-SCOUT CHEST-33968/3-1.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1-27",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001446",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001446/09-16-2006-NA-CT CHEST WITHOUT CONTRAST-60317/604.000000-COR 3X3-02093/1-27.dcm",
+        "original_filename": "1-27.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001446/09-16-2006-NA-CT CHEST WITHOUT CONTRAST-60317/604.000000-COR 3X3-02093/1-27.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001446/09-16-2006-NA-CT CHEST WITHOUT CONTRAST-60317/604.000000-COR 3X3-02093/1-27.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001446/09-16-2006-NA-CT CHEST WITHOUT CONTRAST-60317/604.000000-COR 3X3-02093/1-27.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1-73",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000028",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000028/01-21-2001-NA-NA-47691/3.000000-NA-99994/1-73.dcm",
+        "original_filename": "1-73.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000028/01-21-2001-NA-NA-47691/3.000000-NA-99994/1-73.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000028/01-21-2001-NA-NA-47691/3.000000-NA-99994/1-73.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000028/01-21-2001-NA-NA-47691/3.000000-NA-99994/1-73.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "1-081",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000096",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000096/06-01-2008-NA-NA-29822/2.000000-NA-07772/1-081.dcm",
+        "original_filename": "1-081.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000096/06-01-2008-NA-NA-29822/2.000000-NA-07772/1-081.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000096/06-01-2008-NA-NA-29822/2.000000-NA-07772/1-081.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000096/06-01-2008-NA-NA-29822/2.000000-NA-07772/1-081.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "1-18",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001155",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/601.000000-PE MIP COR 15X5-16698/1-18.dcm",
+        "original_filename": "1-18.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/601.000000-PE MIP COR 15X5-16698/1-18.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/601.000000-PE MIP COR 15X5-16698/1-18.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001155/05-14-2008-NA-CT CHEST PULMONARY EMBOLISM CTPE-40193/601.000000-PE MIP COR 15X5-16698/1-18.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1-035",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-440808-000001",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-440808-000001/02-09-2005-NA-THORAX PE-.3254/5.000000-ARTERIALVENOUS AXIAL THIN-.3255/1-035.dcm",
+        "original_filename": "1-035.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-440808-000001/02-09-2005-NA-THORAX PE-.3254/5.000000-ARTERIALVENOUS AXIAL THIN-.3255/1-035.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-440808-000001/02-09-2005-NA-THORAX PE-.3254/5.000000-ARTERIALVENOUS AXIAL THIN-.3255/1-035.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-440808-000001/02-09-2005-NA-THORAX PE-.3254/5.000000-ARTERIALVENOUS AXIAL THIN-.3255/1-035.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1-061",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000174",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000174/06-06-2002-NA-NA-57047/2.000000-NA-62572/1-061.dcm",
+        "original_filename": "1-061.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000174/06-06-2002-NA-NA-57047/2.000000-NA-62572/1-061.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000174/06-06-2002-NA-NA-57047/2.000000-NA-62572/1-061.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000174/06-06-2002-NA-NA-57047/2.000000-NA-62572/1-061.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1-010",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-SITE2-000259",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000259/10-23-2002-NA-NA-28500/2.000000-NA-21551/1-010.dcm",
+        "original_filename": "1-010.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000259/10-23-2002-NA-NA-28500/2.000000-NA-21551/1-010.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000259/10-23-2002-NA-NA-28500/2.000000-NA-21551/1-010.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-SITE2-000259/10-23-2002-NA-NA-28500/2.000000-NA-21551/1-010.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1-066",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-001336",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/3.000000-1.25 60 KEV-06399/1-066.dcm",
+        "original_filename": "1-066.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/3.000000-1.25 60 KEV-06399/1-066.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/3.000000-1.25 60 KEV-06399/1-066.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-001336/10-27-2008-NA-CT ANGIOGRAM CHEST-85568/3.000000-1.25 60 KEV-06399/1-066.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1-096",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-000582",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000582/12-06-2002-NA-CT CHEST WITH CONTRAST-03879/605.000000-SAG 3X3-87890/1-096.dcm",
+        "original_filename": "1-096.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000582/12-06-2002-NA-CT CHEST WITH CONTRAST-03879/605.000000-SAG 3X3-87890/1-096.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000582/12-06-2002-NA-CT CHEST WITH CONTRAST-03879/605.000000-SAG 3X3-87890/1-096.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000582/12-06-2002-NA-CT CHEST WITH CONTRAST-03879/605.000000-SAG 3X3-87890/1-096.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1-214",
+      "class": "Infectious opacity | Lymphadenopathy | Pleural effusion",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "MIDRC-RICORD-1A"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "MIDRC-RICORD-1A-419639-000421",
+        "source_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/301.000000-CHEST .625 BONE ALGORITH-31104/1-214.dcm",
+        "original_filename": "1-214.dcm",
+        "label_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/301.000000-CHEST .625 BONE ALGORITH-31104/1-214.dcm",
+        "mask_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/301.000000-CHEST .625 BONE ALGORITH-31104/1-214.dcm",
+        "seg_file": "data/MIDRC-RICORD-1A/MIDRC-RICORD-1A-419639-000421/12-05-2006-NA-CT CHEST WITHOUT CONTRAST-50477/301.000000-CHEST .625 BONE ALGORITH-31104/1-214.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,742 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "malignant-lymphoma-classification",
+  "description": "malignant-lymphoma-classification classification GT（真·DFS 重建版，前 20 个样本）",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "malignant-lymphoma-classification",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "<leaf-task-text>",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "CLL",
+    "FL",
+    "MCL"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "sj_03_2810_001",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_001.tif",
+        "original_filename": "sj-03-2810_001.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "sj_03_2810_002",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_002.tif",
+        "original_filename": "sj-03-2810_002.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "sj_03_2810_003",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_003.tif",
+        "original_filename": "sj-03-2810_003.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "sj_03_2810_004",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_004.tif",
+        "original_filename": "sj-03-2810_004.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "sj_03_2810_005",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_005.tif",
+        "original_filename": "sj-03-2810_005.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "sj_03_2810_006",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_006.tif",
+        "original_filename": "sj-03-2810_006.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "sj_03_2810_007",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_007.tif",
+        "original_filename": "sj-03-2810_007.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "sj_03_2810_008",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_008.tif",
+        "original_filename": "sj-03-2810_008.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "sj_03_2810_009",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_009.tif",
+        "original_filename": "sj-03-2810_009.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "sj_03_2810_010",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_010.tif",
+        "original_filename": "sj-03-2810_010.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "sj_03_2810_011",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-2810_011.tif",
+        "original_filename": "sj-03-2810_011.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "sj_03_476_001",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_001.tif",
+        "original_filename": "sj-03-476_001.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "sj_03_476_002",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_002.tif",
+        "original_filename": "sj-03-476_002.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "sj_03_476_003",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_003.tif",
+        "original_filename": "sj-03-476_003.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "sj_03_476_004",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_004.tif",
+        "original_filename": "sj-03-476_004.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "sj_03_476_005",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_005.tif",
+        "original_filename": "sj-03-476_005.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "sj_03_476_006",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_006.tif",
+        "original_filename": "sj-03-476_006.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "sj_03_476_007",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_007.tif",
+        "original_filename": "sj-03-476_007.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "sj_03_476_008",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_008.tif",
+        "original_filename": "sj-03-476_008.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "sj_03_476_009",
+      "class": "CLL",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "malignant-lymphoma-classification"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/CLL/sj-03-476_009.tif",
+        "original_filename": "sj-03-476_009.tif",
+        "label_text": "CLL",
+        "class_name": "CLL"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CLL"
+        }
+      }
+    }
+  }
+}

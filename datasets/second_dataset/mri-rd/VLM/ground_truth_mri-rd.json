@@ -1,0 +1,251 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "mri-rd",
+  "description": "基于 data/：按字典序 DFS 遍历（跳过 __MACOSX、.cache），仅将可转换为医学图像的文件视为样本（.dcm/.jpg 等）；不将 .pth 权重、.ipynb、README 等纳入样本。当前目录下可转换图像仅 3 个，不足 20 则全部纳入（expected_count=3）。无外部临床标签，以文件格式作为可核验的弱监督类别：DICOM vs JPEG。字段结构与 cls_gt 模版中单条 sample 结构一致。",
+  "expected_count": 3,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "mri-rd",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "mri_rd_file_format_dicom_vs_jpeg",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "mri-rd"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 3
+    }
+  },
+  "classes": [
+    "DICOM",
+    "JPEG"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "test_dcm",
+      "class": "DICOM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "mri-rd"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "test_dcm",
+        "label_text": "DICOM",
+        "class_name": "DICOM",
+        "source_file": "data/test.dcm",
+        "original_filename": "test.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "DICOM"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "test_jpg",
+      "class": "JPEG",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "mri-rd"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "test_jpg",
+        "label_text": "JPEG",
+        "class_name": "JPEG",
+        "source_file": "data/test.jpg",
+        "original_filename": "test.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "JPEG"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "test2_dcm",
+      "class": "DICOM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "mri-rd"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "test2_dcm",
+        "label_text": "DICOM",
+        "class_name": "DICOM",
+        "source_file": "data/test2.dcm",
+        "original_filename": "test2.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "DICOM"
+        }
+      },
+      "expected_sources": [
+        "test2"
+      ]
+    }
+  }
+}

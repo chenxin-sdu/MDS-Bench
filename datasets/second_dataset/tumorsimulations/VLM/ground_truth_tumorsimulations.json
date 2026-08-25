@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "tumorsimulations",
+  "description": "nnU-Net 风格 Dataset800_Brain：imagesTr 为 3D MRI（.nii.gz），labelsTr 为同病例配准的体素级软标签（float32，取值约 [0,1]，可视为肿瘤概率图；语义评估时常用阈值 0.5 二值化）。图像命名 BRAIN_p{pid}_0000.nii.gz，标签为 BRAIN_p{pid}.nii.gz。采样：在 data/ 下对 Dataset800_Brain/imagesTr/*.nii.gz 按文件名字典序取前 20 个。字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "tumorsimulations",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "brain_tumor_simulation_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "tumorsimulations"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "tumor"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "BRAIN_p10000",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p10000",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p10000.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p10000.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p10000_0000.nii.gz",
+        "original_filename": "BRAIN_p10000_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "BRAIN_p1000",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1000",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1000.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1000.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1000_0000.nii.gz",
+        "original_filename": "BRAIN_p1000_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "BRAIN_p1001",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1001",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1001.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1001.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1001_0000.nii.gz",
+        "original_filename": "BRAIN_p1001_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "BRAIN_p1002",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1002",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1002.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1002.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1002_0000.nii.gz",
+        "original_filename": "BRAIN_p1002_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "BRAIN_p1003",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1003",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1003.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1003.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1003_0000.nii.gz",
+        "original_filename": "BRAIN_p1003_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "BRAIN_p1004",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1004",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1004.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1004.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1004_0000.nii.gz",
+        "original_filename": "BRAIN_p1004_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "BRAIN_p1005",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1005",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1005.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1005.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1005_0000.nii.gz",
+        "original_filename": "BRAIN_p1005_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "BRAIN_p1006",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1006",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1006.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1006.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1006_0000.nii.gz",
+        "original_filename": "BRAIN_p1006_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "BRAIN_p1007",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1007",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1007.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1007.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1007_0000.nii.gz",
+        "original_filename": "BRAIN_p1007_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "BRAIN_p1008",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1008",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1008.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1008.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1008_0000.nii.gz",
+        "original_filename": "BRAIN_p1008_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "BRAIN_p1009",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1009",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1009.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1009.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1009_0000.nii.gz",
+        "original_filename": "BRAIN_p1009_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "BRAIN_p100",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p100",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p100.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p100.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p100_0000.nii.gz",
+        "original_filename": "BRAIN_p100_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "BRAIN_p1010",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1010",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1010.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1010.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1010_0000.nii.gz",
+        "original_filename": "BRAIN_p1010_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "BRAIN_p1011",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1011",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1011.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1011.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1011_0000.nii.gz",
+        "original_filename": "BRAIN_p1011_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "BRAIN_p1012",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1012",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1012.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1012.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1012_0000.nii.gz",
+        "original_filename": "BRAIN_p1012_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "BRAIN_p1013",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1013",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1013.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1013.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1013_0000.nii.gz",
+        "original_filename": "BRAIN_p1013_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "BRAIN_p1014",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1014",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1014.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1014.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1014_0000.nii.gz",
+        "original_filename": "BRAIN_p1014_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "BRAIN_p1015",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1015",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1015.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1015.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1015_0000.nii.gz",
+        "original_filename": "BRAIN_p1015_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "BRAIN_p1016",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1016",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1016.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1016.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1016_0000.nii.gz",
+        "original_filename": "BRAIN_p1016_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "BRAIN_p1017",
+      "class": "tumor",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "tumorsimulations"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "BRAIN_p1017",
+        "label_file": null,
+        "mask_file": "Dataset800_Brain/labelsTr/BRAIN_p1017.nii.gz",
+        "seg_file": "Dataset800_Brain/labelsTr/BRAIN_p1017.nii.gz",
+        "source_file": "data/Dataset800_Brain/imagesTr/BRAIN_p1017_0000.nii.gz",
+        "original_filename": "BRAIN_p1017_0000.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

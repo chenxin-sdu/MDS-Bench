@@ -1,0 +1,306 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "chest-xray-unidatapro",
+  "description": "UniDataPro 胸部 X 线 DICOM + Supervisely 多边形标注的检测 GT。采样：在 data 目录下对 dicoms/ 内 .dcm 按字典序遍历，样本数 5（本地子集）；每条样本对应 chest_x-ray.csv 中同行 StudyInstanceUID 与 annotations/*.json。原始多边形用于病灶定位，评估协议与 det_gt 模版一致。",
+  "expected_count": 5,
+  "modality_primary": "Xray",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "detection",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "detection": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "chest-xray-unidatapro",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "bbox_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "chest_xray_finding_detection",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "context_sample": {
+        "modality_primary": "Xray"
+      },
+      "media": {
+        "task_type": "detection",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "detection",
+      "modality_primary.0": "Xray",
+      "data_volume.total": 5
+    }
+  },
+  "classes": [
+    "Nodule/mass",
+    "Dissemination",
+    "Annular shadows",
+    "Petrifications",
+    "Pleural effusion",
+    "Pneumothorax",
+    "Rib fractures",
+    "Healed rib fracture",
+    "Atelectasis",
+    "Enlarged medinastium",
+    "Hilar enlargement",
+    "Infiltration/Consolidation",
+    "Fibrosis"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1.2.826.0.1.3680043.2.634.0.1459.20141229.122510.1",
+      "class": "Petrifications",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "1.2.826.0.1.3680043.2.634.0.11881.20141229.12242.240",
+        "label_text": "Petrifications",
+        "class_name": "Petrifications",
+        "bbox_file": "annotations/1.2.826.0.1.3680043.2.634.0.11881.20141229.12242.240.json",
+        "source_file": "data/dicoms/1.2.826.0.1.3680043.2.634.0.1459.20141229.122510.1.dcm",
+        "original_filename": "1.2.826.0.1.3680043.2.634.0.1459.20141229.122510.1.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1.2.826.0.1.3680043.2.634.0.21450.2018618.103049.2",
+      "class": "Infiltration/Consolidation",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "1.2.826.0.1.3680043.2.634.0.4042.2018618.102942.281",
+        "label_text": "Infiltration/Consolidation",
+        "class_name": "Infiltration/Consolidation",
+        "bbox_file": "annotations/1.2.826.0.1.3680043.2.634.0.4042.2018618.102942.281.json",
+        "source_file": "data/dicoms/1.2.826.0.1.3680043.2.634.0.21450.2018618.103049.2.dcm",
+        "original_filename": "1.2.826.0.1.3680043.2.634.0.21450.2018618.103049.2.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1.2.826.0.1.3680043.2.634.0.37655.2015128.9957.4",
+      "class": "Fibrosis",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "1.2.826.0.1.3680043.2.634.0.40770.2015113.114238.300",
+        "label_text": "Fibrosis",
+        "class_name": "Fibrosis",
+        "bbox_file": "annotations/1.2.826.0.1.3680043.2.634.0.40770.2015113.114238.300.json",
+        "source_file": "data/dicoms/1.2.826.0.1.3680043.2.634.0.37655.2015128.9957.4.dcm",
+        "original_filename": "1.2.826.0.1.3680043.2.634.0.37655.2015128.9957.4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1.2.826.0.1.3680043.2.634.0.43163.2014312.13120.4",
+      "class": "Infiltration/Consolidation",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "1.2.826.0.1.3680043.2.634.0.48949.2014312.13040.400",
+        "label_text": "Infiltration/Consolidation",
+        "class_name": "Infiltration/Consolidation",
+        "bbox_file": "annotations/1.2.826.0.1.3680043.2.634.0.48949.2014312.13040.400.json",
+        "source_file": "data/dicoms/1.2.826.0.1.3680043.2.634.0.43163.2014312.13120.4.dcm",
+        "original_filename": "1.2.826.0.1.3680043.2.634.0.43163.2014312.13120.4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1.2.826.0.1.3680043.2.634.0.48573.201524.163417.4",
+      "class": "Nodule/mass",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "chest-xray-unidatapro"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "1.2.826.0.1.3680043.2.634.0.40729.201524.163327.1129",
+        "label_text": "Nodule/mass",
+        "class_name": "Nodule/mass",
+        "bbox_file": "annotations/1.2.826.0.1.3680043.2.634.0.40729.201524.163327.1129.json",
+        "source_file": "data/dicoms/1.2.826.0.1.3680043.2.634.0.48573.201524.163417.4.dcm",
+        "original_filename": "1.2.826.0.1.3680043.2.634.0.48573.201524.163417.4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  }
+}

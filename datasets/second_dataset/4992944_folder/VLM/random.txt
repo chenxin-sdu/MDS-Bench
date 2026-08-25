@@ -1,0 +1,20 @@
+0 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/NOR011_RPE_Montage.tif
+1 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/N_10_cones_bin.tif
+2 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/N_12_cones_bin.tif
+3 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/N_1_cones_bin.tif
+4 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/N_2_cones_bin.tif
+5 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/T_16_cones_bin.tif
+6 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/T_1_cones_bin.tif
+7 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/T_2_cones_bin.tif
+8 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/T_9_cones_bin.tif
+9 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Marked Cones/UL_1_cones_bin.tif
+10 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_10_PR.tif
+11 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_11_PR.tif
+12 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_12_PR.tif
+13 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_13_PR.tif
+14 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_1_PR.tif
+15 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_2_PR.tif
+16 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_7_PR.tif
+17 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/N_9_PR.tif
+18 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/T_10_PR.tif
+19 /data3/chenxin/Agent_test/second_dataset/4992944_folder/data/NOR011/PR ROIs - Raw/T_11_PR.tif

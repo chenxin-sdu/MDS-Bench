@@ -1,0 +1,727 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "FLARE22",
+  "description": "FLARE22 (Zenodo 7860267) 腹部 CT 多器官 3D 分割数据集，覆盖肝、脾、左/右肾、胆囊、食管、胃、主动脉、下腔静脉、胰腺、十二指肠、膀胱等。原图位于 FLARE22Train/images/，金标准位于 FLARE22Train/labels/，原图后缀含 nnU-Net 模态通道号 _0000；source_stem 严格对应 random.txt 文件名。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "FLARE22",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "abdominal_multi_organ_segmentation_flare22",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "FLARE22"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "liver",
+    "right_kidney",
+    "spleen",
+    "pancreas",
+    "aorta",
+    "inferior_vena_cava",
+    "right_adrenal_gland",
+    "left_adrenal_gland",
+    "gallbladder",
+    "esophagus",
+    "stomach",
+    "duodenum",
+    "left_kidney"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "FLARE22_Tr_0002_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0002",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0002_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0002_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0002.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0002.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0002.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "FLARE22_Tr_0038_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0038",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0038_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0038_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0038.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0038.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0038.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "FLARE22_Tr_0028_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0028",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0028_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0028_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0028.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0028.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0028.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "FLARE22_Tr_0049_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0049",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0049_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0049_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0049.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0049.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0049.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "FLARE22_Tr_0026_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0026",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0026_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0026_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0026.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0026.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0026.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "FLARE22_Tr_0042_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0042",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0042_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0042_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0042.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0042.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0042.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "FLARE22_Tr_0020_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0020",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0020_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0020_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0020.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0020.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0020.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "FLARE22_Tr_0022_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0022",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0022_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0022_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0022.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0022.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0022.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "FLARE22_Tr_0050_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0050",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0050_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0050_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0050.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0050.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0050.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "FLARE22_Tr_0006_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0006",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0006_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0006_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0006.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0006.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0006.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "FLARE22_Tr_0014_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0014",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0014_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0014_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0014.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0014.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0014.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "FLARE22_Tr_0036_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0036",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0036_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0036_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0036.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0036.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0036.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "FLARE22_Tr_0025_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0025",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0025_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0025_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0025.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0025.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0025.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "FLARE22_Tr_0009_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0009",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0009_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0009_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0009.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0009.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0009.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "FLARE22_Tr_0032_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0032",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0032_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0032_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0032.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0032.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0032.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "FLARE22_Tr_0035_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0035",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0035_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0035_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0035.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0035.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0035.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "FLARE22_Tr_0048_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0048",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0048_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0048_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0048.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0048.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0048.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "FLARE22_Tr_0039_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0039",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0039_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0039_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0039.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0039.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0039.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "FLARE22_Tr_0012_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0012",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0012_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0012_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0012.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0012.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0012.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "FLARE22_Tr_0024_0000",
+      "class": "FLARE22 abdominal multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "FLARE22"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "FLARE22_Tr_0024",
+        "source_file": "data/FLARE22Train/images/FLARE22_Tr_0024_0000.nii.gz",
+        "original_filename": "FLARE22_Tr_0024_0000.nii.gz",
+        "label_file": "data/FLARE22Train/labels/FLARE22_Tr_0024.nii.gz",
+        "mask_file": "data/FLARE22Train/labels/FLARE22_Tr_0024.nii.gz",
+        "seg_file": "data/FLARE22Train/labels/FLARE22_Tr_0024.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

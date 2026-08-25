@@ -1,0 +1,743 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "ICIAR2018_BACH_BreastHistology",
+  "description": "ICIAR2018 BACH 乳腺组织病理图像分类 GT，字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "ICIAR2018_BACH_BreastHistology",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "breast_histology_four_class",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Normal",
+    "Benign",
+    "InSitu",
+    "Invasive"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "b001",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b001",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b001.tif",
+        "original_filename": "b001.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "b002",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b002",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b002.tif",
+        "original_filename": "b002.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "b003",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b003",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b003.tif",
+        "original_filename": "b003.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "b004",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b004",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b004.tif",
+        "original_filename": "b004.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "b005",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b005",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b005.tif",
+        "original_filename": "b005.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "b006",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b006",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b006.tif",
+        "original_filename": "b006.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "b007",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b007",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b007.tif",
+        "original_filename": "b007.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "b008",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b008",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b008.tif",
+        "original_filename": "b008.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "b009",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b009",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b009.tif",
+        "original_filename": "b009.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "b010",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b010",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b010.tif",
+        "original_filename": "b010.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "b011",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b011",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b011.tif",
+        "original_filename": "b011.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "b012",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b012",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b012.tif",
+        "original_filename": "b012.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "b013",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b013",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b013.tif",
+        "original_filename": "b013.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "b014",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b014",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b014.tif",
+        "original_filename": "b014.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "b015",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b015",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b015.tif",
+        "original_filename": "b015.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "b016",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b016",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b016.tif",
+        "original_filename": "b016.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "b017",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b017",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b017.tif",
+        "original_filename": "b017.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "b018",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b018",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b018.tif",
+        "original_filename": "b018.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "b019",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b019",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b019.tif",
+        "original_filename": "b019.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "b020",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ICIAR2018_BACH_BreastHistology"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "b020",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/ICIAR2018_BACH_Challenge/ICIAR2018_BACH_Challenge/Photos/Benign/b020.tif",
+        "original_filename": "b020.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Benign"
+        }
+      }
+    }
+  }
+}

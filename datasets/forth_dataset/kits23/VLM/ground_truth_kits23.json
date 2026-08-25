@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "KiTS23",
+  "description": "KiTS23 Kidney Tumor Segmentation Challenge 数据集。腹部 CT 体素分割，标签 0=background, 1=kidney, 2=tumor, 3=cyst。每例位于 dataset/case_XXXXX/，金标准为 segmentation.nii.gz；原图 imaging.nii.gz 需通过 kits23_download_data 单独下载，本地仅保留金标准。因此 source_file 与 label/mask/seg_file 均指向同一份 segmentation.nii.gz，与 random.txt 一致。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "KiTS23",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "kidney_tumor_cyst_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "KiTS23"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "kidney",
+    "tumor",
+    "cyst"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "case_00286",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00286",
+        "source_file": "data/dataset/case_00286/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00286/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00286/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00286/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "case_00121",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00121",
+        "source_file": "data/dataset/case_00121/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00121/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00121/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00121/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "case_00563",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00563",
+        "source_file": "data/dataset/case_00563/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00563/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00563/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00563/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "case_00020",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00020",
+        "source_file": "data/dataset/case_00020/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00020/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00020/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00020/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "case_00128",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00128",
+        "source_file": "data/dataset/case_00128/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00128/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00128/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00128/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "case_00498",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00498",
+        "source_file": "data/dataset/case_00498/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00498/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00498/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00498/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "case_00455",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00455",
+        "source_file": "data/dataset/case_00455/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00455/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00455/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00455/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "case_00006",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00006",
+        "source_file": "data/dataset/case_00006/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00006/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00006/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00006/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "case_00007",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00007",
+        "source_file": "data/dataset/case_00007/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00007/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00007/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00007/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "case_00155",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00155",
+        "source_file": "data/dataset/case_00155/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00155/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00155/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00155/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "case_00229",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00229",
+        "source_file": "data/dataset/case_00229/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00229/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00229/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00229/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "case_00582",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00582",
+        "source_file": "data/dataset/case_00582/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00582/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00582/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00582/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "case_00272",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00272",
+        "source_file": "data/dataset/case_00272/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00272/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00272/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00272/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "case_00050",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00050",
+        "source_file": "data/dataset/case_00050/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00050/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00050/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00050/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "case_00235",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00235",
+        "source_file": "data/dataset/case_00235/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00235/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00235/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00235/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "case_00486",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00486",
+        "source_file": "data/dataset/case_00486/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00486/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00486/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00486/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "case_00240",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00240",
+        "source_file": "data/dataset/case_00240/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00240/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00240/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00240/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "case_00409",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00409",
+        "source_file": "data/dataset/case_00409/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00409/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00409/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00409/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "case_00507",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00507",
+        "source_file": "data/dataset/case_00507/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00507/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00507/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00507/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "case_00508",
+      "class": "Kidney + tumor + cyst segmentation (KiTS23)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "KiTS23"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_00508",
+        "source_file": "data/dataset/case_00508/segmentation.nii.gz",
+        "original_filename": "segmentation.nii.gz",
+        "label_file": "data/dataset/case_00508/segmentation.nii.gz",
+        "mask_file": "data/dataset/case_00508/segmentation.nii.gz",
+        "seg_file": "data/dataset/case_00508/segmentation.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

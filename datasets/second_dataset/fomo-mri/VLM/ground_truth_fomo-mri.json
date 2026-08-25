@@ -1,0 +1,746 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "fomo-mri",
+  "description": "基于 data/：按字典序 DFS 遍历（跳过 __MACOSX、.cache），仅统计 .nii.gz 体积样本；取前 20 个文件。FOMO-60K 为自监督/基础模型数据，无临床疾病标签；依据 README 中文件命名规则，从文件名 stem 推断 MRI 序列族（T1/T2/FLAIR/DWI/PD/SWI；scan_* 记为 Unknown_sequence），作为多分类 GT。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "fomo-mri",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "fomo_mri_sequence_family_from_filename",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "fomo-mri"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "T1",
+    "T2",
+    "FLAIR",
+    "DWI",
+    "PD",
+    "SWI",
+    "Unknown_sequence"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "t1",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1/ses_1/t1.nii.gz",
+        "original_filename": "t1.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "t1_2",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1/ses_1/t1_2.nii.gz",
+        "original_filename": "t1_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "t1_3",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1/ses_1/t1_3.nii.gz",
+        "original_filename": "t1_3.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "t1_4",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1/ses_1/t1_4.nii.gz",
+        "original_filename": "t1_4.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "dwi",
+      "class": "DWI",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10",
+        "label_text": "DWI",
+        "class_name": "DWI",
+        "source_file": "data/fomo-60k/sub_10/ses_1/dwi.nii.gz",
+        "original_filename": "dwi.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "dwi_2",
+      "class": "DWI",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10",
+        "label_text": "DWI",
+        "class_name": "DWI",
+        "source_file": "data/fomo-60k/sub_10/ses_1/dwi_2.nii.gz",
+        "original_filename": "dwi_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "flair",
+      "class": "FLAIR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10",
+        "label_text": "FLAIR",
+        "class_name": "FLAIR",
+        "source_file": "data/fomo-60k/sub_10/ses_1/flair.nii.gz",
+        "original_filename": "flair.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "FLAIR"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "t1",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_10/ses_1/t1.nii.gz",
+        "original_filename": "t1.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "dwi",
+      "class": "DWI",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_100",
+        "label_text": "DWI",
+        "class_name": "DWI",
+        "source_file": "data/fomo-60k/sub_100/ses_1/dwi.nii.gz",
+        "original_filename": "dwi.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "dwi_2",
+      "class": "DWI",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_100",
+        "label_text": "DWI",
+        "class_name": "DWI",
+        "source_file": "data/fomo-60k/sub_100/ses_1/dwi_2.nii.gz",
+        "original_filename": "dwi_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "t1",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_100",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_100/ses_1/t1.nii.gz",
+        "original_filename": "t1.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "t1_2",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_100",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_100/ses_1/t1_2.nii.gz",
+        "original_filename": "t1_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "t1_3",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_100",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_100/ses_1/t1_3.nii.gz",
+        "original_filename": "t1_3.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "t1",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1000/ses_1/t1.nii.gz",
+        "original_filename": "t1.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "t1_2",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1000/ses_1/t1_2.nii.gz",
+        "original_filename": "t1_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "t1_3",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1000/ses_1/t1_3.nii.gz",
+        "original_filename": "t1_3.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "t1_4",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_1000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_1000/ses_1/t1_4.nii.gz",
+        "original_filename": "t1_4.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "flair",
+      "class": "FLAIR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10000",
+        "label_text": "FLAIR",
+        "class_name": "FLAIR",
+        "source_file": "data/fomo-60k/sub_10000/ses_1/flair.nii.gz",
+        "original_filename": "flair.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "FLAIR"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "t1",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_10000/ses_1/t1.nii.gz",
+        "original_filename": "t1.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "t1_2",
+      "class": "T1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fomo-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "sub_10000",
+        "label_text": "T1",
+        "class_name": "T1",
+        "source_file": "data/fomo-60k/sub_10000/ses_1/t1_2.nii.gz",
+        "original_filename": "t1_2.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "T1"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "MoNuSAC-Cell-Detection",
+  "description": "Zenodo 7500843 多组织 H&E 显微镜下的细胞检测数据集。每张 .tif 配套同名 .csv（或 _consensus / _raterA/B/C 多版本）提供细胞类别 (Tumor/Lymphocyte/Macrophage/Neutrophil) 与 (XMin,YMin,XMax,YMax) 边界框。文件名前缀 GC=Gastric, NSCLC=Non-small Cell Lung Cancer, TNBC=Triple-Negative Breast Cancer, HNSCC=Head and Neck Squamous Cell Carcinoma。bbox_file 优先指向 <stem>.csv，缺省回退 <stem>_consensus.csv。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "detection",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "detection": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "MoNuSAC-Cell-Detection",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "bbox_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "cell_type_detection_microscopy",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "detection",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "detection",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Tumor cell",
+    "Lymphocyte",
+    "Macrophage",
+    "Neutrophil"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "TNBC_18",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "TNBC_18",
+        "source_file": "data/TNBC_18.tif",
+        "original_filename": "TNBC_18.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/TNBC_18_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "GC_13",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_13",
+        "source_file": "data/GC_13.tif",
+        "original_filename": "GC_13.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_13.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "TNBC_12",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "TNBC_12",
+        "source_file": "data/TNBC_12.tif",
+        "original_filename": "TNBC_12.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/TNBC_12.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "GC_09",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_09",
+        "source_file": "data/GC_09.tif",
+        "original_filename": "GC_09.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_09.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "GC_16",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_16",
+        "source_file": "data/GC_16.tif",
+        "original_filename": "GC_16.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_16_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "HNSCC_18",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "HNSCC_18",
+        "source_file": "data/HNSCC_18.tif",
+        "original_filename": "HNSCC_18.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/HNSCC_18.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "NSCLC_15",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_15",
+        "source_file": "data/NSCLC_15.tif",
+        "original_filename": "NSCLC_15.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_15.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "NSCLC_10",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_10",
+        "source_file": "data/NSCLC_10.tif",
+        "original_filename": "NSCLC_10.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_10.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "NSCLC_20",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_20",
+        "source_file": "data/NSCLC_20.tif",
+        "original_filename": "NSCLC_20.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_20_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "GC_14",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_14",
+        "source_file": "data/GC_14.tif",
+        "original_filename": "GC_14.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_14.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "HNSCC_14",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "HNSCC_14",
+        "source_file": "data/HNSCC_14.tif",
+        "original_filename": "HNSCC_14.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/HNSCC_14.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "TNBC_16",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "TNBC_16",
+        "source_file": "data/TNBC_16.tif",
+        "original_filename": "TNBC_16.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/TNBC_16_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "GC_17",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_17",
+        "source_file": "data/GC_17.tif",
+        "original_filename": "GC_17.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_17_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "HNSCC_26",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "HNSCC_26",
+        "source_file": "data/HNSCC_26.tif",
+        "original_filename": "HNSCC_26.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/HNSCC_26.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "NSCLC_16",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_16",
+        "source_file": "data/NSCLC_16.tif",
+        "original_filename": "NSCLC_16.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_16_consensus.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "HNSCC_27",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "HNSCC_27",
+        "source_file": "data/HNSCC_27.tif",
+        "original_filename": "HNSCC_27.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/HNSCC_27.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "GC_06",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_06",
+        "source_file": "data/GC_06.tif",
+        "original_filename": "GC_06.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_06.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "GC_15",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "GC_15",
+        "source_file": "data/GC_15.tif",
+        "original_filename": "GC_15.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/GC_15.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "NSCLC_07",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_07",
+        "source_file": "data/NSCLC_07.tif",
+        "original_filename": "NSCLC_07.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_07.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "NSCLC_03",
+      "class": "Multi-tissue H&E microscopy cell detection",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "MoNuSAC-Cell-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NSCLC_03",
+        "source_file": "data/NSCLC_03.tif",
+        "original_filename": "NSCLC_03.tif",
+        "label_text": "Tumor cell",
+        "class_name": "Tumor cell",
+        "bbox_file": "data/NSCLC_03.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  }
+}

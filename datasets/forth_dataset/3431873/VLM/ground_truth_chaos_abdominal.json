@@ -1,0 +1,718 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "CHAOS-Abdominal",
+  "description": "CHAOS（Combined CT-MR Healthy Abdominal Organ Segmentation）数据集。包含 CT 与 MR (T2-SPIR / T1-DUAL InPhase, OutPhase) 两种模态的 2D DICOM 切片。MR Ground 标注 PNG 与 DICOM 同名一一对应；CT Ground 为序列编号 (liver_GT_NNN.png) 需通过切片顺序映射，无法仅凭 DICOM 文件名直接对齐，已置 null。Test_Sets 无公开标签。modality_primary 主要为 CT，部分样本为 MRI。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "CHAOS-Abdominal",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "abdominal_multi_organ_segmentation_chaos",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "liver",
+    "right_kidney",
+    "left_kidney",
+    "spleen"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "i0038,0000b",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_19",
+        "source_file": "data/Train_Sets/CT/19/DICOM_anon/i0038,0000b.dcm",
+        "original_filename": "i0038,0000b.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "IMG-0002-00028",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_MR_1",
+        "source_file": "data/Train_Sets/MR/1/T2SPIR/DICOM_anon/IMG-0002-00028.dcm",
+        "original_filename": "IMG-0002-00028.dcm",
+        "label_file": "data/Train_Sets/MR/1/T2SPIR/Ground/IMG-0002-00028.png",
+        "mask_file": "data/Train_Sets/MR/1/T2SPIR/Ground/IMG-0002-00028.png",
+        "seg_file": "data/Train_Sets/MR/1/T2SPIR/Ground/IMG-0002-00028.png"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "IMG-0007-00015",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_MR_2",
+        "source_file": "data/Train_Sets/MR/2/T2SPIR/DICOM_anon/IMG-0007-00015.dcm",
+        "original_filename": "IMG-0007-00015.dcm",
+        "label_file": "data/Train_Sets/MR/2/T2SPIR/Ground/IMG-0007-00015.png",
+        "mask_file": "data/Train_Sets/MR/2/T2SPIR/Ground/IMG-0007-00015.png",
+        "seg_file": "data/Train_Sets/MR/2/T2SPIR/Ground/IMG-0007-00015.png"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "IMG-0016-00050",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_40",
+        "source_file": "data/Test_Sets/MR/40/T1DUAL/DICOM_anon/InPhase/IMG-0016-00050.dcm",
+        "original_filename": "IMG-0016-00050.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "IMG-0004-00019",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_17",
+        "source_file": "data/Test_Sets/MR/17/T1DUAL/DICOM_anon/OutPhase/IMG-0004-00019.dcm",
+        "original_filename": "IMG-0004-00019.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "i0025,0000b",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_14",
+        "source_file": "data/Train_Sets/CT/14/DICOM_anon/i0025,0000b.dcm",
+        "original_filename": "i0025,0000b.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "IMG-0007-00055",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_24",
+        "source_file": "data/Train_Sets/CT/24/DICOM_anon/IMG-0007-00055.dcm",
+        "original_filename": "IMG-0007-00055.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "IMG-0046-00046",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_MR_10",
+        "source_file": "data/Train_Sets/MR/10/T1DUAL/DICOM_anon/InPhase/IMG-0046-00046.dcm",
+        "original_filename": "IMG-0046-00046.dcm",
+        "label_file": "data/Train_Sets/MR/10/T1DUAL/Ground/IMG-0046-00046.png",
+        "mask_file": "data/Train_Sets/MR/10/T1DUAL/Ground/IMG-0046-00046.png",
+        "seg_file": "data/Train_Sets/MR/10/T1DUAL/Ground/IMG-0046-00046.png"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "i0018,0000b",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_6",
+        "source_file": "data/Train_Sets/CT/6/DICOM_anon/i0018,0000b.dcm",
+        "original_filename": "i0018,0000b.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "IMG-0002-00184",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_30",
+        "source_file": "data/Train_Sets/CT/30/DICOM_anon/IMG-0002-00184.dcm",
+        "original_filename": "IMG-0002-00184.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "IMG-0002-00003",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_25",
+        "source_file": "data/Test_Sets/MR/25/T2SPIR/DICOM_anon/IMG-0002-00003.dcm",
+        "original_filename": "IMG-0002-00003.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "IMG-0020-00055",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_29",
+        "source_file": "data/Test_Sets/MR/29/T1DUAL/DICOM_anon/OutPhase/IMG-0020-00055.dcm",
+        "original_filename": "IMG-0020-00055.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "IMG-0009-00046",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_CT_37",
+        "source_file": "data/Test_Sets/CT/37/DICOM_anon/IMG-0009-00046.dcm",
+        "original_filename": "IMG-0009-00046.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "IMG-0007-00056",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_CT_35",
+        "source_file": "data/Test_Sets/CT/35/DICOM_anon/IMG-0007-00056.dcm",
+        "original_filename": "IMG-0007-00056.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "IMG-0008-00222",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_25",
+        "source_file": "data/Train_Sets/CT/25/DICOM_anon/IMG-0008-00222.dcm",
+        "original_filename": "IMG-0008-00222.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "i0052,0000b",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_CT_20",
+        "source_file": "data/Test_Sets/CT/20/DICOM_anon/i0052,0000b.dcm",
+        "original_filename": "i0052,0000b.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "IMG-00012-0036",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_30",
+        "source_file": "data/Test_Sets/MR/30/T1DUAL/DICOM_anon/InPhase/IMG-00012-0036.dcm",
+        "original_filename": "IMG-00012-0036.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "IMG-0003-00039",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Test_Sets_MR_25",
+        "source_file": "data/Test_Sets/MR/25/T1DUAL/DICOM_anon/OutPhase/IMG-0003-00039.dcm",
+        "original_filename": "IMG-0003-00039.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "IMG-0002-00083",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_30",
+        "source_file": "data/Train_Sets/CT/30/DICOM_anon/IMG-0002-00083.dcm",
+        "original_filename": "IMG-0002-00083.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "IMG-0006-00087",
+      "class": "CHAOS abdominal organ segmentation (CT/MR DICOM slice)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CHAOS-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Train_Sets_CT_23",
+        "source_file": "data/Train_Sets/CT/23/DICOM_anon/IMG-0006-00087.dcm",
+        "original_filename": "IMG-0006-00087.dcm",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

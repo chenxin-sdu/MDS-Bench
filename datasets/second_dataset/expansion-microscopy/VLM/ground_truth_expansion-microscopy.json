@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "expansion-microscopy",
+  "description": "膨胀显微（expansion microscopy）数据集分割 GT。在 data 目录下按字典序 DFS 遍历整棵目录树，跳过 .cache/__pycache__；仅将 .tif/.png 等视为样本；遇样本依次收集，累计 20 个即停止。前若干为 registration/pre|post_expansion 配准用图像，其余为 trailmap_volumes 下体数据 z 切片（axon 分割相关）。字段结构与 seg_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "expansion-microscopy",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "expansion_microscopy_trailmap_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "expansion-microscopy"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "axon_trailmap_slice",
+    "expansion_registration"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "example1",
+      "class": "expansion_registration",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "example1",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/registration/post_expansion/example1.tif",
+        "original_filename": "example1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "example2",
+      "class": "expansion_registration",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "example2",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/registration/post_expansion/example2.tif",
+        "original_filename": "example2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "example1",
+      "class": "expansion_registration",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "example1",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/registration/pre_expansion/example1.tif",
+        "original_filename": "example1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "example2",
+      "class": "expansion_registration",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "example2",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/registration/pre_expansion/example2.tif",
+        "original_filename": "example2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "seg-example1-1",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-1",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-1.tif",
+        "original_filename": "seg-example1-1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "seg-example1-10",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-10",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-10.tif",
+        "original_filename": "seg-example1-10.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "seg-example1-2",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-2",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-2.tif",
+        "original_filename": "seg-example1-2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "seg-example1-3",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-3",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-3.tif",
+        "original_filename": "seg-example1-3.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "seg-example1-4",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-4",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-4.tif",
+        "original_filename": "seg-example1-4.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "seg-example1-5",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-5",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-5.tif",
+        "original_filename": "seg-example1-5.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "seg-example1-6",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-6",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-6.tif",
+        "original_filename": "seg-example1-6.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "seg-example1-7",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-7",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-7.tif",
+        "original_filename": "seg-example1-7.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "seg-example1-8",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-8",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-8.tif",
+        "original_filename": "seg-example1-8.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "seg-example1-9",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example1-9",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example1.tif/seg-example1-9.tif",
+        "original_filename": "seg-example1-9.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "seg-example2-1",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-1",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-1.tif",
+        "original_filename": "seg-example2-1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "seg-example2-10",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-10",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-10.tif",
+        "original_filename": "seg-example2-10.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "seg-example2-2",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-2",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-2.tif",
+        "original_filename": "seg-example2-2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "seg-example2-3",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-3",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-3.tif",
+        "original_filename": "seg-example2-3.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "seg-example2-4",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-4",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-4.tif",
+        "original_filename": "seg-example2-4.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "seg-example2-5",
+      "class": "axon_trailmap_slice",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "expansion-microscopy"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "seg-example2-5",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/data/trailmap_volumes/seg-example2.tif/seg-example2-5.tif",
+        "original_filename": "seg-example2-5.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

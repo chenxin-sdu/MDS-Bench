@@ -1,0 +1,744 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Cervical_Cancer_largest_dataset",
+  "description": "宫颈细胞学涂片五分类 GT。data 下顶层文件夹 im_* 为类别；按字典序 DFS 遍历整棵目录树，仅将 .bmp/.png/.jpg/.tif 等视为样本，跳过 .dat 等辅助文件；遇到样本依次收集，累计 20 个即停止。类别名称为 im_ 前缀后的语义名（与文件夹一致）。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Cervical_Cancer_largest_dataset",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "cervical_cytology_five_class",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Dyskeratotic",
+    "Koilocytotic",
+    "Metaplastic",
+    "Parabasal",
+    "Superficial-Intermediate"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "001",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "001",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/001.bmp",
+        "original_filename": "001.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "002",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "002",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/002.bmp",
+        "original_filename": "002.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "003",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "003",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/003.bmp",
+        "original_filename": "003.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "004",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "004",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/004.bmp",
+        "original_filename": "004.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "005",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "005",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/005.bmp",
+        "original_filename": "005.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "006",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "006",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/006.bmp",
+        "original_filename": "006.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "007",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "007",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/007.bmp",
+        "original_filename": "007.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "008",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "008",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/008.bmp",
+        "original_filename": "008.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "009",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "009",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/009.bmp",
+        "original_filename": "009.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "010",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "010",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/010.bmp",
+        "original_filename": "010.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "011",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "011",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/011.bmp",
+        "original_filename": "011.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "012",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "012",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/012.bmp",
+        "original_filename": "012.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "013",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "013",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/013.bmp",
+        "original_filename": "013.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "014",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "014",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/014.bmp",
+        "original_filename": "014.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "015",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "015",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/015.bmp",
+        "original_filename": "015.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "016",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "016",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/016.bmp",
+        "original_filename": "016.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "017",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "017",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/017.bmp",
+        "original_filename": "017.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "018",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "018",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/018.bmp",
+        "original_filename": "018.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "019",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "019",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/019.bmp",
+        "original_filename": "019.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "020",
+      "class": "Dyskeratotic",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Cervical_Cancer_largest_dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "020",
+        "label_text": "Dyskeratotic",
+        "class_name": "Dyskeratotic",
+        "source_file": "data/im_Dyskeratotic/im_Dyskeratotic/020.bmp",
+        "original_filename": "020.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Dyskeratotic"
+        }
+      }
+    }
+  }
+}

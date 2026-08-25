@@ -1,0 +1,747 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "colorectal_histology_mnist2019",
+  "description": "基于 data/：按字典序 DFS 遍历（跳过 __MACOSX、.cache），仅将可视为医学图像的文件纳入样本（.tif/.tiff/.png/.jpg/.jpeg/.bmp/.gif/.npy），不将 hmnist_*.csv 等表格当作图像样本。取前 20 个图像文件；标签由父目录名 NN_<CLASS>（Kather 8 类：01_TUMOR…08_EMPTY）解析，NN 为 01–08 对应 label 0–7。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Histopathology",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "colorectal_histology_mnist2019",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "colorectal_histology_kather_8class",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Histopathology",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "TUMOR",
+    "STROMA",
+    "COMPLEX",
+    "LYMPHO",
+    "DEBRIS",
+    "MUCOSA",
+    "ADIPOSE",
+    "EMPTY"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "10009_CRC-Prim-HE-03_009.tif_Row_301_Col_151",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10009_CRC-Prim-HE-03_009.tif_Row_301_Col_151.tif",
+        "original_filename": "10009_CRC-Prim-HE-03_009.tif_Row_301_Col_151.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "10062_CRC-Prim-HE-02_003b.tif_Row_1_Col_301",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10062_CRC-Prim-HE-02_003b.tif_Row_1_Col_301.tif",
+        "original_filename": "10062_CRC-Prim-HE-02_003b.tif_Row_1_Col_301.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "100B0_CRC-Prim-HE-09_009.tif_Row_1_Col_301",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/100B0_CRC-Prim-HE-09_009.tif_Row_1_Col_301.tif",
+        "original_filename": "100B0_CRC-Prim-HE-09_009.tif_Row_1_Col_301.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "10104_CRC-Prim-HE-10_021.tif_Row_451_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10104_CRC-Prim-HE-10_021.tif_Row_451_Col_1.tif",
+        "original_filename": "10104_CRC-Prim-HE-10_021.tif_Row_451_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "10142_CRC-Prim-HE-09_025.tif_Row_151_Col_151",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10142_CRC-Prim-HE-09_025.tif_Row_151_Col_151.tif",
+        "original_filename": "10142_CRC-Prim-HE-09_025.tif_Row_151_Col_151.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "101A0_CRC-Prim-HE-03_034.tif_Row_151_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/101A0_CRC-Prim-HE-03_034.tif_Row_151_Col_1.tif",
+        "original_filename": "101A0_CRC-Prim-HE-03_034.tif_Row_151_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1021F_CRC-Prim-HE-04_029.tif_Row_151_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1021F_CRC-Prim-HE-04_029.tif_Row_151_Col_1.tif",
+        "original_filename": "1021F_CRC-Prim-HE-04_029.tif_Row_151_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "10264_CRC-Prim-HE-07_025.tif_Row_1801_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10264_CRC-Prim-HE-07_025.tif_Row_1801_Col_1.tif",
+        "original_filename": "10264_CRC-Prim-HE-07_025.tif_Row_1801_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "10286_CRC-Prim-HE-01_002.tif_Row_301_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10286_CRC-Prim-HE-01_002.tif_Row_301_Col_1.tif",
+        "original_filename": "10286_CRC-Prim-HE-01_002.tif_Row_301_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1030D_CRC-Prim-HE-02_031.tif_Row_151_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1030D_CRC-Prim-HE-02_031.tif_Row_151_Col_1.tif",
+        "original_filename": "1030D_CRC-Prim-HE-02_031.tif_Row_151_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "103B7_CRC-Prim-HE-02_026.tif_Row_1_Col_451",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/103B7_CRC-Prim-HE-02_026.tif_Row_1_Col_451.tif",
+        "original_filename": "103B7_CRC-Prim-HE-02_026.tif_Row_1_Col_451.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "103F_CRC-Prim-HE-02_025.tif_Row_1_Col_301",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/103F_CRC-Prim-HE-02_025.tif_Row_1_Col_301.tif",
+        "original_filename": "103F_CRC-Prim-HE-02_025.tif_Row_1_Col_301.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "103F_CRC-Prim-HE-10_013.tif_Row_151_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/103F_CRC-Prim-HE-10_013.tif_Row_151_Col_1.tif",
+        "original_filename": "103F_CRC-Prim-HE-10_013.tif_Row_151_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "10437_CRC-Prim-HE-02_028.tif_Row_151_Col_451",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/10437_CRC-Prim-HE-02_028.tif_Row_151_Col_451.tif",
+        "original_filename": "10437_CRC-Prim-HE-02_028.tif_Row_151_Col_451.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "104D5_CRC-Prim-HE-09_024.tif_Row_451_Col_151",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/104D5_CRC-Prim-HE-09_024.tif_Row_451_Col_151.tif",
+        "original_filename": "104D5_CRC-Prim-HE-09_024.tif_Row_451_Col_151.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1055E_CRC-Prim-HE-01_027.tif_Row_151_Col_301",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1055E_CRC-Prim-HE-01_027.tif_Row_151_Col_301.tif",
+        "original_filename": "1055E_CRC-Prim-HE-01_027.tif_Row_151_Col_301.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "105C1_CRC-Prim-HE-07_022.tif_Row_151_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/105C1_CRC-Prim-HE-07_022.tif_Row_151_Col_1.tif",
+        "original_filename": "105C1_CRC-Prim-HE-07_022.tif_Row_151_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1067D_CRC-Prim-HE-07_007.tif_Row_1_Col_151",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1067D_CRC-Prim-HE-07_007.tif_Row_1_Col_151.tif",
+        "original_filename": "1067D_CRC-Prim-HE-07_007.tif_Row_1_Col_151.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1084A_CRC-Prim-HE-01_040.tif_Row_301_Col_1",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1084A_CRC-Prim-HE-01_040.tif_Row_301_Col_1.tif",
+        "original_filename": "1084A_CRC-Prim-HE-01_040.tif_Row_301_Col_1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1085B_CRC-Prim-HE-02_034.tif_Row_1_Col_301",
+      "class": "TUMOR",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "colorectal_histology_mnist2019"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Histopathology"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "TUMOR",
+        "class_name": "TUMOR",
+        "source_file": "data/images/Kather_texture_2016_image_tiles_5000/Kather_texture_2016_image_tiles_5000/01_TUMOR/1085B_CRC-Prim-HE-02_034.tif_Row_1_Col_301.tif",
+        "original_filename": "1085B_CRC-Prim-HE-02_034.tif_Row_1_Col_301.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "TUMOR"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+0	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0126/01-01-2000-NA-NA-94320/3000640.000000-Segmentation of Nodule 1 - Annotation Nodule 001-87053/1-1.dcm
+1	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0390/01-01-2000-NA-NA-10441/5490.000000-Segmentation of Nodule 8 - Annotation 0-65365/1-1.dcm
+2	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0221/01-01-2000-NA-THORAX WITH-39271/7.000000-Segmentation of Nodule 1 - Annotation 168003-94400/1-1.dcm
+3	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0130/01-01-2000-NA-NA-34844/5588.000000-Nodule 1 - Annotation 14213 evaluations-39241/1-1.dcm
+4	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0620/01-01-2000-NA-CT LUNG SCREEN-20287/23.000000-Segmentation of Nodule 5 - Annotation Nodule 001-74048/1-1.dcm
+5	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0602/01-01-2000-NA-NA-30177/30064.000000-Nodule 4 - Annotation Nodule 002 evaluations-45402/1-1.dcm
+6	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0012/01-01-2000-NA-NA-50667/3000602.000000-Segmentation of Nodule 7 - Annotation Nodule 003-62240/1-1.dcm
+7	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0002/01-01-2000-NA-NA-98329/3000524.000000-Nodule 1 - Annotation MI01411691 evaluations-39902/1-1.dcm
+8	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0713/01-01-2000-NA-NA-75833/5211.000000-Nodule 6 - Annotation 8392 evaluations-49359/1-1.dcm
+9	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0036/01-01-2000-NA-NA-49231/3000526.000000-Segmentation of Nodule 2 - Annotation IL057202752-33494/1-1.dcm
+10	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0195/01-01-2000-NA-CT THORAX WCONTRAST-75001/32.000000-Segmentation of Nodule 4 - Annotation 09992-70039/1-1.dcm
+11	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0869/01-01-2000-NA-NA-59962/30076.000000-Nodule 3 - Annotation 2 evaluations-07162/1-1.dcm
+12	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0730/01-01-2000-NA-CT LUNG SCREEN-79421/7.000000-Segmentation of Nodule 1 - Annotation 8869-24492/1-1.dcm
+13	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0251/01-01-2000-NA-CT THORAX WCONTRAST-52009/8.000000-Nodule 1 - Annotation Nodule 001 evaluations-49727/1-1.dcm
+14	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0558/01-01-2000-NA-NA-43644/30011.000000-Segmentation of Nodule 1 - Annotation 1609-73786/1-1.dcm
+15	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0162/01-01-2000-NA-CT THORAX WCONTRAST-56900/6.000000-Nodule 2 - Annotation 2 evaluations-23006/1-1.dcm
+16	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0176/01-01-2000-NA-CT ANGIO CHEST WWO C-80139/12.000000-Nodule 3 - Annotation Nodule 002 evaluations-49201/1-1.dcm
+17	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0195/01-01-2000-NA-CT THORAX WCONTRAST-75001/20.000000-Segmentation of Nodule 3 - Annotation Nodule 004-05900/1-1.dcm
+18	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0091/01-01-2000-NA-CT ANGIO CHEST WWO C-79589/28.000000-Nodule 4 - Annotation Nodule 002 evaluations-89631/1-1.dcm
+19	/data4/chenxin/Med-Agent/fifth_dataset/LIDC_IDRI/data/LIDC-IDRI/LIDC-IDRI-0490/01-01-2000-NA-NA-74089/30085.000000-Nodule 2 - Annotation Nodule 001 evaluations-17501/1-1.dcm

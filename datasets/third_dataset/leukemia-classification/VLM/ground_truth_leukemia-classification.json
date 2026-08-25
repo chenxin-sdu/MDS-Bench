@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "C-NMC_Leukemia",
+  "description": "C-NMC_Leukemia classification GT（真·DFS 重建版，前 20 个样本）",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "C-NMC_Leukemia",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "<leaf-task-text>",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "hem",
+    "all"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1.bmp",
+        "original_filename": "1.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "10",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/10.bmp",
+        "original_filename": "10.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "100",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/100.bmp",
+        "original_filename": "100.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1000",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1000.bmp",
+        "original_filename": "1000.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1001",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1001.bmp",
+        "original_filename": "1001.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1002",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1002.bmp",
+        "original_filename": "1002.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1003",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1003.bmp",
+        "original_filename": "1003.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1004",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1004.bmp",
+        "original_filename": "1004.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1005",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1005.bmp",
+        "original_filename": "1005.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1006",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1006.bmp",
+        "original_filename": "1006.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1007",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1007.bmp",
+        "original_filename": "1007.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1008",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1008.bmp",
+        "original_filename": "1008.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "1009",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1009.bmp",
+        "original_filename": "1009.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "101",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/101.bmp",
+        "original_filename": "101.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1010",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1010.bmp",
+        "original_filename": "1010.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1011",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1011.bmp",
+        "original_filename": "1011.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1012",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1012.bmp",
+        "original_filename": "1012.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1013",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1013.bmp",
+        "original_filename": "1013.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1014",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1014.bmp",
+        "original_filename": "1014.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1015",
+      "class": null,
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "C-NMC_Leukemia"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/C-NMC_Leukemia/testing_data/C-NMC_test_final_phase_data/1015.bmp",
+        "original_filename": "1015.bmp",
+        "label_text": "hem",
+        "class_name": "hem"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "hem"
+        }
+      }
+    }
+  }
+}

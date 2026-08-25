@@ -1,0 +1,20 @@
+0 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS1.tif
+1 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS2.tif
+2 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS3.tif
+3 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS4.tif
+4 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS5.tif
+5 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Dye samples/DS6.tif
+6 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P001.dat
+7 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P002.dat
+8 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P003.dat
+9 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P004.dat
+10 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P005.dat
+11 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P006.dat
+12 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P007.dat
+13 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P008.dat
+14 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P009.dat
+15 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P010.dat
+16 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P011.dat
+17 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P012.dat
+18 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P013.dat
+19 /data3/chenxin/Agent_test/origin_dataset/8045940_folder/data/Raw measurement data/P014.dat

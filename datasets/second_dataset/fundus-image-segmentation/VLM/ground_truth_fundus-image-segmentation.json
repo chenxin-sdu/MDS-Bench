@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "fundus-image-segmentation",
+  "description": "基于 data/ 目录：按字典序 DFS 遍历（跳过 .cache、__MACOSX），仅将路径中包含 /images/ 的图像文件视为样本（排除 mask、manual、label 等目录下的文件），按出现顺序取前 20 个。本批前 20 个均为 CHASEDB1/images 中 01_test.tif–20_test.tif。血管标注与 FOV 掩膜按 chasedb1.py / data_path_list 约定：对 CHASEDB1 的 images、1st_label、mask 三个目录分别字典排序后按相同下标配对。字段结构与 seg_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Fundus",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "fundus-image-segmentation",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "retinal_vessel_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Fundus",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "vessel",
+    "fov"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "01_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/01_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_01L.png",
+        "seg_file": "CHASEDB1/1st_label/01_manual1.tif",
+        "source_file": "data/CHASEDB1/images/01_test.tif",
+        "original_filename": "01_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "02_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/02_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_01R.png",
+        "seg_file": "CHASEDB1/1st_label/02_manual1.tif",
+        "source_file": "data/CHASEDB1/images/02_test.tif",
+        "original_filename": "02_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "03_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/03_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_02L.png",
+        "seg_file": "CHASEDB1/1st_label/03_manual1.tif",
+        "source_file": "data/CHASEDB1/images/03_test.tif",
+        "original_filename": "03_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "04_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/04_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_02R.png",
+        "seg_file": "CHASEDB1/1st_label/04_manual1.tif",
+        "source_file": "data/CHASEDB1/images/04_test.tif",
+        "original_filename": "04_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "05_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/05_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_03L.png",
+        "seg_file": "CHASEDB1/1st_label/05_manual1.tif",
+        "source_file": "data/CHASEDB1/images/05_test.tif",
+        "original_filename": "05_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "06_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/06_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_03R.png",
+        "seg_file": "CHASEDB1/1st_label/06_manual1.tif",
+        "source_file": "data/CHASEDB1/images/06_test.tif",
+        "original_filename": "06_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "07_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/07_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_04L.png",
+        "seg_file": "CHASEDB1/1st_label/07_manual1.tif",
+        "source_file": "data/CHASEDB1/images/07_test.tif",
+        "original_filename": "07_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "08_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/08_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_04R.png",
+        "seg_file": "CHASEDB1/1st_label/08_manual1.tif",
+        "source_file": "data/CHASEDB1/images/08_test.tif",
+        "original_filename": "08_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "09_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/09_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_05L.png",
+        "seg_file": "CHASEDB1/1st_label/09_manual1.tif",
+        "source_file": "data/CHASEDB1/images/09_test.tif",
+        "original_filename": "09_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "10_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/10_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_05R.png",
+        "seg_file": "CHASEDB1/1st_label/10_manual1.tif",
+        "source_file": "data/CHASEDB1/images/10_test.tif",
+        "original_filename": "10_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "11_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/11_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_06L.png",
+        "seg_file": "CHASEDB1/1st_label/11_manual1.tif",
+        "source_file": "data/CHASEDB1/images/11_test.tif",
+        "original_filename": "11_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "12_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/12_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_06R.png",
+        "seg_file": "CHASEDB1/1st_label/12_manual1.tif",
+        "source_file": "data/CHASEDB1/images/12_test.tif",
+        "original_filename": "12_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "13_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/13_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_07L.png",
+        "seg_file": "CHASEDB1/1st_label/13_manual1.tif",
+        "source_file": "data/CHASEDB1/images/13_test.tif",
+        "original_filename": "13_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "14_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/14_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_07R.png",
+        "seg_file": "CHASEDB1/1st_label/14_manual1.tif",
+        "source_file": "data/CHASEDB1/images/14_test.tif",
+        "original_filename": "14_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "15_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/15_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_08L.png",
+        "seg_file": "CHASEDB1/1st_label/15_manual1.tif",
+        "source_file": "data/CHASEDB1/images/15_test.tif",
+        "original_filename": "15_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "16_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/16_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_08R.png",
+        "seg_file": "CHASEDB1/1st_label/16_manual1.tif",
+        "source_file": "data/CHASEDB1/images/16_test.tif",
+        "original_filename": "16_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "17_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/17_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_09L.png",
+        "seg_file": "CHASEDB1/1st_label/17_manual1.tif",
+        "source_file": "data/CHASEDB1/images/17_test.tif",
+        "original_filename": "17_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "18_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/18_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_09R.png",
+        "seg_file": "CHASEDB1/1st_label/18_manual1.tif",
+        "source_file": "data/CHASEDB1/images/18_test.tif",
+        "original_filename": "18_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "19_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/19_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_10L.png",
+        "seg_file": "CHASEDB1/1st_label/19_manual1.tif",
+        "source_file": "data/CHASEDB1/images/19_test.tif",
+        "original_filename": "19_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "20_test",
+      "class": "vessel",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fundus-image-segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": "CHASEDB1/1st_label/20_manual1.tif",
+        "mask_file": "CHASEDB1/mask/mask_10R.png",
+        "seg_file": "CHASEDB1/1st_label/20_manual1.tif",
+        "source_file": "data/CHASEDB1/images/20_test.tif",
+        "original_filename": "20_test.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

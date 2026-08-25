@@ -1,0 +1,743 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "BACH_ICAR_2018",
+  "description": "BACH ICAR 2018 乳腺组织病理图像分类 GT，字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "BACH_ICAR_2018",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "multiclass_patch",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 440
+    }
+  },
+  "classes": [
+    "Benign",
+    "InSitu",
+    "Invasive",
+    "Normal"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "b001",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b001.tif",
+        "original_filename": "b001.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "b002",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b002.tif",
+        "original_filename": "b002.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "b003",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b003.tif",
+        "original_filename": "b003.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "b004",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b004.tif",
+        "original_filename": "b004.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "b005",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b005.tif",
+        "original_filename": "b005.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "b006",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b006.tif",
+        "original_filename": "b006.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "b007",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b007.tif",
+        "original_filename": "b007.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "b008",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b008.tif",
+        "original_filename": "b008.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "b009",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b009.tif",
+        "original_filename": "b009.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "b010",
+      "class": "Benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "Benign",
+        "class_name": "Benign",
+        "source_file": "data/main_folder/testing_folder/Benign/b010.tif",
+        "original_filename": "b010.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Benign"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "is001",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is001.tif",
+        "original_filename": "is001.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "is002",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is002.tif",
+        "original_filename": "is002.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "is003",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is003.tif",
+        "original_filename": "is003.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "is004",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is004.tif",
+        "original_filename": "is004.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "is005",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is005.tif",
+        "original_filename": "is005.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "is006",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is006.tif",
+        "original_filename": "is006.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "is007",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is007.tif",
+        "original_filename": "is007.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "is008",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is008.tif",
+        "original_filename": "is008.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "is009",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is009.tif",
+        "original_filename": "is009.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "is010",
+      "class": "InSitu",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "BACH_ICAR_2018"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "InSitu",
+        "class_name": "InSitu",
+        "source_file": "data/main_folder/testing_folder/InSitu/is010.tif",
+        "original_filename": "is010.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "InSitu"
+        }
+      }
+    }
+  }
+}

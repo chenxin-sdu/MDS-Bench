@@ -1,0 +1,20 @@
+0	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-233.dcm
+1	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-463.dcm
+2	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/9.000000-F.TETNICZA  1.5  I31s  3-63158/1-030.dcm
+3	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-077.dcm
+4	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-034.dcm
+5	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-00953/02-13-2010-NA-CT CHEST WO IV CONTRAST-78654/4.000000-LUNG 2.0-32410/1-261.dcm
+6	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-01459/02-12-2009-NA-CT-83628/2.000000-AX THN PORTAL-76848/1-341.dcm
+7	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00380/12-01-2008-NA-NA-88295/11.000000-Body 1.0 ExcretPhase CE-31930/1-548.dcm
+8	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02063/09-02-2009-NA-Abdomen01AbdNativeandContrast Adult-22278/10.000000-Venous Phase  2.0  B41s-25821/1-028.dcm
+9	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-02439/10-13-2010-NA-PELVISPELVIS-67402/22.000000-VIBE T1 FS POST1-36187/1-23.dcm
+10	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3L-00815/12-14-2008-NA-CT ABDOMEN AND PELVIS-75669/6.000000-Recon 2 10 MIN DELAY-42107/1-492.dcm
+11	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01651/06-02-2000-NA-AbdomenJamaBrzuszna3FazyOpoznione Adult-87160/7.000000-Faza tetnicza  1.5  3D-99793/1-086.dcm
+12	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-03018/11-15-2000-NA-J.BRZUSZNA-38501/5.000000-0.625 C-71822/2-379.dcm
+13	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00494/10-14-1999-NA-AbdomenBRZUCH3FAZOWY Adult-45639/11.000000-F. POZNA  1.5  I31s  3-66612/1-202.dcm
+14	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01646/04-26-2000-NA-AbdomenJamaBrzuszna3Fazy Adult-91211/9.000000-Faza zylna  1.5  3D-98466/1-270.dcm
+15	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/8.000000-NEPHROGENIC-20354/1-364.dcm
+16	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_NegativeAssessments/CPTAC-CCRCC/C3N-02332/01-14-2008-NA-NA-48097/6880.000000-NA-85813/1-046.dcm
+17	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-00313/09-04-1999-NA-TK SPECJ. JAMY BRZUSZN-56965/5.000000-Recon 2 C-11648/1-062.dcm
+18	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01361/03-22-2000-NA-AbdomenJBRZUSZNA3FAZYOPOZNIONE Adult-86433/8.000000-FAZA ZYLNA  1.0  3D-50623/1-057.dcm
+19	/data4/chenxin/Med-Agent/fifth_dataset/CPTAC-CCRCC/data/CPTAC-CCRCC_SourceImages_SEGAndSeedPoints/CPTAC-CCRCC/C3N-01536/06-17-2009-NA-06.Chest Abdomen contrast-87389/11.000000-DELAY-48904/1-160.dcm

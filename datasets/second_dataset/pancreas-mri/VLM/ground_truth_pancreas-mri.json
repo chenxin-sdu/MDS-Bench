@@ -1,0 +1,744 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "pancreas-mri",
+  "description": "胰腺/腹部 MRI DICOM 体数据（data/images/*.DCM）。原始发布无临床病理或分割金标准；本 GT 按 cls_gt 模版构造多分类标签：取文件名在首个下划线之前的字段并经大小写归一，作为队列/病例族标识（Moore、Powers、Virostka、Viroskto、Virostko），非疾病诊断类别。在 data/ 下按字典序 DFS 遍历，跳过 .cache、__MACOSX；仅将 .dcm/.dicom 视为 sample，累计到 20 个即停止。source_stem/subject_id 使用相对路径去扩展名并将路径分隔符替换为下划线以保证唯一。字段结构与 cls_gt.json 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "pancreas-mri",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "pancreas_mri_filename_cohort_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "pancreas-mri"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Moore",
+    "Powers",
+    "Viroskto",
+    "Virostka",
+    "Virostko"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "Moore_142733_06_01_11_30_49_WIP_T2W_SPAIR_bh.01",
+      "class": "Moore",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Moore_142733_06_01_11_30_49_WIP_T2W_SPAIR_bh.01",
+        "label_text": "Moore",
+        "class_name": "Moore",
+        "source_file": "data/images/Moore_142733_06_01_11_30_49_WIP_T2W_SPAIR_bh.01.DCM",
+        "original_filename": "Moore_142733_06_01_11_30_49_WIP_T2W_SPAIR_bh.01.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Moore"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "Powers_236110_04_01_10_41_45_WIP_T2W_SPAIR_BH.01",
+      "class": "Powers",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Powers_236110_04_01_10_41_45_WIP_T2W_SPAIR_BH.01",
+        "label_text": "Powers",
+        "class_name": "Powers",
+        "source_file": "data/images/Powers_236110_04_01_10_41_45_WIP_T2W_SPAIR_BH.01.DCM",
+        "original_filename": "Powers_236110_04_01_10_41_45_WIP_T2W_SPAIR_BH.01.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Powers"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "VIROSTKO_233256_04_01_13_18_45_WIP_T2W_SPAIR_BH",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "VIROSTKO_233256_04_01_13_18_45_WIP_T2W_SPAIR_BH",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/VIROSTKO_233256_04_01_13_18_45_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "VIROSTKO_233256_04_01_13_18_45_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "Viroskto_233873_04_01_09_11_10_WIP_T2W_SPAIR_BH",
+      "class": "Viroskto",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Viroskto_233873_04_01_09_11_10_WIP_T2W_SPAIR_BH",
+        "label_text": "Viroskto",
+        "class_name": "Viroskto",
+        "source_file": "data/images/Viroskto_233873_04_01_09_11_10_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "Viroskto_233873_04_01_09_11_10_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Viroskto"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "Viroskto_233874_03_01_09_44_24_WIP_T2W_SPAIR_BH",
+      "class": "Viroskto",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Viroskto_233874_03_01_09_44_24_WIP_T2W_SPAIR_BH",
+        "label_text": "Viroskto",
+        "class_name": "Viroskto",
+        "source_file": "data/images/Viroskto_233874_03_01_09_44_24_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "Viroskto_233874_03_01_09_44_24_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Viroskto"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "Viroskto_233875_04_01_10_29_37_WIP_T2W_SPAIR_BH",
+      "class": "Viroskto",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Viroskto_233875_04_01_10_29_37_WIP_T2W_SPAIR_BH",
+        "label_text": "Viroskto",
+        "class_name": "Viroskto",
+        "source_file": "data/images/Viroskto_233875_04_01_10_29_37_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "Viroskto_233875_04_01_10_29_37_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Viroskto"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "Viroskto_233876_03_01_11_41_05_WIP_T2W_SPAIR_BH",
+      "class": "Viroskto",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Viroskto_233876_03_01_11_41_05_WIP_T2W_SPAIR_BH",
+        "label_text": "Viroskto",
+        "class_name": "Viroskto",
+        "source_file": "data/images/Viroskto_233876_03_01_11_41_05_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "Viroskto_233876_03_01_11_41_05_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Viroskto"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "Viroskto_233877_03_01_12_19_12_WIP_T2W_SPAIR_BH",
+      "class": "Viroskto",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Viroskto_233877_03_01_12_19_12_WIP_T2W_SPAIR_BH",
+        "label_text": "Viroskto",
+        "class_name": "Viroskto",
+        "source_file": "data/images/Viroskto_233877_03_01_12_19_12_WIP_T2W_SPAIR_BH.DCM",
+        "original_filename": "Viroskto_233877_03_01_12_19_12_WIP_T2W_SPAIR_BH.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Viroskto"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "Virostka_235023_06_01_09_59_51_WIP_T2W_SPAIR_BH.01",
+      "class": "Virostka",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostka_235023_06_01_09_59_51_WIP_T2W_SPAIR_BH.01",
+        "label_text": "Virostka",
+        "class_name": "Virostka",
+        "source_file": "data/images/Virostka_235023_06_01_09_59_51_WIP_T2W_SPAIR_BH.01.DCM",
+        "original_filename": "Virostka_235023_06_01_09_59_51_WIP_T2W_SPAIR_BH.01.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "Virostka"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "Virostko_000000_03_01_10_11_14_WIP_T2W_SPAIR_BH.01",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_000000_03_01_10_11_14_WIP_T2W_SPAIR_BH.01",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_000000_03_01_10_11_14_WIP_T2W_SPAIR_BH.01.DCM",
+        "original_filename": "Virostko_000000_03_01_10_11_14_WIP_T2W_SPAIR_BH.01.DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "Virostko_115687_04_01_10_53_56_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_115687_04_01_10_53_56_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_115687_04_01_10_53_56_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_115687_04_01_10_53_56_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "Virostko_115724_10_01_14_22_56_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_115724_10_01_14_22_56_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_115724_10_01_14_22_56_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_115724_10_01_14_22_56_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "Virostko_115729_04_01_13_14_47_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_115729_04_01_13_14_47_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_115729_04_01_13_14_47_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_115729_04_01_13_14_47_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "Virostko_115785_04_01_13_08_06_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_115785_04_01_13_08_06_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_115785_04_01_13_08_06_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_115785_04_01_13_08_06_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "Virostko_115982_04_01_15_19_37_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_115982_04_01_15_19_37_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_115982_04_01_15_19_37_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_115982_04_01_15_19_37_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "Virostko_116194_04_01_14_09_34_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_116194_04_01_14_09_34_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_116194_04_01_14_09_34_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_116194_04_01_14_09_34_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "Virostko_116200_05_01_10_26_16_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_116200_05_01_10_26_16_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_116200_05_01_10_26_16_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_116200_05_01_10_26_16_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "Virostko_116202_04_01_11_02_10_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_116202_04_01_11_02_10_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_116202_04_01_11_02_10_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_116202_04_01_11_02_10_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "Virostko_116274_04_01_14_15_55_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_116274_04_01_14_15_55_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_116274_04_01_14_15_55_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_116274_04_01_14_15_55_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "Virostko_116348_04_01_15_15_10_(WIP_T2W_SPAIR_BH_SENSE)",
+      "class": "Virostko",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "pancreas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "Virostko_116348_04_01_15_15_10_(WIP_T2W_SPAIR_BH_SENSE)",
+        "label_text": "Virostko",
+        "class_name": "Virostko",
+        "source_file": "data/images/Virostko_116348_04_01_15_15_10_(WIP_T2W_SPAIR_BH_SENSE).DCM",
+        "original_filename": "Virostko_116348_04_01_15_15_10_(WIP_T2W_SPAIR_BH_SENSE).DCM"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Virostko"
+        }
+      }
+    }
+  }
+}

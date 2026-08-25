@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "TCGA-LUAD",
+  "description": "TCGA-LUAD: imaging_modality_metadata_classification (classification, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "TCGA-LUAD",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "imaging_modality_metadata_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "TCGA-LUAD"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "classification",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "CT",
+    "PT",
+    "MR",
+    "OT"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "63d96348-ad47-43ad-9561-3627601a0bf7",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-J2-A4AD",
+        "source_file": "data/TCGA-J2-A4AD/1.3.6.1.4.1.14519.5.2.1.3983.9002.896141144506736965844899210168/1.3.6.1.4.1.14519.5.2.1.3983.9002.668145771061096287908192393571/63d96348-ad47-43ad-9561-3627601a0bf7.dcm",
+        "original_filename": "63d96348-ad47-43ad-9561-3627601a0bf7.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "027209c6-5f29-40d0-b008-33f2a03a8d57",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-38-6178",
+        "source_file": "data/TCGA-38-6178/1.3.6.1.4.1.14519.5.2.1.8421.9002.202809566030427218073357767975/1.3.6.1.4.1.14519.5.2.1.8421.9002.904457022040486209623577407833/027209c6-5f29-40d0-b008-33f2a03a8d57.dcm",
+        "original_filename": "027209c6-5f29-40d0-b008-33f2a03a8d57.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1d5e8068-eede-4d98-9299-0ade5d19931d",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z028",
+        "source_file": "data/TCGA-17-Z028/1.3.6.1.4.1.14519.5.2.1.7777.9002.835916295927999746162439870350/1.3.6.1.4.1.14519.5.2.1.7777.9002.272923823647562637898540440382/1d5e8068-eede-4d98-9299-0ade5d19931d.dcm",
+        "original_filename": "1d5e8068-eede-4d98-9299-0ade5d19931d.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "cba1b023-4d1b-44d3-836b-95884e311406",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-38-6178",
+        "source_file": "data/TCGA-38-6178/1.3.6.1.4.1.14519.5.2.1.8421.9002.176152441058913057508392142091/1.3.6.1.4.1.14519.5.2.1.8421.9002.270738505972496859960702978485/cba1b023-4d1b-44d3-836b-95884e311406.dcm",
+        "original_filename": "cba1b023-4d1b-44d3-836b-95884e311406.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "9929e05f-2e9a-442e-8c82-2b865648fe88",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-J2-8192",
+        "source_file": "data/TCGA-J2-8192/1.3.6.1.4.1.14519.5.2.1.3983.9002.308541043873430913533497640006/1.3.6.1.4.1.14519.5.2.1.3983.9002.126841153385950241012989237279/9929e05f-2e9a-442e-8c82-2b865648fe88.dcm",
+        "original_filename": "9929e05f-2e9a-442e-8c82-2b865648fe88.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "104ea04a-74ac-42cf-8014-7ecb513f39b8",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z027",
+        "source_file": "data/TCGA-17-Z027/1.3.6.1.4.1.14519.5.2.1.7777.9002.276179688921962413832105414023/1.3.6.1.4.1.14519.5.2.1.7777.9002.165238942760514366593951741787/104ea04a-74ac-42cf-8014-7ecb513f39b8.dcm",
+        "original_filename": "104ea04a-74ac-42cf-8014-7ecb513f39b8.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "cce01b6f-7c39-40b1-94bc-46c62285fa43",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z060",
+        "source_file": "data/TCGA-17-Z060/1.3.6.1.4.1.14519.5.2.1.7777.9002.292919645190710972936738843168/1.3.6.1.4.1.14519.5.2.1.7777.9002.135540156671205991381657884556/cce01b6f-7c39-40b1-94bc-46c62285fa43.dcm",
+        "original_filename": "cce01b6f-7c39-40b1-94bc-46c62285fa43.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "8990d724-80b5-4d98-ac60-708aa6e14021",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-6595",
+        "source_file": "data/TCGA-50-6595/1.3.6.1.4.1.14519.5.2.1.6450.9002.175167571598823717416844320294/1.3.6.1.4.1.14519.5.2.1.6450.9002.244032528881718166287654042245/8990d724-80b5-4d98-ac60-708aa6e14021.dcm",
+        "original_filename": "8990d724-80b5-4d98-ac60-708aa6e14021.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1f442a05-9a79-4c26-a41b-a9f4f6bad6e4",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z013",
+        "source_file": "data/TCGA-17-Z013/1.3.6.1.4.1.14519.5.2.1.7777.9002.300123044342558639760327021999/1.3.6.1.4.1.14519.5.2.1.7777.9002.312482792293727540410885435251/1f442a05-9a79-4c26-a41b-a9f4f6bad6e4.dcm",
+        "original_filename": "1f442a05-9a79-4c26-a41b-a9f4f6bad6e4.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "78a18a9c-2089-4659-bc8f-32754a133ed6",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-6592",
+        "source_file": "data/TCGA-50-6592/1.3.6.1.4.1.14519.5.2.1.6450.9002.158531776447178658556468635746/1.3.6.1.4.1.14519.5.2.1.6450.9002.334752481840162574804029567948/78a18a9c-2089-4659-bc8f-32754a133ed6.dcm",
+        "original_filename": "78a18a9c-2089-4659-bc8f-32754a133ed6.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "99193baa-bd70-4a3d-871c-cd867dfa3540",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-5942",
+        "source_file": "data/TCGA-50-5942/1.3.6.1.4.1.14519.5.2.1.6450.9002.211612453933253342647198205310/1.3.6.1.4.1.14519.5.2.1.6450.9002.538737805847710723629543870053/99193baa-bd70-4a3d-871c-cd867dfa3540.dcm",
+        "original_filename": "99193baa-bd70-4a3d-871c-cd867dfa3540.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "c90bb322-b4bd-4f8f-8950-fbec6970af58",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-6673",
+        "source_file": "data/TCGA-50-6673/1.3.6.1.4.1.14519.5.2.1.6450.9002.831040543056463454351773985760/1.3.6.1.4.1.14519.5.2.1.6450.9002.279018968387878866802899116713/c90bb322-b4bd-4f8f-8950-fbec6970af58.dcm",
+        "original_filename": "c90bb322-b4bd-4f8f-8950-fbec6970af58.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "dc0bae51-c692-4aa2-bc5d-b05726c413ad",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-38-6178",
+        "source_file": "data/TCGA-38-6178/1.3.6.1.4.1.14519.5.2.1.8421.9002.247373557431842145094166006083/1.3.6.1.4.1.14519.5.2.1.8421.9002.500879414859935210155630180876/dc0bae51-c692-4aa2-bc5d-b05726c413ad.dcm",
+        "original_filename": "dc0bae51-c692-4aa2-bc5d-b05726c413ad.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "da84dadf-72db-40ff-b43f-6daddf511b49",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-6673",
+        "source_file": "data/TCGA-50-6673/1.3.6.1.4.1.14519.5.2.1.6450.9002.176388890598478027350479678176/1.3.6.1.4.1.14519.5.2.1.6450.9002.140935182081065085853539758559/da84dadf-72db-40ff-b43f-6daddf511b49.dcm",
+        "original_filename": "da84dadf-72db-40ff-b43f-6daddf511b49.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "184d1441-e0eb-46b7-ba22-76efc7ad05d2",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-6591",
+        "source_file": "data/TCGA-50-6591/1.3.6.1.4.1.14519.5.2.1.6450.9002.319994044941868899289746299229/1.3.6.1.4.1.14519.5.2.1.6450.9002.846229601736691277174430202883/184d1441-e0eb-46b7-ba22-76efc7ad05d2.dcm",
+        "original_filename": "184d1441-e0eb-46b7-ba22-76efc7ad05d2.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "e878ff07-eb40-4df3-9d95-0df29da86c15",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-J2-A4AG",
+        "source_file": "data/TCGA-J2-A4AG/1.3.6.1.4.1.14519.5.2.1.3983.9002.107656215131152599944682699489/1.3.6.1.4.1.14519.5.2.1.3983.9002.237019205269941280718795286517/e878ff07-eb40-4df3-9d95-0df29da86c15.dcm",
+        "original_filename": "e878ff07-eb40-4df3-9d95-0df29da86c15.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "37a56a36-ef46-48a1-a7c6-fb5ed5dcc6f3",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z043",
+        "source_file": "data/TCGA-17-Z043/1.3.6.1.4.1.14519.5.2.1.7777.9002.142043828961014314666225060208/1.3.6.1.4.1.14519.5.2.1.7777.9002.305360470403602099719245771428/37a56a36-ef46-48a1-a7c6-fb5ed5dcc6f3.dcm",
+        "original_filename": "37a56a36-ef46-48a1-a7c6-fb5ed5dcc6f3.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "6c2a1f57-fc47-4317-b34c-b59938fb2508",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-38-6178",
+        "source_file": "data/TCGA-38-6178/1.3.6.1.4.1.14519.5.2.1.8421.9002.163095784192127492220497051978/1.3.6.1.4.1.14519.5.2.1.8421.9002.139127263722419906460512812914/6c2a1f57-fc47-4317-b34c-b59938fb2508.dcm",
+        "original_filename": "6c2a1f57-fc47-4317-b34c-b59938fb2508.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "163300d5-b0db-4d3f-a565-17e3e311aa73",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-17-Z053",
+        "source_file": "data/TCGA-17-Z053/1.3.6.1.4.1.14519.5.2.1.7777.9002.202618697820572701792835874057/1.3.6.1.4.1.14519.5.2.1.7777.9002.332002723476583484085948161666/163300d5-b0db-4d3f-a565-17e3e311aa73.dcm",
+        "original_filename": "163300d5-b0db-4d3f-a565-17e3e311aa73.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "9dbb259e-3f00-4ce9-8bf7-b33416fa4957",
+      "class": "CT | PT | MR | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "TCGA-LUAD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "TCGA-50-8460",
+        "source_file": "data/TCGA-50-8460/1.3.6.1.4.1.14519.5.2.1.6450.9002.215104233460578471100485043183/1.3.6.1.4.1.14519.5.2.1.6450.9002.217367240046972683989491086440/9dbb259e-3f00-4ce9-8bf7-b33416fa4957.dcm",
+        "original_filename": "9dbb259e-3f00-4ce9-8bf7-b33416fa4957.dcm",
+        "label_text": "CT",
+        "class_name": "CT"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "CT"
+        }
+      }
+    }
+  }
+}

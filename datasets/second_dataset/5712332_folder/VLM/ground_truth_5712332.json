@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332",
+  "description": "HeLa 单分子荧光显微分类 GT。按字典序 DFS 采样前 20 个样本，字段结构与 cls_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "experimental_condition",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "20 nM mAb",
+    "neg MBP"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell1",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell1.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell10",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell10.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell10.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell11",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell11.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell11.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell12",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell12.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell12.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell13",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell13.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell13.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell14",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell14.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell14.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell15",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell15.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell15.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell16",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell16.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell16.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell17",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell17.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell17.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell18",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell18.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell18.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell19",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell19.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell19.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell2",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell2.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell20",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell20.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell20.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell21",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell21.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell21.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell22",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell22.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell22.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell3",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell3.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell3.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell4",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell4.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell4.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell5",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell5.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell5.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell6",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell6.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell6.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "hela_tfx_megfp_mbp_tmd_agfbnb_pas5_rho11_dy647_2nmmab_mbp20nmcell7",
+      "class": "20 nM mAb",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "SLIMfast4C_HeLa_meGFP_MBP_TMD_Zenodo5712332"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "20 nM mAb",
+        "class_name": "20 nM mAb",
+        "source_file": "data/HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell7.tif",
+        "original_filename": "HeLa tfx meGFP-MBP-TMD (aGFBnb pas5-Rho11, Dy647 2nM)+mAB-MBP(20nM)cell7.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "20 nM mAb"
+        }
+      }
+    }
+  }
+}

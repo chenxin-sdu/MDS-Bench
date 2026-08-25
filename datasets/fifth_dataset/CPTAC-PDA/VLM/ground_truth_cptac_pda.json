@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "CPTAC-PDA",
+  "description": "CPTAC-PDA: pancreatic_ductal_adenocarcinoma_rtstruct_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "CPTAC-PDA",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "pancreatic_ductal_adenocarcinoma_rtstruct_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "CPTAC-PDA"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "PANCREAS",
+    "LIVER",
+    "STOMACH"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1-110",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00198",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00198/08-31-2009-NA-CT ABDOMEN W IV CONTRAST-36291/8.000000-ABDPANC 3.0 B31f-74239/1-110.dcm",
+        "original_filename": "1-110.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00198/08-31-2009-NA-CT ABDOMEN W IV CONTRAST-36291/8.000000-ABDPANC 3.0 B31f-74239/1-110.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00198/08-31-2009-NA-CT ABDOMEN W IV CONTRAST-36291/8.000000-ABDPANC 3.0 B31f-74239/1-110.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00198/08-31-2009-NA-CT ABDOMEN W IV CONTRAST-36291/8.000000-ABDPANC 3.0 B31f-74239/1-110.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1-035",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-06146",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-06146/08-22-2012-NA-CT ABDPEL EXTERNAL IMAGING-14272/2.000000-AP axial-04622/1-035.dcm",
+        "original_filename": "1-035.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-06146/08-22-2012-NA-CT ABDPEL EXTERNAL IMAGING-14272/2.000000-AP axial-04622/1-035.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-06146/08-22-2012-NA-CT ABDPEL EXTERNAL IMAGING-14272/2.000000-AP axial-04622/1-035.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-06146/08-22-2012-NA-CT ABDPEL EXTERNAL IMAGING-14272/2.000000-AP axial-04622/1-035.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1-097",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01715",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01715/06-14-2000-NA-TK JAMY BRZUSZNE-39140/3.000000-NA-71060/1-097.dcm",
+        "original_filename": "1-097.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01715/06-14-2000-NA-TK JAMY BRZUSZNE-39140/3.000000-NA-71060/1-097.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01715/06-14-2000-NA-TK JAMY BRZUSZNE-39140/3.000000-NA-71060/1-097.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01715/06-14-2000-NA-TK JAMY BRZUSZNE-39140/3.000000-NA-71060/1-097.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1-088",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02997",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02997/12-07-2000-NA-TK JAMY BRZUSZNEJ I MIEDNICY MNIEJSZEJ-44179/6.000000-NA-31306/1-088.dcm",
+        "original_filename": "1-088.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02997/12-07-2000-NA-TK JAMY BRZUSZNEJ I MIEDNICY MNIEJSZEJ-44179/6.000000-NA-31306/1-088.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02997/12-07-2000-NA-TK JAMY BRZUSZNEJ I MIEDNICY MNIEJSZEJ-44179/6.000000-NA-31306/1-088.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02997/12-07-2000-NA-TK JAMY BRZUSZNEJ I MIEDNICY MNIEJSZEJ-44179/6.000000-NA-31306/1-088.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1-816",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00302",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-816.dcm",
+        "original_filename": "1-816.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-816.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-816.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-816.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1-401",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-03430",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/03-08-2001-NA-Tomografia komputerowa jamy brzusznej z kontrastem-82221/501.000000-NA-54019/1-401.dcm",
+        "original_filename": "1-401.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/03-08-2001-NA-Tomografia komputerowa jamy brzusznej z kontrastem-82221/501.000000-NA-54019/1-401.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/03-08-2001-NA-Tomografia komputerowa jamy brzusznej z kontrastem-82221/501.000000-NA-54019/1-401.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/03-08-2001-NA-Tomografia komputerowa jamy brzusznej z kontrastem-82221/501.000000-NA-54019/1-401.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1-566",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-03126",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-566.dcm",
+        "original_filename": "1-566.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-566.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-566.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-566.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1-216",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00512",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00512/01-12-2000-NA-TOMOGRAFIA JAMY BRZUSZNEJ Z KONTRASTEM-21489/6.000000-NA-19760/1-216.dcm",
+        "original_filename": "1-216.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00512/01-12-2000-NA-TOMOGRAFIA JAMY BRZUSZNEJ Z KONTRASTEM-21489/6.000000-NA-19760/1-216.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00512/01-12-2000-NA-TOMOGRAFIA JAMY BRZUSZNEJ Z KONTRASTEM-21489/6.000000-NA-19760/1-216.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00512/01-12-2000-NA-TOMOGRAFIA JAMY BRZUSZNEJ Z KONTRASTEM-21489/6.000000-NA-19760/1-216.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1-150",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-02606",
+        "source_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-150.dcm",
+        "original_filename": "1-150.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-150.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-150.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-150.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1-115",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-03126",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-115.dcm",
+        "original_filename": "1-115.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-115.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-115.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-03126/04-29-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-58260/2.000000-POST ENDO ABDOMEN-26358/1-115.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1-190",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-02606",
+        "source_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-190.dcm",
+        "original_filename": "1-190.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-190.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-190.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_NegativeAssessments/CPTAC-PDA/C3L-02606/02-08-2004-NA-CT CHEST ABDOMEN  PELVIS ENHANCEDAB-75397/4.000000-LUNG 1.25-62666/1-190.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1-270",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01907",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01907/06-29-2000-NA-TK jamy brzusznej z kontrastem-35345/4.000000-NA-51378/1-270.dcm",
+        "original_filename": "1-270.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01907/06-29-2000-NA-TK jamy brzusznej z kontrastem-35345/4.000000-NA-51378/1-270.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01907/06-29-2000-NA-TK jamy brzusznej z kontrastem-35345/4.000000-NA-51378/1-270.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01907/06-29-2000-NA-TK jamy brzusznej z kontrastem-35345/4.000000-NA-51378/1-270.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "1-60",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01716",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01716/06-30-2000-NA-MR- Cholangiografia-35008/5.000000-NA-94517/1-60.dcm",
+        "original_filename": "1-60.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01716/06-30-2000-NA-MR- Cholangiografia-35008/5.000000-NA-94517/1-60.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01716/06-30-2000-NA-MR- Cholangiografia-35008/5.000000-NA-94517/1-60.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01716/06-30-2000-NA-MR- Cholangiografia-35008/5.000000-NA-94517/1-60.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "1-072",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-03430",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/04-07-2001-NA-AbdomenBRZUCHMIEDNICA Adult-08211/11.000000-NA-76041/1-072.dcm",
+        "original_filename": "1-072.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/04-07-2001-NA-AbdomenBRZUCHMIEDNICA Adult-08211/11.000000-NA-76041/1-072.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/04-07-2001-NA-AbdomenBRZUCHMIEDNICA Adult-08211/11.000000-NA-76041/1-072.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-03430/04-07-2001-NA-AbdomenBRZUCHMIEDNICA Adult-08211/11.000000-NA-76041/1-072.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1-412",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00302",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-412.dcm",
+        "original_filename": "1-412.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-412.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-412.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-412.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1-038",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-02888",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02888/05-22-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-01576/603.000000-CTA AP 52.5MM-74887/1-038.dcm",
+        "original_filename": "1-038.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02888/05-22-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-01576/603.000000-CTA AP 52.5MM-74887/1-038.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02888/05-22-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-01576/603.000000-CTA AP 52.5MM-74887/1-038.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02888/05-22-2004-NA-CT ABDOMEN AND PELVIS ANGIOGRAMAB-01576/603.000000-CTA AP 52.5MM-74887/1-038.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1-083",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3L-02115",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02115/01-11-2004-NA-CT ABDOMEN NONENH  ENHANCEDAB-28300/4.000000-THINS ARTERIAL ABDOMEN-35110/1-083.dcm",
+        "original_filename": "1-083.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02115/01-11-2004-NA-CT ABDOMEN NONENH  ENHANCEDAB-28300/4.000000-THINS ARTERIAL ABDOMEN-35110/1-083.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02115/01-11-2004-NA-CT ABDOMEN NONENH  ENHANCEDAB-28300/4.000000-THINS ARTERIAL ABDOMEN-35110/1-083.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3L-02115/01-11-2004-NA-CT ABDOMEN NONENH  ENHANCEDAB-28300/4.000000-THINS ARTERIAL ABDOMEN-35110/1-083.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1-890",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00302",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-890.dcm",
+        "original_filename": "1-890.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-890.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-890.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-00302/10-19-1999-NA-AbdomenKLPJBM Adult-54966/5.000000-KLPJBM3D-59447/1-890.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1-087",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02971",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02971/02-07-2011-NA-AbdomenDUALPHASEPANC Adult-90134/4.000000-ARTERIAL  2.0  B30f-86294/1-087.dcm",
+        "original_filename": "1-087.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02971/02-07-2011-NA-AbdomenDUALPHASEPANC Adult-90134/4.000000-ARTERIAL  2.0  B30f-86294/1-087.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02971/02-07-2011-NA-AbdomenDUALPHASEPANC Adult-90134/4.000000-ARTERIAL  2.0  B30f-86294/1-087.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-02971/02-07-2011-NA-AbdomenDUALPHASEPANC Adult-90134/4.000000-ARTERIAL  2.0  B30f-86294/1-087.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "2-047",
+      "class": "PANCREAS | LIVER | STOMACH",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-PDA"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01378",
+        "source_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01378/03-18-2000-NA-TK - BRZUCHA Z K-01346/3.000000-NA-14998/2-047.dcm",
+        "original_filename": "2-047.dcm",
+        "label_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01378/03-18-2000-NA-TK - BRZUCHA Z K-01346/3.000000-NA-14998/2-047.dcm",
+        "mask_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01378/03-18-2000-NA-TK - BRZUCHA Z K-01346/3.000000-NA-14998/2-047.dcm",
+        "seg_file": "data/CPTAC-PDA_SourceImages_SEGAndSeedPoints/CPTAC-PDA/C3N-01378/03-18-2000-NA-TK - BRZUCHA Z K-01346/3.000000-NA-14998/2-047.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,722 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "L1-L5-Spine-FineSeg",
+  "description": "Zenodo 7181338 L1-L5FineSegMix-663case 腰椎精细分割数据集。每例为单个椎体的 CT 体素 (NNNN_LX.nii.gz) + 精细分割金标准 (NNNN_LX_seg.nii.gz)。类别覆盖椎体、椎弓根、横突、椎板、棘突等 L1-L5 椎体子结构。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "L1-L5-Spine-FineSeg",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "lumbar_vertebra_fine_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "vertebral_body",
+    "pedicle_left",
+    "pedicle_right",
+    "transverse_process_left",
+    "transverse_process_right",
+    "lamina_left",
+    "lamina_right",
+    "spinous_process"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "101021736776_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101021736776_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101021736776_L4.nii.gz",
+        "original_filename": "101021736776_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101021736776_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101021736776_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101021736776_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "101021784087_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101021784087_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101021784087_L4.nii.gz",
+        "original_filename": "101021784087_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101021784087_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101021784087_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101021784087_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "101004148602_L1",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101004148602_L1",
+        "source_file": "data/L1-L5FineSegMix-663case/101004148602_L1.nii.gz",
+        "original_filename": "101004148602_L1.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101004148602_L1_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101004148602_L1_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101004148602_L1_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "101005365758_L3",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005365758_L3",
+        "source_file": "data/L1-L5FineSegMix-663case/101005365758_L3.nii.gz",
+        "original_filename": "101005365758_L3.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005365758_L3_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005365758_L3_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005365758_L3_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "101005947430_L3",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005947430_L3",
+        "source_file": "data/L1-L5FineSegMix-663case/101005947430_L3.nii.gz",
+        "original_filename": "101005947430_L3.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005947430_L3_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005947430_L3_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005947430_L3_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "101007694685_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101007694685_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101007694685_L4.nii.gz",
+        "original_filename": "101007694685_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101007694685_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101007694685_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101007694685_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "101003042867_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101003042867_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101003042867_L4.nii.gz",
+        "original_filename": "101003042867_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101003042867_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101003042867_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101003042867_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "101011241711_L5",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101011241711_L5",
+        "source_file": "data/L1-L5FineSegMix-663case/101011241711_L5.nii.gz",
+        "original_filename": "101011241711_L5.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101011241711_L5_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101011241711_L5_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101011241711_L5_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "101021403543_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101021403543_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101021403543_L4.nii.gz",
+        "original_filename": "101021403543_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101021403543_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101021403543_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101021403543_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "101005212127_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005212127_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101005212127_L4.nii.gz",
+        "original_filename": "101005212127_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005212127_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005212127_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005212127_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "101006333864_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101006333864_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101006333864_L4.nii.gz",
+        "original_filename": "101006333864_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101006333864_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101006333864_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101006333864_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "101005817438_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005817438_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101005817438_L4.nii.gz",
+        "original_filename": "101005817438_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005817438_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005817438_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005817438_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "101008266270_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101008266270_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101008266270_L4.nii.gz",
+        "original_filename": "101008266270_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101008266270_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101008266270_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101008266270_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "101005099576_L1",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005099576_L1",
+        "source_file": "data/L1-L5FineSegMix-663case/101005099576_L1.nii.gz",
+        "original_filename": "101005099576_L1.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005099576_L1_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005099576_L1_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005099576_L1_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "101006138195_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101006138195_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101006138195_L4.nii.gz",
+        "original_filename": "101006138195_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101006138195_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101006138195_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101006138195_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "101005820062_L2",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005820062_L2",
+        "source_file": "data/L1-L5FineSegMix-663case/101005820062_L2.nii.gz",
+        "original_filename": "101005820062_L2.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005820062_L2_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005820062_L2_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005820062_L2_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "101005924202_L2",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101005924202_L2",
+        "source_file": "data/L1-L5FineSegMix-663case/101005924202_L2.nii.gz",
+        "original_filename": "101005924202_L2.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101005924202_L2_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101005924202_L2_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101005924202_L2_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "101004457688_L3",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101004457688_L3",
+        "source_file": "data/L1-L5FineSegMix-663case/101004457688_L3.nii.gz",
+        "original_filename": "101004457688_L3.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101004457688_L3_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101004457688_L3_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101004457688_L3_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "101007931743_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101007931743_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101007931743_L4.nii.gz",
+        "original_filename": "101007931743_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101007931743_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101007931743_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101007931743_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "101006041000_L4",
+      "class": "Lumbar vertebra (L1-L5) fine substructure segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "L1-L5-Spine-FineSeg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "101006041000_L4",
+        "source_file": "data/L1-L5FineSegMix-663case/101006041000_L4.nii.gz",
+        "original_filename": "101006041000_L4.nii.gz",
+        "label_file": "data/L1-L5FineSegMix-663case/101006041000_L4_seg.nii.gz",
+        "mask_file": "data/L1-L5FineSegMix-663case/101006041000_L4_seg.nii.gz",
+        "seg_file": "data/L1-L5FineSegMix-663case/101006041000_L4_seg.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "PleThora",
+  "description": "PleThora: pleural_effusion_and_thoracic_cavity_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "PleThora",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "pleural_effusion_and_thoracic_cavity_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "PleThora"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "pleural_effusion",
+    "thoracic_cavity"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1-052",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-296",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-296/10-03-2008-StudyID-NA-14251/0.000000-NA-37234/1-052.dcm",
+        "original_filename": "1-052.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-296/10-03-2008-StudyID-NA-14251/0.000000-NA-37234/1-052.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-296/10-03-2008-StudyID-NA-14251/0.000000-NA-37234/1-052.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-296/10-03-2008-StudyID-NA-14251/0.000000-NA-37234/1-052.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1-083",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-414",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-414/07-10-2010-NA-NA-66211/0.000000-NA-70949/1-083.dcm",
+        "original_filename": "1-083.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-414/07-10-2010-NA-NA-66211/0.000000-NA-70949/1-083.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-414/07-10-2010-NA-NA-66211/0.000000-NA-70949/1-083.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-414/07-10-2010-NA-NA-66211/0.000000-NA-70949/1-083.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1-018",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-115",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-115/07-28-2006-StudyID-NA-45713/0.000000-NA-30284/1-018.dcm",
+        "original_filename": "1-018.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-115/07-28-2006-StudyID-NA-45713/0.000000-NA-30284/1-018.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-115/07-28-2006-StudyID-NA-45713/0.000000-NA-30284/1-018.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-115/07-28-2006-StudyID-NA-45713/0.000000-NA-30284/1-018.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "1-029",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-128",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-128/08-04-2006-NA-NA-03538/0.000000-NA-06742/1-029.dcm",
+        "original_filename": "1-029.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-128/08-04-2006-NA-NA-03538/0.000000-NA-06742/1-029.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-128/08-04-2006-NA-NA-03538/0.000000-NA-06742/1-029.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-128/08-04-2006-NA-NA-03538/0.000000-NA-06742/1-029.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1-103",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-133",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-103.dcm",
+        "original_filename": "1-103.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-103.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-103.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-103.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1-083",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-254",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-254/06-21-2008-NA-NA-45808/0.000000-NA-65670/1-083.dcm",
+        "original_filename": "1-083.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-254/06-21-2008-NA-NA-45808/0.000000-NA-65670/1-083.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-254/06-21-2008-NA-NA-45808/0.000000-NA-65670/1-083.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-254/06-21-2008-NA-NA-45808/0.000000-NA-65670/1-083.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "1-064",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-075",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-075/02-03-2006-StudyID-NA-01758/0.000000-NA-09441/1-064.dcm",
+        "original_filename": "1-064.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-075/02-03-2006-StudyID-NA-01758/0.000000-NA-09441/1-064.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-075/02-03-2006-StudyID-NA-01758/0.000000-NA-09441/1-064.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-075/02-03-2006-StudyID-NA-01758/0.000000-NA-09441/1-064.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1-134",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-067",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-134.dcm",
+        "original_filename": "1-134.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-134.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-134.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-134.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1-001",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-368",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-368/03-03-2010-NA-NA-28672/0.000000-NA-84009/1-001.dcm",
+        "original_filename": "1-001.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-368/03-03-2010-NA-NA-28672/0.000000-NA-84009/1-001.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-368/03-03-2010-NA-NA-28672/0.000000-NA-84009/1-001.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-368/03-03-2010-NA-NA-28672/0.000000-NA-84009/1-001.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1-001",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-023",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-023/01-01-2014-StudyID-NA-01819/1.000000-NA-72594/1-001.dcm",
+        "original_filename": "1-001.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-023/01-01-2014-StudyID-NA-01819/1.000000-NA-72594/1-001.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-023/01-01-2014-StudyID-NA-01819/1.000000-NA-72594/1-001.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-023/01-01-2014-StudyID-NA-01819/1.000000-NA-72594/1-001.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1-026",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-319",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-319/01-24-2009-NA-NA-83582/0.000000-NA-68253/1-026.dcm",
+        "original_filename": "1-026.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-319/01-24-2009-NA-NA-83582/0.000000-NA-68253/1-026.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-319/01-24-2009-NA-NA-83582/0.000000-NA-68253/1-026.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-319/01-24-2009-NA-NA-83582/0.000000-NA-68253/1-026.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1-052",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-239",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-239/03-12-2008-StudyID-NA-23877/0.000000-NA-85367/1-052.dcm",
+        "original_filename": "1-052.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-239/03-12-2008-StudyID-NA-23877/0.000000-NA-85367/1-052.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-239/03-12-2008-StudyID-NA-23877/0.000000-NA-85367/1-052.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-239/03-12-2008-StudyID-NA-23877/0.000000-NA-85367/1-052.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "1-160",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-133",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-160.dcm",
+        "original_filename": "1-160.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-160.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-160.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-133/08-19-2006-StudyID-NA-45456/0.000000-NA-32550/1-160.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "1-060",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-421",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-421/07-17-2010-NA-NA-30075/0.000000-NA-00327/1-060.dcm",
+        "original_filename": "1-060.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-421/07-17-2010-NA-NA-30075/0.000000-NA-00327/1-060.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-421/07-17-2010-NA-NA-30075/0.000000-NA-00327/1-060.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-421/07-17-2010-NA-NA-30075/0.000000-NA-00327/1-060.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1-071",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-131",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-131/09-08-2006-StudyID-NA-28573/0.000000-NA-44424/1-071.dcm",
+        "original_filename": "1-071.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-131/09-08-2006-StudyID-NA-28573/0.000000-NA-44424/1-071.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-131/09-08-2006-StudyID-NA-28573/0.000000-NA-44424/1-071.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-131/09-08-2006-StudyID-NA-28573/0.000000-NA-44424/1-071.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1-91",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-024",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-024/01-01-2014-StudyID-NA-55010/1.000000-NA-89883/1-91.dcm",
+        "original_filename": "1-91.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-024/01-01-2014-StudyID-NA-55010/1.000000-NA-89883/1-91.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-024/01-01-2014-StudyID-NA-55010/1.000000-NA-89883/1-91.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-024/01-01-2014-StudyID-NA-55010/1.000000-NA-89883/1-91.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1-101",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-325",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-325/03-22-2009-NA-NA-13387/0.000000-NA-53444/1-101.dcm",
+        "original_filename": "1-101.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-325/03-22-2009-NA-NA-13387/0.000000-NA-53444/1-101.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-325/03-22-2009-NA-NA-13387/0.000000-NA-53444/1-101.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-325/03-22-2009-NA-NA-13387/0.000000-NA-53444/1-101.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "1-071",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-079",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-079/12-22-2005-StudyID-NA-39992/0.000000-NA-57564/1-071.dcm",
+        "original_filename": "1-071.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-079/12-22-2005-StudyID-NA-39992/0.000000-NA-57564/1-071.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-079/12-22-2005-StudyID-NA-39992/0.000000-NA-57564/1-071.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-079/12-22-2005-StudyID-NA-39992/0.000000-NA-57564/1-071.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1-031",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-158",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-158/01-01-2014-StudyID-NA-53308/1.000000-NA-04609/1-031.dcm",
+        "original_filename": "1-031.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-158/01-01-2014-StudyID-NA-53308/1.000000-NA-04609/1-031.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-158/01-01-2014-StudyID-NA-53308/1.000000-NA-04609/1-031.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-158/01-01-2014-StudyID-NA-53308/1.000000-NA-04609/1-031.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1-022",
+      "class": "pleural_effusion | thoracic_cavity",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "PleThora"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "LUNG1-067",
+        "source_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-022.dcm",
+        "original_filename": "1-022.dcm",
+        "label_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-022.dcm",
+        "mask_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-022.dcm",
+        "seg_file": "data/NSCLC-Radiomics/LUNG1-067/10-31-2005-NA-NA-57192/0.000000-NA-54616/1-022.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

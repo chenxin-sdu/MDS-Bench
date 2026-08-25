@@ -1,0 +1,717 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "CPTAC-UCEC",
+  "description": "CPTAC-UCEC: uterine_carcinoma_rtstruct_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "CPTAC-UCEC",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "uterine_carcinoma_rtstruct_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "UTERUS",
+    "PELVIC MASS",
+    "RETROPERITONEAL MASS"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "C3N-00872",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00872",
+        "source_file": "data/C3N-00872",
+        "original_filename": "C3N-00872",
+        "label_file": "data/C3N-00872",
+        "mask_file": "data/C3N-00872",
+        "seg_file": "data/C3N-00872"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "C3N-02789",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02789",
+        "source_file": "data/C3N-02789",
+        "original_filename": "C3N-02789",
+        "label_file": "data/C3N-02789",
+        "mask_file": "data/C3N-02789",
+        "seg_file": "data/C3N-02789"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "C3N-00743",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00743",
+        "source_file": "data/C3N-00743",
+        "original_filename": "C3N-00743",
+        "label_file": "data/C3N-00743",
+        "mask_file": "data/C3N-00743",
+        "seg_file": "data/C3N-00743"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "C3N-01219",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01219",
+        "source_file": "data/C3N-01219",
+        "original_filename": "C3N-01219",
+        "label_file": "data/C3N-01219",
+        "mask_file": "data/C3N-01219",
+        "seg_file": "data/C3N-01219"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "C3N-01346",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01346",
+        "source_file": "data/C3N-01346",
+        "original_filename": "C3N-01346",
+        "label_file": "data/C3N-01346",
+        "mask_file": "data/C3N-01346",
+        "seg_file": "data/C3N-01346"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "C3N-00520",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00520",
+        "source_file": "data/C3N-00520",
+        "original_filename": "C3N-00520",
+        "label_file": "data/C3N-00520",
+        "mask_file": "data/C3N-00520",
+        "seg_file": "data/C3N-00520"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "C3N-01879",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01879",
+        "source_file": "data/C3N-01879",
+        "original_filename": "C3N-01879",
+        "label_file": "data/C3N-01879",
+        "mask_file": "data/C3N-01879",
+        "seg_file": "data/C3N-01879"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "C3N-01763",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01763",
+        "source_file": "data/C3N-01763",
+        "original_filename": "C3N-01763",
+        "label_file": "data/C3N-01763",
+        "mask_file": "data/C3N-01763",
+        "seg_file": "data/C3N-01763"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "C3N-00858",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00858",
+        "source_file": "data/C3N-00858",
+        "original_filename": "C3N-00858",
+        "label_file": "data/C3N-00858",
+        "mask_file": "data/C3N-00858",
+        "seg_file": "data/C3N-00858"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "C3N-01761",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01761",
+        "source_file": "data/C3N-01761",
+        "original_filename": "C3N-01761",
+        "label_file": "data/C3N-01761",
+        "mask_file": "data/C3N-01761",
+        "seg_file": "data/C3N-01761"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "C3N-00866",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00866",
+        "source_file": "data/C3N-00866",
+        "original_filename": "C3N-00866",
+        "label_file": "data/C3N-00866",
+        "mask_file": "data/C3N-00866",
+        "seg_file": "data/C3N-00866"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "C3N-01878",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01878",
+        "source_file": "data/C3N-01878",
+        "original_filename": "C3N-01878",
+        "label_file": "data/C3N-01878",
+        "mask_file": "data/C3N-01878",
+        "seg_file": "data/C3N-01878"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "C3N-00734",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00734",
+        "source_file": "data/C3N-00734",
+        "original_filename": "C3N-00734",
+        "label_file": "data/C3N-00734",
+        "mask_file": "data/C3N-00734",
+        "seg_file": "data/C3N-00734"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "C3N-02637",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02637",
+        "source_file": "data/C3N-02637",
+        "original_filename": "C3N-02637",
+        "label_file": "data/C3N-02637",
+        "mask_file": "data/C3N-02637",
+        "seg_file": "data/C3N-02637"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "C3N-01878",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01878",
+        "source_file": "data/C3N-01878",
+        "original_filename": "C3N-01878",
+        "label_file": "data/C3N-01878",
+        "mask_file": "data/C3N-01878",
+        "seg_file": "data/C3N-01878"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "C3N-00872",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-00872",
+        "source_file": "data/C3N-00872",
+        "original_filename": "C3N-00872",
+        "label_file": "data/C3N-00872",
+        "mask_file": "data/C3N-00872",
+        "seg_file": "data/C3N-00872"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "C3N-02632",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-02632",
+        "source_file": "data/C3N-02632",
+        "original_filename": "C3N-02632",
+        "label_file": "data/C3N-02632",
+        "mask_file": "data/C3N-02632",
+        "seg_file": "data/C3N-02632"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "C3N-01007",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01007",
+        "source_file": "data/C3N-01007",
+        "original_filename": "C3N-01007",
+        "label_file": "data/C3N-01007",
+        "mask_file": "data/C3N-01007",
+        "seg_file": "data/C3N-01007"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "C3N-01219",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-01219",
+        "source_file": "data/C3N-01219",
+        "original_filename": "C3N-01219",
+        "label_file": "data/C3N-01219",
+        "mask_file": "data/C3N-01219",
+        "seg_file": "data/C3N-01219"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "C3N-03005",
+      "class": "UTERUS | PELVIC MASS | RETROPERITONEAL MASS",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "CPTAC-UCEC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "C3N-03005",
+        "source_file": "data/C3N-03005",
+        "original_filename": "C3N-03005",
+        "label_file": "data/C3N-03005",
+        "mask_file": "data/C3N-03005",
+        "seg_file": "data/C3N-03005"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,740 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "npz-histopathology-dataset",
+  "description": "基于 data/ 目录：按字典序 DFS 遍历（跳过 .cache、__MACOSX），将扩展名为 .npz 的文件视为样本；每个 NPZ 当前仅包含键 `patches`（形如 N×256×256×3 的 uint8 数组），未发现独立类别标签字段，故按无监督/占位处理。取前 20 个 NPZ 文件；GT 采用单一类别 unlabeled。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "npz-histopathology-dataset",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "histopathology_npz_patch_unlabeled",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "unlabeled"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "MSB-00122-01-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00122-01-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00122-01-02.npz",
+        "original_filename": "MSB-00122-01-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "MSB-00122-02-04",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00122-02-04",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00122-02-04.npz",
+        "original_filename": "MSB-00122-02-04.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "MSB-00122-03-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00122-03-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00122-03-02.npz",
+        "original_filename": "MSB-00122-03-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "MSB-00179-03-20",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00179-03-20",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00179-03-20.npz",
+        "original_filename": "MSB-00179-03-20.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "MSB-00179-04-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00179-04-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00179-04-02.npz",
+        "original_filename": "MSB-00179-04-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "MSB-00316-03-01",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00316-03-01",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00316-03-01.npz",
+        "original_filename": "MSB-00316-03-01.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "MSB-00556-04-06",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00556-04-06",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00556-04-06.npz",
+        "original_filename": "MSB-00556-04-06.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "MSB-00556-04-11",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00556-04-11",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00556-04-11.npz",
+        "original_filename": "MSB-00556-04-11.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "MSB-00556-04-12",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00556-04-12",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00556-04-12.npz",
+        "original_filename": "MSB-00556-04-12.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "MSB-00602-02-01",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00602-02-01",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00602-02-01.npz",
+        "original_filename": "MSB-00602-02-01.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "MSB-00755-01-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00755-01-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00755-01-02.npz",
+        "original_filename": "MSB-00755-01-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "MSB-00773-01-01",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00773-01-01",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00773-01-01.npz",
+        "original_filename": "MSB-00773-01-01.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "MSB-00939-02-05",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00939-02-05",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00939-02-05.npz",
+        "original_filename": "MSB-00939-02-05.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "MSB-00939-02-06",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00939-02-06",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00939-02-06.npz",
+        "original_filename": "MSB-00939-02-06.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "MSB-00956-02-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-00956-02-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-00956-02-02.npz",
+        "original_filename": "MSB-00956-02-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "MSB-01072-02-01",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-01072-02-01",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-01072-02-01.npz",
+        "original_filename": "MSB-01072-02-01.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "MSB-01110-01-20",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-01110-01-20",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-01110-01-20.npz",
+        "original_filename": "MSB-01110-01-20.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "MSB-01236-01-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-01236-01-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-01236-01-02.npz",
+        "original_filename": "MSB-01236-01-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "MSB-01307-01-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-01307-01-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-01307-01-02.npz",
+        "original_filename": "MSB-01307-01-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "MSB-01413-01-02",
+      "class": "unlabeled",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "npz-histopathology-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "MSB-01413-01-02",
+        "label_text": "unlabeled",
+        "class_name": "unlabeled",
+        "source_file": "data/MSB-01413-01-02.npz",
+        "original_filename": "MSB-01413-01-02.npz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "unlabeled"
+        }
+      }
+    }
+  }
+}

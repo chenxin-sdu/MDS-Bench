@@ -1,0 +1,746 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "DICOM-Brain-MRI",
+  "description": "Kaggle dicom-brain-dataset，单例脑部 MRI 检查 (ST000001) 含 7 个序列 (SE000001..SE000007)。SeriesDescription 已通过 pydicom 实测：SE000001=Survey_MST(localizer)、SE000002=DWI、SE000003=T2W_TSE、SE000004=T1W_FFE_tra、SE000005=T2_COR、SE000006=T2W_FLAIR、SE000007=T1_SAG。分类任务=按 SE 序列号标注序列类型。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "DICOM-Brain-MRI",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "brain_mri_sequence_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Survey_MST",
+    "DWI",
+    "T2W_TSE",
+    "T1W_FFE_tra",
+    "T2_COR",
+    "T2W_FLAIR",
+    "T1_SAG"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "IM000002",
+      "class": "Brain MRI sequence (DWI)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000002",
+        "source_file": "data/ST000001/SE000002/IM000002.dcm",
+        "original_filename": "IM000002.dcm",
+        "label_text": "DWI",
+        "class_name": "DWI"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "IM000054",
+      "class": "Brain MRI sequence (DWI)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000002",
+        "source_file": "data/ST000001/SE000002/IM000054.dcm",
+        "original_filename": "IM000054.dcm",
+        "label_text": "DWI",
+        "class_name": "DWI"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "DWI"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "IM000018",
+      "class": "Brain MRI sequence (T2_COR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000005",
+        "source_file": "data/ST000001/SE000005/IM000018.dcm",
+        "original_filename": "IM000018.dcm",
+        "label_text": "T2_COR",
+        "class_name": "T2_COR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "T2_COR"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "IM000004",
+      "class": "Brain MRI sequence (T1W_FFE_tra)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000004",
+        "source_file": "data/ST000001/SE000004/IM000004.dcm",
+        "original_filename": "IM000004.dcm",
+        "label_text": "T1W_FFE_tra",
+        "class_name": "T1W_FFE_tra"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "T1W_FFE_tra"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "IM000010",
+      "class": "Brain MRI sequence (T1W_FFE_tra)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000004",
+        "source_file": "data/ST000001/SE000004/IM000010.dcm",
+        "original_filename": "IM000010.dcm",
+        "label_text": "T1W_FFE_tra",
+        "class_name": "T1W_FFE_tra"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "T1W_FFE_tra"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "IM000028",
+      "class": "Brain MRI sequence (T2_COR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000005",
+        "source_file": "data/ST000001/SE000005/IM000028.dcm",
+        "original_filename": "IM000028.dcm",
+        "label_text": "T2_COR",
+        "class_name": "T2_COR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "T2_COR"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "IM000015",
+      "class": "Brain MRI sequence (T1_SAG)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000007",
+        "source_file": "data/ST000001/SE000007/IM000015.dcm",
+        "original_filename": "IM000015.dcm",
+        "label_text": "T1_SAG",
+        "class_name": "T1_SAG"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "T1_SAG"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "IM000001",
+      "class": "Brain MRI sequence (T2W_FLAIR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000006",
+        "source_file": "data/ST000001/SE000006/IM000001.dcm",
+        "original_filename": "IM000001.dcm",
+        "label_text": "T2W_FLAIR",
+        "class_name": "T2W_FLAIR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "T2W_FLAIR"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "IM000002",
+      "class": "Brain MRI sequence (Survey_MST)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000001",
+        "source_file": "data/ST000001/SE000001/IM000002.dcm",
+        "original_filename": "IM000002.dcm",
+        "label_text": "Survey_MST",
+        "class_name": "Survey_MST"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Survey_MST"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "IM000012",
+      "class": "Brain MRI sequence (T1_SAG)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000007",
+        "source_file": "data/ST000001/SE000007/IM000012.dcm",
+        "original_filename": "IM000012.dcm",
+        "label_text": "T1_SAG",
+        "class_name": "T1_SAG"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "T1_SAG"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "IM000005",
+      "class": "Brain MRI sequence (T1_SAG)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000007",
+        "source_file": "data/ST000001/SE000007/IM000005.dcm",
+        "original_filename": "IM000005.dcm",
+        "label_text": "T1_SAG",
+        "class_name": "T1_SAG"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "T1_SAG"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "IM000027",
+      "class": "Brain MRI sequence (T2W_TSE)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000003",
+        "source_file": "data/ST000001/SE000003/IM000027.dcm",
+        "original_filename": "IM000027.dcm",
+        "label_text": "T2W_TSE",
+        "class_name": "T2W_TSE"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "T2W_TSE"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "IM000023",
+      "class": "Brain MRI sequence (T2W_FLAIR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000006",
+        "source_file": "data/ST000001/SE000006/IM000023.dcm",
+        "original_filename": "IM000023.dcm",
+        "label_text": "T2W_FLAIR",
+        "class_name": "T2W_FLAIR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "T2W_FLAIR"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "IM000024",
+      "class": "Brain MRI sequence (T2W_FLAIR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000006",
+        "source_file": "data/ST000001/SE000006/IM000024.dcm",
+        "original_filename": "IM000024.dcm",
+        "label_text": "T2W_FLAIR",
+        "class_name": "T2W_FLAIR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "T2W_FLAIR"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "IM000008",
+      "class": "Brain MRI sequence (T2W_TSE)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000003",
+        "source_file": "data/ST000001/SE000003/IM000008.dcm",
+        "original_filename": "IM000008.dcm",
+        "label_text": "T2W_TSE",
+        "class_name": "T2W_TSE"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "T2W_TSE"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "IM000026",
+      "class": "Brain MRI sequence (T2_COR)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000005",
+        "source_file": "data/ST000001/SE000005/IM000026.dcm",
+        "original_filename": "IM000026.dcm",
+        "label_text": "T2_COR",
+        "class_name": "T2_COR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "T2_COR"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "IM000007",
+      "class": "Brain MRI sequence (Survey_MST)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000001",
+        "source_file": "data/ST000001/SE000001/IM000007.dcm",
+        "original_filename": "IM000007.dcm",
+        "label_text": "Survey_MST",
+        "class_name": "Survey_MST"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Survey_MST"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "IM000005",
+      "class": "Brain MRI sequence (Survey_MST)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000001",
+        "source_file": "data/ST000001/SE000001/IM000005.dcm",
+        "original_filename": "IM000005.dcm",
+        "label_text": "Survey_MST",
+        "class_name": "Survey_MST"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Survey_MST"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "IM000022",
+      "class": "Brain MRI sequence (T2W_TSE)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000003",
+        "source_file": "data/ST000001/SE000003/IM000022.dcm",
+        "original_filename": "IM000022.dcm",
+        "label_text": "T2W_TSE",
+        "class_name": "T2W_TSE"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "T2W_TSE"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "IM000037",
+      "class": "Brain MRI sequence (DWI)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "DICOM-Brain-MRI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "ST000001_SE000002",
+        "source_file": "data/ST000001/SE000002/IM000037.dcm",
+        "original_filename": "IM000037.dcm",
+        "label_text": "DWI",
+        "class_name": "DWI"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "DWI"
+        }
+      }
+    }
+  }
+}

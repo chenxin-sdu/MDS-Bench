@@ -1,0 +1,725 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Lumbar_Spine_Segmentation",
+  "description": "Lumbar_Spine_Segmentation: lumbar_vertebrae_and_intervertebral_disc_segmentation (segmentation, MRI, 3D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Lumbar_Spine_Segmentation",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "lumbar_vertebrae_and_intervertebral_disc_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "L5_vertebra",
+    "L4_vertebra",
+    "L3_vertebra",
+    "L2_vertebra",
+    "L1_vertebra",
+    "intervertebral_disc_L5_S1",
+    "intervertebral_disc_L4_L5",
+    "intervertebral_disc_L3_L4",
+    "intervertebral_disc_L2_L3",
+    "intervertebral_disc_L1_L2",
+    "intervertebral_disc_T12_L1"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "69_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "69",
+        "source_file": "data/masks/69_t2.mha",
+        "original_filename": "69_t2.mha",
+        "label_file": "data/masks/69_t2.mha",
+        "mask_file": "data/masks/69_t2.mha",
+        "seg_file": "data/masks/69_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "175_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "175",
+        "source_file": "data/images/175_t1.mha",
+        "original_filename": "175_t1.mha",
+        "label_file": "data/masks/175_t1.mha",
+        "mask_file": "data/masks/175_t1.mha",
+        "seg_file": "data/masks/175_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "239_t2_SPACE",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "239",
+        "source_file": "data/masks/239_t2_SPACE.mha",
+        "original_filename": "239_t2_SPACE.mha",
+        "label_file": "data/masks/239_t2_SPACE.mha",
+        "mask_file": "data/masks/239_t2_SPACE.mha",
+        "seg_file": "data/masks/239_t2_SPACE.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "112_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "112",
+        "source_file": "data/masks/112_t1.mha",
+        "original_filename": "112_t1.mha",
+        "label_file": "data/masks/112_t1.mha",
+        "mask_file": "data/masks/112_t1.mha",
+        "seg_file": "data/masks/112_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "200_t2_SPACE",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "200",
+        "source_file": "data/images/200_t2_SPACE.mha",
+        "original_filename": "200_t2_SPACE.mha",
+        "label_file": "data/masks/200_t2_SPACE.mha",
+        "mask_file": "data/masks/200_t2_SPACE.mha",
+        "seg_file": "data/masks/200_t2_SPACE.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "56_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "56",
+        "source_file": "data/images/56_t1.mha",
+        "original_filename": "56_t1.mha",
+        "label_file": "data/masks/56_t1.mha",
+        "mask_file": "data/masks/56_t1.mha",
+        "seg_file": "data/masks/56_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "256_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "256",
+        "source_file": "data/masks/256_t2.mha",
+        "original_filename": "256_t2.mha",
+        "label_file": "data/masks/256_t2.mha",
+        "mask_file": "data/masks/256_t2.mha",
+        "seg_file": "data/masks/256_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "166_t2_SPACE",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "166",
+        "source_file": "data/masks/166_t2_SPACE.mha",
+        "original_filename": "166_t2_SPACE.mha",
+        "label_file": "data/masks/166_t2_SPACE.mha",
+        "mask_file": "data/masks/166_t2_SPACE.mha",
+        "seg_file": "data/masks/166_t2_SPACE.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "134_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "134",
+        "source_file": "data/images/134_t2.mha",
+        "original_filename": "134_t2.mha",
+        "label_file": "data/masks/134_t2.mha",
+        "mask_file": "data/masks/134_t2.mha",
+        "seg_file": "data/masks/134_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "107_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "107",
+        "source_file": "data/masks/107_t1.mha",
+        "original_filename": "107_t1.mha",
+        "label_file": "data/masks/107_t1.mha",
+        "mask_file": "data/masks/107_t1.mha",
+        "seg_file": "data/masks/107_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "88_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "88",
+        "source_file": "data/masks/88_t2.mha",
+        "original_filename": "88_t2.mha",
+        "label_file": "data/masks/88_t2.mha",
+        "mask_file": "data/masks/88_t2.mha",
+        "seg_file": "data/masks/88_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "45_t2_SPACE",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "45",
+        "source_file": "data/images/45_t2_SPACE.mha",
+        "original_filename": "45_t2_SPACE.mha",
+        "label_file": "data/masks/45_t2_SPACE.mha",
+        "mask_file": "data/masks/45_t2_SPACE.mha",
+        "seg_file": "data/masks/45_t2_SPACE.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "225_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "225",
+        "source_file": "data/masks/225_t2.mha",
+        "original_filename": "225_t2.mha",
+        "label_file": "data/masks/225_t2.mha",
+        "mask_file": "data/masks/225_t2.mha",
+        "seg_file": "data/masks/225_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "239_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "239",
+        "source_file": "data/masks/239_t2.mha",
+        "original_filename": "239_t2.mha",
+        "label_file": "data/masks/239_t2.mha",
+        "mask_file": "data/masks/239_t2.mha",
+        "seg_file": "data/masks/239_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "113_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "113",
+        "source_file": "data/masks/113_t2.mha",
+        "original_filename": "113_t2.mha",
+        "label_file": "data/masks/113_t2.mha",
+        "mask_file": "data/masks/113_t2.mha",
+        "seg_file": "data/masks/113_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "202_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "202",
+        "source_file": "data/images/202_t1.mha",
+        "original_filename": "202_t1.mha",
+        "label_file": "data/masks/202_t1.mha",
+        "mask_file": "data/masks/202_t1.mha",
+        "seg_file": "data/masks/202_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "61_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "61",
+        "source_file": "data/images/61_t1.mha",
+        "original_filename": "61_t1.mha",
+        "label_file": "data/masks/61_t1.mha",
+        "mask_file": "data/masks/61_t1.mha",
+        "seg_file": "data/masks/61_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "149_t1",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "149",
+        "source_file": "data/images/149_t1.mha",
+        "original_filename": "149_t1.mha",
+        "label_file": "data/masks/149_t1.mha",
+        "mask_file": "data/masks/149_t1.mha",
+        "seg_file": "data/masks/149_t1.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "81_t2_SPACE",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "81",
+        "source_file": "data/images/81_t2_SPACE.mha",
+        "original_filename": "81_t2_SPACE.mha",
+        "label_file": "data/masks/81_t2_SPACE.mha",
+        "mask_file": "data/masks/81_t2_SPACE.mha",
+        "seg_file": "data/masks/81_t2_SPACE.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "99_t2",
+      "class": "L5_vertebra | L4_vertebra | L3_vertebra | L2_vertebra | L1_vertebra | intervertebral_disc_L5_S1 | intervertebral_disc_L4_L5 | intervertebral_disc_L3_L4 | intervertebral_disc_L2_L3 | intervertebral_disc_L1_L2 | intervertebral_disc_T12_L1",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Lumbar_Spine_Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "99",
+        "source_file": "data/images/99_t2.mha",
+        "original_filename": "99_t2.mha",
+        "label_file": "data/masks/99_t2.mha",
+        "mask_file": "data/masks/99_t2.mha",
+        "seg_file": "data/masks/99_t2.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

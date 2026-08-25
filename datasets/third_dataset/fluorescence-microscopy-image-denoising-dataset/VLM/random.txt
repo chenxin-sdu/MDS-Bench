@@ -1,0 +1,14 @@
+0 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210226_denoising_ZIM504.h5
+1 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210331_denoising_ZIM504.h5
+2 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210407_denoising_ZIM504.h5
+3 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210421_magnify_ZIM504.h5
+4 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210527_denoising_ZIM504.h5
+5 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210604_denoising_ZIM504.h5
+6 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210626_denoising_OH16230_20X.h5
+7 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210627_denoising_OH16230_20x.h5
+8 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210630_denoising_OH16230_20x.h5
+9 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210705_denoising_OH16230_20x.h5
+10 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210710_denoising_PVD_array.h5
+11 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210714_denoising_PVD_array.h5
+12 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210721_denoising_PVD_array.h5
+13 /data3/chenxin/Agent_test/third_dataset/fluorescence-microscopy-image-denoising-dataset/data/collated_image_data/collated_data/dataset_20210729_denoising_PVD_array.h5

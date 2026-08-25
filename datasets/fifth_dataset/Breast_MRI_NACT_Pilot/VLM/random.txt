@@ -1,0 +1,20 @@
+0	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-61/07-20-1994-723433-MR BREASTUNI UE-04098/51000.000000-Dynamic-3dfgre SER-75428/1-22.dcm
+1	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-53/12-07-1993-435209-MR BREASTUNI UE-88737/5.000000-Dynamic-3dfgre-35520/2-091.dcm
+2	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-53/01-05-1994-188122-MR BREAST BI UE-84348/410.000000-PJN-92547/1-25.dcm
+3	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-41/01-02-1990-981066-MR BREAST-86040/3.000000-Sagittal-IR3DFGRE-15237/2-050.dcm
+4	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-15/05-30-1991-801824-MR BREAS UNIT-39572/621.000000-PJN-17102/1-10.dcm
+5	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-21/06-30-1992-506120-MR BREAS UNIT-54250/3.000000-Dynamic-3dfgre-55993/1-028.dcm
+6	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-35/12-13-1990-025232-MR BREAS UNIT-06674/3.000000-Sagittal-IR3DFGRE-29877/2-060.dcm
+7	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-58/11-27-1991-855867-MR BREAS UNIT-40284/1.000000-T1-axial-locator-61609/1-10.dcm
+8	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-51/05-28-1991-569837-MR BREAS UNIT-33726/31000.000000-Sagittal-IR3DFGRE SER-32873/1-48.dcm
+9	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-42/03-30-1992-028558-MR BREAS UNIT-79237/6.000000-DWSSFSE Diffusion-72399/1-46.dcm
+10	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-45/05-31-1990-182826-MR BREAST-83883/31000.000000-Sagittal-IR3DFGRE SER-85649/1-56.dcm
+11	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-22/10-09-1990-657690-MR BREAS UNIT-67649/31001.000000-Sagittal-IR3DFGRE PE1-10243/1-42.dcm
+12	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-11/06-10-1992-023095-MR BREAS UNIT-82974/301.000000-1459536114595361-16137/1-48.dcm
+13	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-29/07-12-1989-079440-MR BREAST-89850/3.000000-Sagittal-IR3DFGRE-35820/1-012.dcm
+14	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-65/06-16-1992-795225-MR BREAS UNIT-38128/5.000000-DWSSFSE Diffusion-08405/1-34.dcm
+15	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-68/04-11-1991-365480-MR BREAS UNIT-53690/3.000000-Sagittal-IR3DFGRE-13123/1-057.dcm
+16	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-47/03-27-1991-428535-MR BREAS UNIT-53517/31000.000000-Sagittal-IR3DFGRE SER-56367/1-20.dcm
+17	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-07/07-09-1991-588047-MR BREAS UNIT-45404/5.000000-Sagittal-EPI-94341/2-20.dcm
+18	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-20/03-16-1992-095384-MR BREAS UNIT-25865/6.000000-DWSSFSE Diffusion-83362/1-44.dcm
+19	/data4/chenxin/Med-Agent/fifth_dataset/Breast_MRI_NACT_Pilot/data/Breast-MRI-NACT-Pilot/UCSF-BR-19/08-10-1993-132603-MR BREASTUNI UE-75132/31001.000000-Dynamic-3dfgre PE1-01537/1-18.dcm

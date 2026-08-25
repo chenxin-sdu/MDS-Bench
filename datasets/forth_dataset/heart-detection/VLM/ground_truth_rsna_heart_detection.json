@@ -1,0 +1,714 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "RSNA-Heart-Detection",
+  "description": "Kaggle heart-detection (RSNA Heart) 心脏检测数据集，单类目标检测 (heart)，原图为 224x224 DICOM (.dcm)，bbox 列表见 rsna_heart_detection_withbboxes.csv (label, x0, y0, w, h, name, img_shape_x, img_shape_y)。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "Xray",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "detection",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "detection": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "RSNA-Heart-Detection",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "bbox_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "heart_detection_xray",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "context_sample": {
+        "modality_primary": "Xray"
+      },
+      "media": {
+        "task_type": "detection",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "detection",
+      "modality_primary.0": "Xray",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "heart"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "d7ff9878-2324-4ca8-a09d-81d98648a562",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "d7ff9878-2324-4ca8-a09d-81d98648a562",
+        "source_file": "data/d7ff9878-2324-4ca8-a09d-81d98648a562.dcm",
+        "original_filename": "d7ff9878-2324-4ca8-a09d-81d98648a562.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "01ef1712-90a6-4946-ad86-fc76b0cf2d3b",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "01ef1712-90a6-4946-ad86-fc76b0cf2d3b",
+        "source_file": "data/01ef1712-90a6-4946-ad86-fc76b0cf2d3b.dcm",
+        "original_filename": "01ef1712-90a6-4946-ad86-fc76b0cf2d3b.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "5673f2ae-da70-4301-b2ba-dfb6e9f84085",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "5673f2ae-da70-4301-b2ba-dfb6e9f84085",
+        "source_file": "data/5673f2ae-da70-4301-b2ba-dfb6e9f84085.dcm",
+        "original_filename": "5673f2ae-da70-4301-b2ba-dfb6e9f84085.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "0f4b80b6-fd39-451f-aebf-7cdb1b655c0b",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "0f4b80b6-fd39-451f-aebf-7cdb1b655c0b",
+        "source_file": "data/0f4b80b6-fd39-451f-aebf-7cdb1b655c0b.dcm",
+        "original_filename": "0f4b80b6-fd39-451f-aebf-7cdb1b655c0b.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "5192950c-8689-4f83-8332-61795886c654",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "5192950c-8689-4f83-8332-61795886c654",
+        "source_file": "data/5192950c-8689-4f83-8332-61795886c654.dcm",
+        "original_filename": "5192950c-8689-4f83-8332-61795886c654.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "2c96c09b-aaa8-4c07-8e69-c2210f04be2d",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "2c96c09b-aaa8-4c07-8e69-c2210f04be2d",
+        "source_file": "data/2c96c09b-aaa8-4c07-8e69-c2210f04be2d.dcm",
+        "original_filename": "2c96c09b-aaa8-4c07-8e69-c2210f04be2d.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "18aef831-82d6-4847-953e-9c06f1e2f5fe",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "18aef831-82d6-4847-953e-9c06f1e2f5fe",
+        "source_file": "data/18aef831-82d6-4847-953e-9c06f1e2f5fe.dcm",
+        "original_filename": "18aef831-82d6-4847-953e-9c06f1e2f5fe.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "429fb0ce-b3ec-456d-821e-49969d2c54a0",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "429fb0ce-b3ec-456d-821e-49969d2c54a0",
+        "source_file": "data/429fb0ce-b3ec-456d-821e-49969d2c54a0.dcm",
+        "original_filename": "429fb0ce-b3ec-456d-821e-49969d2c54a0.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "79cb22b9-a291-44a2-a1f5-7d51a256e37c",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "79cb22b9-a291-44a2-a1f5-7d51a256e37c",
+        "source_file": "data/79cb22b9-a291-44a2-a1f5-7d51a256e37c.dcm",
+        "original_filename": "79cb22b9-a291-44a2-a1f5-7d51a256e37c.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "66572a9d-0907-494b-8fe5-3d3771ab9455",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "66572a9d-0907-494b-8fe5-3d3771ab9455",
+        "source_file": "data/66572a9d-0907-494b-8fe5-3d3771ab9455.dcm",
+        "original_filename": "66572a9d-0907-494b-8fe5-3d3771ab9455.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "068e882a-df1e-4d62-92a0-9eef12024b01",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "068e882a-df1e-4d62-92a0-9eef12024b01",
+        "source_file": "data/068e882a-df1e-4d62-92a0-9eef12024b01.dcm",
+        "original_filename": "068e882a-df1e-4d62-92a0-9eef12024b01.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "7caab92c-816a-4c37-a0e8-ae72e7d04b89",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "7caab92c-816a-4c37-a0e8-ae72e7d04b89",
+        "source_file": "data/7caab92c-816a-4c37-a0e8-ae72e7d04b89.dcm",
+        "original_filename": "7caab92c-816a-4c37-a0e8-ae72e7d04b89.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "a4db5dbe-f9c4-457a-9cf8-051502dfdff4",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "a4db5dbe-f9c4-457a-9cf8-051502dfdff4",
+        "source_file": "data/a4db5dbe-f9c4-457a-9cf8-051502dfdff4.dcm",
+        "original_filename": "a4db5dbe-f9c4-457a-9cf8-051502dfdff4.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "f2b1c859-e2d1-4aa7-a602-c73ef7cac2b3",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "f2b1c859-e2d1-4aa7-a602-c73ef7cac2b3",
+        "source_file": "data/f2b1c859-e2d1-4aa7-a602-c73ef7cac2b3.dcm",
+        "original_filename": "f2b1c859-e2d1-4aa7-a602-c73ef7cac2b3.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "cb69424a-565c-4b47-9f54-18f67d7a6531",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "cb69424a-565c-4b47-9f54-18f67d7a6531",
+        "source_file": "data/cb69424a-565c-4b47-9f54-18f67d7a6531.dcm",
+        "original_filename": "cb69424a-565c-4b47-9f54-18f67d7a6531.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "d9628d5b-2437-4df9-b66c-d35e30f3a40b",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "d9628d5b-2437-4df9-b66c-d35e30f3a40b",
+        "source_file": "data/d9628d5b-2437-4df9-b66c-d35e30f3a40b.dcm",
+        "original_filename": "d9628d5b-2437-4df9-b66c-d35e30f3a40b.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "37054795-a17e-43af-8b4b-254015c67af5",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "37054795-a17e-43af-8b4b-254015c67af5",
+        "source_file": "data/37054795-a17e-43af-8b4b-254015c67af5.dcm",
+        "original_filename": "37054795-a17e-43af-8b4b-254015c67af5.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "867bfc1d-6c67-41b3-be0c-6a8153eddc93",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "867bfc1d-6c67-41b3-be0c-6a8153eddc93",
+        "source_file": "data/867bfc1d-6c67-41b3-be0c-6a8153eddc93.dcm",
+        "original_filename": "867bfc1d-6c67-41b3-be0c-6a8153eddc93.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "4db6986d-c092-4c1a-957a-6149d8a91d7c",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "4db6986d-c092-4c1a-957a-6149d8a91d7c",
+        "source_file": "data/4db6986d-c092-4c1a-957a-6149d8a91d7c.dcm",
+        "original_filename": "4db6986d-c092-4c1a-957a-6149d8a91d7c.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "605614b9-394a-43b5-badc-e520df208c75",
+      "class": "Cardiac silhouette detection on chest X-ray",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA-Heart-Detection"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Xray"
+      },
+      "expected_extra": {
+        "subject_id": "605614b9-394a-43b5-badc-e520df208c75",
+        "source_file": "data/605614b9-394a-43b5-badc-e520df208c75.dcm",
+        "original_filename": "605614b9-394a-43b5-badc-e520df208c75.dcm",
+        "label_text": "heart",
+        "class_name": "heart",
+        "bbox_file": "data/rsna_heart_detection_withbboxes.csv"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  }
+}

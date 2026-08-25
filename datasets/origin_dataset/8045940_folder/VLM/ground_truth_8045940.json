@@ -1,0 +1,724 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "8045940_folder",
+  "description": "胎盘高光谱 Placenta-DB 分割 GT。按字典序 DFS 采样前 20 个主谱图样本，字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "Hyperspectral",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Placenta_HSI",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "placenta_hsi_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Placenta_HSI"
+      },
+      "context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Hyperspectral",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Artery",
+    "Artery, ICG",
+    "Blue dye",
+    "ICG",
+    "Red dye",
+    "Specular reflection",
+    "Stroma",
+    "Stroma, ICG",
+    "Suture",
+    "Umbilical cord",
+    "Vein"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "DS1",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS1",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS1, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS1.tif",
+        "original_filename": "DS1.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "DS2",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS2",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS2, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS2.tif",
+        "original_filename": "DS2.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "DS3",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS3",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS3, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS3.tif",
+        "original_filename": "DS3.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "DS4",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS4",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS4, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS4.tif",
+        "original_filename": "DS4.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "DS5",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS5",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS5, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS5.tif",
+        "original_filename": "DS5.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "DS6",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "DS6",
+        "label_file": null,
+        "mask_file": "data/Dye samples/DS6, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Dye samples/DS6.tif",
+        "original_filename": "DS6.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "P001",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P001",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P001, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P001.dat",
+        "original_filename": "P001.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "P002",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P002",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P002, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P002.dat",
+        "original_filename": "P002.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "P003",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P003",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P003, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P003.dat",
+        "original_filename": "P003.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "P004",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P004",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P004, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P004.dat",
+        "original_filename": "P004.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "P005",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P005",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P005, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P005.dat",
+        "original_filename": "P005.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "P006",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P006",
+        "label_file": null,
+        "mask_file": "data/Placenta P001 - P006 no dye/P006, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P006.dat",
+        "original_filename": "P006.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "P007",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P007",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P007, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P007.dat",
+        "original_filename": "P007.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "P008",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P008",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P008, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P008.dat",
+        "original_filename": "P008.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "P009",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P009",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P009, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P009.dat",
+        "original_filename": "P009.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "P010",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P010",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P010, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P010.dat",
+        "original_filename": "P010.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "P011",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P011",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P011, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P011.dat",
+        "original_filename": "P011.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "P012",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P012",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P012, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P012.dat",
+        "original_filename": "P012.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "P013",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P013",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P013, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P013.dat",
+        "original_filename": "P013.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "P014",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Placenta_HSI"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Hyperspectral"
+      },
+      "expected_extra": {
+        "subject_id": "P014",
+        "label_file": null,
+        "mask_file": "data/Placenta P007 - P030 red blue/P014, masks.tif",
+        "seg_file": null,
+        "source_file": "data/Raw measurement data/P014.dat",
+        "original_filename": "P014.dat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

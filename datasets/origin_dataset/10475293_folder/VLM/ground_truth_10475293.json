@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "10475293_folder",
+  "description": "微超声前列腺 3D 分割 GT。按字典序 DFS 采样前 20 个样本，字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "Micro-Ultrasound",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "micro_ultrasound_prostate_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Micro-Ultrasound",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "prostate"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "microUS_test_01",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_01",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_01.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_01.nii",
+        "original_filename": "microUS_test_01.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "microUS_test_02",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_02",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_02.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_02.nii",
+        "original_filename": "microUS_test_02.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "microUS_test_03",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_03",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_03.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_03.nii",
+        "original_filename": "microUS_test_03.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "microUS_test_04",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_04",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_04.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_04.nii",
+        "original_filename": "microUS_test_04.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "microUS_test_05",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_05",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_05.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_05.nii",
+        "original_filename": "microUS_test_05.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "microUS_test_06",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_06",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_06.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_06.nii",
+        "original_filename": "microUS_test_06.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "microUS_test_07",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_07",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_07.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_07.nii",
+        "original_filename": "microUS_test_07.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "microUS_test_08",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_08",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_08.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_08.nii",
+        "original_filename": "microUS_test_08.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "microUS_test_09",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_09",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_09.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_09.nii",
+        "original_filename": "microUS_test_09.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "microUS_test_10",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_10",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_10.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_10.nii",
+        "original_filename": "microUS_test_10.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "microUS_test_11",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_11",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_11.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_11.nii",
+        "original_filename": "microUS_test_11.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "microUS_test_12",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_12",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_12.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_12.nii",
+        "original_filename": "microUS_test_12.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "microUS_test_13",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_13",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_13.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_13.nii",
+        "original_filename": "microUS_test_13.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "microUS_test_14",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_14",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_14.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_14.nii",
+        "original_filename": "microUS_test_14.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "microUS_test_15",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_15",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_15.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_15.nii",
+        "original_filename": "microUS_test_15.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "microUS_test_16",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_16",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_16.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_16.nii",
+        "original_filename": "microUS_test_16.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "microUS_test_17",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_17",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_17.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_17.nii",
+        "original_filename": "microUS_test_17.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "microUS_test_18",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_18",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_18.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_18.nii",
+        "original_filename": "microUS_test_18.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "microUS_test_19",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_19",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_19.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_19.nii",
+        "original_filename": "microUS_test_19.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "microUS_test_20",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Micro_Ultrasound_Prostate_Segmentation_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Micro-Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": "microUS_test_20",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/expert_annotations/expert_annotation_test_20.nii",
+        "source_file": "data/Micro_Ultrasound_Prostate_Segmentation_Dataset/test/micro_ultrasound_scans/microUS_test_20.nii",
+        "original_filename": "microUS_test_20.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

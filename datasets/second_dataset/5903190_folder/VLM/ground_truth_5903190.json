@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging",
+  "description": "Zenodo 5903190 多通道组织成像 2D 分割 GT。按字典序 DFS 采样前 20 个样本，字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "tissue_structure_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "foreground"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "20181207biomax_s1_p2_r10_a10_ac_h7",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r10_a10_ac_H7",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._127I_I127.tiff",
+        "original_filename": "._127I_I127.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "20181207biomax_s1_p2_r12_a12_ac_h5",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r12_a12_ac_H5",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._132Xe_Xe132.tiff",
+        "original_filename": "._132Xe_Xe132.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "20181207biomax_s1_p2_r13_a13_ac_h4",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r13_a13_ac_H4",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._138Ba_Ba138.tiff",
+        "original_filename": "._138Ba_Ba138.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "20181207biomax_s1_p2_r14_a14_ac_h3",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r14_a14_ac_H3",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._190BCKG_BCKG190.tiff",
+        "original_filename": "._190BCKG_BCKG190.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "20181207biomax_s1_p2_r15_a15_ac_h6",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r15_a15_ac_H6",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._191Ir_Ir191.tiff",
+        "original_filename": "._191Ir_Ir191.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "20181207biomax_s1_p2_r6_a6_ac_h10",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r6_a6_ac_H10",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._193Ir_Ir193.tiff",
+        "original_filename": "._193Ir_Ir193.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "20181207biomax_s1_p2_r8_a8_ac_h9",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r8_a8_ac_H9",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._195Pt_Pt195.tiff",
+        "original_filename": "._195Pt_Pt195.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "20181207biomax_s1_p2_r9_a9_ac_h8",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p2_r9_a9_ac_H8",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._208Pb_Pb208.tiff",
+        "original_filename": "._208Pb_Pb208.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "20181207biomax_s1_p3_r18_a18_ac_c8",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r18_a18_ac_C8",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._80ArAr_ArAr80.tiff",
+        "original_filename": "._80ArAr_ArAr80.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "20181207biomax_s1_p3_r20_a20_ac_c6",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r20_a20_ac_C6",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._B-Catenin_Ho165.tiff",
+        "original_filename": "._B-Catenin_Ho165.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "20181207biomax_s1_p3_r21_a21_ac_c5",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r21_a21_ac_C5",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CCR7_Gd158.tiff",
+        "original_filename": "._CCR7_Gd158.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "20181207biomax_s1_p3_r22_a22_ac_c4",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r22_a22_ac_C4",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD14_Nd144.tiff",
+        "original_filename": "._CD14_Nd144.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "20181207biomax_s1_p3_r24_a24_ac_c2",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r24_a24_ac_C2",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD20_Dy161.tiff",
+        "original_filename": "._CD20_Dy161.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "20181207biomax_s1_p3_r25_a25_ac_c1",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r25_a25_ac_C1",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD29_Sm149.tiff",
+        "original_filename": "._CD29_Sm149.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "20181207biomax_s1_p3_r26_a26_ac_c7",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r26_a26_ac_C7",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD31_Sm147.tiff",
+        "original_filename": "._CD31_Sm147.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "20181207biomax_s1_p3_r27_a27_ac_c9",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181207BioMax_s1_p3_r27_a27_ac_C9",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD3_Er170.tiff",
+        "original_filename": "._CD3_Er170.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "20181214biomax_s1_p1_r1_a1_ac_i10",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181214BioMax_s1_p1_r1_a1_ac_I10",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD40_Er168.tiff",
+        "original_filename": "._CD40_Er168.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "20181214biomax_s1_p1_r2_a2_ac_i9",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181214BioMax_s1_p1_r2_a2_ac_I9",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD45RA_Er166.tiff",
+        "original_filename": "._CD45RA_Er166.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "20181214biomax_s1_p1_r3_a3_ac_i8",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181214BioMax_s1_p1_r3_a3_ac_I8",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD45RO_Yb173.tiff",
+        "original_filename": "._CD45RO_Yb173.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "20181214biomax_s1_p1_r4_a4_ac_i7",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Zenodo_5903190_Multiplex_Tissue_Imaging"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "20181214BioMax_s1_p1_r4_a4_ac_I7",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/CP_output_tiff/20181207BioMax_s1_p2_r10_a10_ac_H7/._CD45_Sm152.tiff",
+        "original_filename": "._CD45_Sm152.tiff"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_mask"
+        }
+      }
+    }
+  }
+}

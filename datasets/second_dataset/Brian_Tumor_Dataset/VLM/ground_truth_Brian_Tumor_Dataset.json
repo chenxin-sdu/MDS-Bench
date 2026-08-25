@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Brian_Tumor_Dataset",
+  "description": "基于 data/ 目录：按字典序 DFS 遍历整棵目录树，仅收集可视为医学图像的样本文件（jpg/jpeg/png/tif 等）；遇到样本按顺序收集，累计到 20 个即停止。类别以父目录与 metadata.csv 为准：Brain Tumor/Cancer 下为 tumor，Healthy 下为 normal。本序列前 20 个 DFS 样本均位于 Brain Tumor Data Set/.../Brain Tumor/，故均为 tumor。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Brian_Tumor_Dataset",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "brain_tumor_tumor_normal_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "tumor",
+    "normal"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "Cancer (1)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1).jpg",
+        "original_filename": "Cancer (1).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "Cancer (1)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1).png",
+        "original_filename": "Cancer (1).png"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "Cancer (1)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1).tif",
+        "original_filename": "Cancer (1).tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "Cancer (10)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (10).jpg",
+        "original_filename": "Cancer (10).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "Cancer (10)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (10).tif",
+        "original_filename": "Cancer (10).tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "Cancer (100)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (100).jpg",
+        "original_filename": "Cancer (100).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "Cancer (1000)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1000).jpg",
+        "original_filename": "Cancer (1000).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "Cancer (1001)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1001).jpg",
+        "original_filename": "Cancer (1001).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "Cancer (1002)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1002).JPG",
+        "original_filename": "Cancer (1002).JPG"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "Cancer (1003)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1003).jpg",
+        "original_filename": "Cancer (1003).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "Cancer (1004)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1004).jpg",
+        "original_filename": "Cancer (1004).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "Cancer (1005)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1005).jpg",
+        "original_filename": "Cancer (1005).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "Cancer (1006)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1006).jpg",
+        "original_filename": "Cancer (1006).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "Cancer (1007)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1007).jpg",
+        "original_filename": "Cancer (1007).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "Cancer (1008)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1008).jpg",
+        "original_filename": "Cancer (1008).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "Cancer (1009)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1009).jpg",
+        "original_filename": "Cancer (1009).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "Cancer (101)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (101).jpg",
+        "original_filename": "Cancer (101).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "Cancer (1010)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1010).jpg",
+        "original_filename": "Cancer (1010).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "Cancer (1011)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1011).jpg",
+        "original_filename": "Cancer (1011).jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "Cancer (1012)",
+      "class": "tumor",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Brian_Tumor_Dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_text": "tumor",
+        "class_name": "tumor",
+        "source_file": "data/Brain Tumor Data Set/Brain Tumor Data Set/Brain Tumor/Cancer (1012).JPG",
+        "original_filename": "Cancer (1012).JPG"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "tumor"
+        }
+      }
+    }
+  }
+}

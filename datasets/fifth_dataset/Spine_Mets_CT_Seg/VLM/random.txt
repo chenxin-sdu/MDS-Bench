@@ -1,0 +1,20 @@
+0	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14316/01-25-2009-NA-T L S SPINE-77837/302.000000-SIM16cmFOV1.25mm14316c-27071/1-341.dcm
+1	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14434/06-20-2009-NA-SPINE-56488/301.000000-SKINTOSKINSIM1.25MM14434a-92253/1-580.dcm
+2	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/13055/09-28-2008-NA-AbdomenABDOMEN Adult-74345/4.000000-SIMSKINTOSKIN1.5mm13055a iMAR-49476/1-002.dcm
+3	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/10352/12-03-2011-NA-SpineSPINEBONESBRT Adult-55418/4.000000-SKINTOSKINSIM0.5MM10352a iMAR-32611/1-0593.dcm
+4	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14874/06-14-2009-NA-L SPINE-23046/301.000000-SKINTOSKINSIM1.25MM14874a-74129/1-346.dcm
+5	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/11084/06-20-2009-NA-SpineSPINEBONESBRT Adult-89565/4.000000-SKINTOSKINSIM0.5MM11084a iMAR-85125/1-741.dcm
+6	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/10456/07-24-2008-NA-SpineSPINEBONESBRT Adult-02739/5.000000-SKINTOSKINSIM0.5mm10456a iMAR-45144/1-753.dcm
+7	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14643/04-10-2009-NA-L SPINE-48925/301.000000-SKINTOSKINSIM1.25mm14643a-72297/1-133.dcm
+8	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/13683/05-25-2008-NA-SpineSPINEBONESBRT Adult-48587/4.000000-SKINTOSKINSIM.5mm13683 iMAR-90123/1-137.dcm
+9	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14659/04-12-2009-NA-T3-17543/301.000000-SKINTOSKINSIM1.25MM14659a-74917/1-325.dcm
+10	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/15094/03-16-2012-NA-AbdomenABDOMEN Adult-19540/9.000000-SKINTOSKINSIM0.5MM15094a iMAR-96821/1-0966.dcm
+11	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/11084/06-20-2009-NA-SpineSPINEBONESBRT Adult-89565/4.000000-SKINTOSKINSIM0.5MM11084a iMAR-85125/1-944.dcm
+12	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/13089/11-02-2008-NA-T11-L1RT CLAVICLE-89614/102.000000-16cmFOVSIM1.25MM13089-81688/1-414.dcm
+13	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/10456/07-24-2008-NA-SpineSPINEBONESBRT Adult-02739/5.000000-SKINTOSKINSIM0.5mm10456a iMAR-45144/1-090.dcm
+14	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/13089/11-02-2008-NA-T11-L1RT CLAVICLE-89614/102.000000-16cmFOVSIM1.25MM13089-81688/1-344.dcm
+15	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14138/02-06-2009-NA-L4-01369/301.000000-SKINTOSKINSIM1.25MM14138a-23732/1-296.dcm
+16	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/15001/12-03-2011-NA-AbdomenABDOMEN Adult-49796/4.000000-SKINTOSKINSIM1.5MM15001a-93488/1-193.dcm
+17	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/15040/12-03-2011-NA-SpineSPINEBONESBRT Adult-05087/5.000000-SKINTOSKINSIM0.5MM15040a iMAR-34233/1-722.dcm
+18	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/13697/05-29-2008-NA-SpineSPINEBONESBRT4D Adult-59962/20.000000-SKINTOSKINSIM.5mm13697b-35784/1-684.dcm
+19	/data4/chenxin/Med-Agent/fifth_dataset/Spine_Mets_CT_Seg/data/Spine_Mets_CT_Seg_Images/Spine-Mets-CT-SEG/14643/04-10-2009-NA-L SPINE-48925/301.000000-SKINTOSKINSIM1.25mm14643a-72297/1-181.dcm

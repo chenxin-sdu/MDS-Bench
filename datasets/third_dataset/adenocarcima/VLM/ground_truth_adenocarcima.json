@@ -1,0 +1,742 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "adenocarcima",
+  "description": "adenocarcima classification GT（真·DFS 重建版，前 20 个样本）",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "adenocarcima",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "<leaf-task-text>",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "adenocarcima"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "AAH",
+    "AIS",
+    "MIA"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "sample206_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample206_AAH.npy",
+        "original_filename": "sample206_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "sample242_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample242_AAH.npy",
+        "original_filename": "sample242_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "sample272_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample272_AAH.npy",
+        "original_filename": "sample272_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "sample322_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample322_AAH.npy",
+        "original_filename": "sample322_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "sample323_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample323_AAH.npy",
+        "original_filename": "sample323_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "sample324_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample324_AAH.npy",
+        "original_filename": "sample324_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "sample379_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample379_AAH.npy",
+        "original_filename": "sample379_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "sample463_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample463_AAH.npy",
+        "original_filename": "sample463_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "sample465_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample465_AAH.npy",
+        "original_filename": "sample465_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "sample506_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample506_AAH.npy",
+        "original_filename": "sample506_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "sample541_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample541_AAH.npy",
+        "original_filename": "sample541_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "sample596_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample596_AAH.npy",
+        "original_filename": "sample596_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "sample60_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample60_AAH.npy",
+        "original_filename": "sample60_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "sample639_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample639_AAH.npy",
+        "original_filename": "sample639_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "sample640_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample640_AAH.npy",
+        "original_filename": "sample640_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "sample692_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample692_AAH.npy",
+        "original_filename": "sample692_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "sample705_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample705_AAH.npy",
+        "original_filename": "sample705_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "sample775_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample775_AAH.npy",
+        "original_filename": "sample775_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "sample813_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample813_AAH.npy",
+        "original_filename": "sample813_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "sample81_aah",
+      "class": "AAH",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "adenocarcima"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/AAH/AAH/sample81_AAH.npy",
+        "original_filename": "sample81_AAH.npy",
+        "label_text": "AAH",
+        "class_name": "AAH"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AAH"
+        }
+      }
+    }
+  }
+}

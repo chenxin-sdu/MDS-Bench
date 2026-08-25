@@ -1,0 +1,714 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "RSNA_Pneumonia_Detection_Challenge",
+  "description": "RSNA_Pneumonia_Detection_Challenge: pneumonia_lung_opacity_detection (detection, X-ray, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "X-ray",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "detection",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "detection": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "RSNA_Pneumonia_Detection_Challenge",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "bbox_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "pneumonia_lung_opacity_detection",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "media": {
+        "task_type": "detection",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "detection",
+      "modality_primary.0": "X-ray",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Lung Opacity"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "3a48ce85-63f3-4443-857c-1d180ed52e7d",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "3a48ce85-63f3-4443-857c-1d180ed52e7d",
+        "source_file": "data/stage_2_train_images/3a48ce85-63f3-4443-857c-1d180ed52e7d.dcm",
+        "original_filename": "3a48ce85-63f3-4443-857c-1d180ed52e7d.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/3a48ce85-63f3-4443-857c-1d180ed52e7d.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "48fe3b45-4f82-42ef-8175-5e2eb1384cf3",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "48fe3b45-4f82-42ef-8175-5e2eb1384cf3",
+        "source_file": "data/stage_2_train_images/48fe3b45-4f82-42ef-8175-5e2eb1384cf3.dcm",
+        "original_filename": "48fe3b45-4f82-42ef-8175-5e2eb1384cf3.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/48fe3b45-4f82-42ef-8175-5e2eb1384cf3.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "a51ffe46-62bd-448b-8e8f-b32c2b08011c",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "a51ffe46-62bd-448b-8e8f-b32c2b08011c",
+        "source_file": "data/stage_2_train_images/a51ffe46-62bd-448b-8e8f-b32c2b08011c.dcm",
+        "original_filename": "a51ffe46-62bd-448b-8e8f-b32c2b08011c.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/a51ffe46-62bd-448b-8e8f-b32c2b08011c.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "55236729-2cc9-425b-a7b7-34a1c2648ff4",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "55236729-2cc9-425b-a7b7-34a1c2648ff4",
+        "source_file": "data/stage_2_train_images/55236729-2cc9-425b-a7b7-34a1c2648ff4.dcm",
+        "original_filename": "55236729-2cc9-425b-a7b7-34a1c2648ff4.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/55236729-2cc9-425b-a7b7-34a1c2648ff4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "eb91a618-122c-4de4-88ab-eb534c3ef4c5",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "eb91a618-122c-4de4-88ab-eb534c3ef4c5",
+        "source_file": "data/stage_2_train_images/eb91a618-122c-4de4-88ab-eb534c3ef4c5.dcm",
+        "original_filename": "eb91a618-122c-4de4-88ab-eb534c3ef4c5.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/eb91a618-122c-4de4-88ab-eb534c3ef4c5.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "eadab655-474b-4bdf-9018-0adb6dbed310",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "eadab655-474b-4bdf-9018-0adb6dbed310",
+        "source_file": "data/stage_2_train_images/eadab655-474b-4bdf-9018-0adb6dbed310.dcm",
+        "original_filename": "eadab655-474b-4bdf-9018-0adb6dbed310.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/eadab655-474b-4bdf-9018-0adb6dbed310.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "417f0770-5f45-4634-bdfb-273b6077e358",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "417f0770-5f45-4634-bdfb-273b6077e358",
+        "source_file": "data/stage_2_train_images/417f0770-5f45-4634-bdfb-273b6077e358.dcm",
+        "original_filename": "417f0770-5f45-4634-bdfb-273b6077e358.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/417f0770-5f45-4634-bdfb-273b6077e358.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "a924e647-a3ff-4e00-a9ee-75c6313c32d4",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "a924e647-a3ff-4e00-a9ee-75c6313c32d4",
+        "source_file": "data/stage_2_train_images/a924e647-a3ff-4e00-a9ee-75c6313c32d4.dcm",
+        "original_filename": "a924e647-a3ff-4e00-a9ee-75c6313c32d4.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/a924e647-a3ff-4e00-a9ee-75c6313c32d4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "e9df7d4f-af67-4d21-8472-9be380ff0484",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "e9df7d4f-af67-4d21-8472-9be380ff0484",
+        "source_file": "data/stage_2_train_images/e9df7d4f-af67-4d21-8472-9be380ff0484.dcm",
+        "original_filename": "e9df7d4f-af67-4d21-8472-9be380ff0484.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/e9df7d4f-af67-4d21-8472-9be380ff0484.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "54a075e0-572a-426f-89dc-00b32a9c5637",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "54a075e0-572a-426f-89dc-00b32a9c5637",
+        "source_file": "data/stage_2_train_images/54a075e0-572a-426f-89dc-00b32a9c5637.dcm",
+        "original_filename": "54a075e0-572a-426f-89dc-00b32a9c5637.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/54a075e0-572a-426f-89dc-00b32a9c5637.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "e3b52ea4-7bc0-4fbe-a5d1-5594ef83abcd",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "e3b52ea4-7bc0-4fbe-a5d1-5594ef83abcd",
+        "source_file": "data/stage_2_train_images/e3b52ea4-7bc0-4fbe-a5d1-5594ef83abcd.dcm",
+        "original_filename": "e3b52ea4-7bc0-4fbe-a5d1-5594ef83abcd.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/e3b52ea4-7bc0-4fbe-a5d1-5594ef83abcd.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "4a2078dc-3789-43b2-a31e-19014d4fe3eb",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "4a2078dc-3789-43b2-a31e-19014d4fe3eb",
+        "source_file": "data/stage_2_train_images/4a2078dc-3789-43b2-a31e-19014d4fe3eb.dcm",
+        "original_filename": "4a2078dc-3789-43b2-a31e-19014d4fe3eb.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/4a2078dc-3789-43b2-a31e-19014d4fe3eb.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "16e739a9-214a-45d1-a2d8-b7b19a167dad",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "16e739a9-214a-45d1-a2d8-b7b19a167dad",
+        "source_file": "data/stage_2_train_images/16e739a9-214a-45d1-a2d8-b7b19a167dad.dcm",
+        "original_filename": "16e739a9-214a-45d1-a2d8-b7b19a167dad.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/16e739a9-214a-45d1-a2d8-b7b19a167dad.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "a0c8ee1c-804b-44ee-b285-aae55becd33a",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "a0c8ee1c-804b-44ee-b285-aae55becd33a",
+        "source_file": "data/stage_2_train_images/a0c8ee1c-804b-44ee-b285-aae55becd33a.dcm",
+        "original_filename": "a0c8ee1c-804b-44ee-b285-aae55becd33a.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/a0c8ee1c-804b-44ee-b285-aae55becd33a.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "97fa22b6-04d2-47f3-ac3e-5354c81151c9",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "97fa22b6-04d2-47f3-ac3e-5354c81151c9",
+        "source_file": "data/stage_2_train_images/97fa22b6-04d2-47f3-ac3e-5354c81151c9.dcm",
+        "original_filename": "97fa22b6-04d2-47f3-ac3e-5354c81151c9.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/97fa22b6-04d2-47f3-ac3e-5354c81151c9.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "dd1d6a22-aca5-4465-88e3-110449571781",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "dd1d6a22-aca5-4465-88e3-110449571781",
+        "source_file": "data/stage_2_train_images/dd1d6a22-aca5-4465-88e3-110449571781.dcm",
+        "original_filename": "dd1d6a22-aca5-4465-88e3-110449571781.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/dd1d6a22-aca5-4465-88e3-110449571781.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "ad5aa8d1-cac5-4f75-a0fd-eb05667bcb2b",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "ad5aa8d1-cac5-4f75-a0fd-eb05667bcb2b",
+        "source_file": "data/stage_2_train_images/ad5aa8d1-cac5-4f75-a0fd-eb05667bcb2b.dcm",
+        "original_filename": "ad5aa8d1-cac5-4f75-a0fd-eb05667bcb2b.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/ad5aa8d1-cac5-4f75-a0fd-eb05667bcb2b.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "62396bee-3db6-4de8-a78f-6a0c4a459421",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "62396bee-3db6-4de8-a78f-6a0c4a459421",
+        "source_file": "data/stage_2_train_images/62396bee-3db6-4de8-a78f-6a0c4a459421.dcm",
+        "original_filename": "62396bee-3db6-4de8-a78f-6a0c4a459421.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/62396bee-3db6-4de8-a78f-6a0c4a459421.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "eba4d827-0287-4f03-a387-685b7478a38c",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "eba4d827-0287-4f03-a387-685b7478a38c",
+        "source_file": "data/stage_2_train_images/eba4d827-0287-4f03-a387-685b7478a38c.dcm",
+        "original_filename": "eba4d827-0287-4f03-a387-685b7478a38c.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/eba4d827-0287-4f03-a387-685b7478a38c.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "b3198fbd-a80a-4b5b-8a12-f89bb4a72b4a",
+      "class": "Lung Opacity",
+      "map_type": "bbox",
+      "expected_record": {
+        "dataset_name": "RSNA_Pneumonia_Detection_Challenge"
+      },
+      "expected_context_sample": {
+        "modality_primary": "X-ray"
+      },
+      "expected_extra": {
+        "subject_id": "b3198fbd-a80a-4b5b-8a12-f89bb4a72b4a",
+        "source_file": "data/stage_2_train_images/b3198fbd-a80a-4b5b-8a12-f89bb4a72b4a.dcm",
+        "original_filename": "b3198fbd-a80a-4b5b-8a12-f89bb4a72b4a.dcm",
+        "label_text": "Lung Opacity",
+        "class_name": "Lung Opacity",
+        "bbox_file": "data/stage_2_train_images/b3198fbd-a80a-4b5b-8a12-f89bb4a72b4a.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "detection": {
+          "schema_variant": "2d"
+        }
+      }
+    }
+  }
+}

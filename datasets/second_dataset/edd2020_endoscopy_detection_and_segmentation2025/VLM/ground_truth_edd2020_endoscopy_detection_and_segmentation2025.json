@@ -1,0 +1,719 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025",
+  "description": "EDD2020 内镜检测与分割数据。在 data/ 下按字典序 DFS 遍历；仅将 EDD2020/originalImages/ 下的原始内镜帧（.jpg/.jpeg）视为 sample，不把 masks/、masksPerClass/、bbox/ 下的标注文件当作独立 sample。按 originalImages 内文件名字典序取前 20 帧；每帧在 masks/ 下存在同名前缀的 EDD2020_<stem>_<lesion>.tif 掩膜；若同一帧存在多个病灶掩膜，按掩膜文件名字典序取第一个作为主掩膜期望值。bbox/*.txt 为可选检测框标注，本 GT 按 seg_gt.json 模版仅约束分割任务字段。字段结构与 prompt/seg_gt.json 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Endoscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "edd2020_endoscopy_detection_and_segmentation2025",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "edd2020_endoscopy_multiclass_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Endoscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "BE",
+    "HGD",
+    "cancer",
+    "polyp",
+    "suspicious"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "EDD2020_ACB0000",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0000",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0000_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0000_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0000.jpg",
+        "original_filename": "EDD2020_ACB0000.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "EDD2020_ACB0001",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0001",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0001_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0001_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0001.jpg",
+        "original_filename": "EDD2020_ACB0001.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "EDD2020_ACB0002",
+      "class": "suspicious",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0002",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0002_suspicious.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0002_suspicious.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0002.jpg",
+        "original_filename": "EDD2020_ACB0002.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "EDD2020_ACB0003",
+      "class": "HGD",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0003",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0003_HGD.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0003_HGD.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0003.jpg",
+        "original_filename": "EDD2020_ACB0003.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "EDD2020_ACB0004",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0004",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0004_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0004_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0004.jpg",
+        "original_filename": "EDD2020_ACB0004.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "EDD2020_ACB0005",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0005",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0005_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0005_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0005.jpg",
+        "original_filename": "EDD2020_ACB0005.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "EDD2020_ACB0006",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0006",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0006_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0006_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0006.jpg",
+        "original_filename": "EDD2020_ACB0006.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "EDD2020_ACB0007",
+      "class": "HGD",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0007",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0007_HGD.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0007_HGD.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0007.jpg",
+        "original_filename": "EDD2020_ACB0007.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "EDD2020_ACB0008",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0008",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0008_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0008_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0008.jpg",
+        "original_filename": "EDD2020_ACB0008.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "EDD2020_ACB0009",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0009",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0009_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0009_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0009.jpg",
+        "original_filename": "EDD2020_ACB0009.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "EDD2020_ACB0010",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0010",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0010_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0010_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0010.jpg",
+        "original_filename": "EDD2020_ACB0010.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "EDD2020_ACB0011",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0011",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0011_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0011_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0011.jpg",
+        "original_filename": "EDD2020_ACB0011.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "EDD2020_ACB0012",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0012",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0012_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0012_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0012.jpg",
+        "original_filename": "EDD2020_ACB0012.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "EDD2020_ACB0013",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0013",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0013_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0013_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0013.jpg",
+        "original_filename": "EDD2020_ACB0013.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "EDD2020_ACB0014",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0014",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0014_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0014_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0014.jpg",
+        "original_filename": "EDD2020_ACB0014.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "EDD2020_ACB0015",
+      "class": "cancer",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_ACB0015",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_ACB0015_cancer.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_ACB0015_cancer.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_ACB0015.jpg",
+        "original_filename": "EDD2020_ACB0015.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "EDD2020_AJ0000",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_AJ0000",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_AJ0000_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_AJ0000_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_AJ0000.jpg",
+        "original_filename": "EDD2020_AJ0000.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "EDD2020_AJ0001",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_AJ0001",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_AJ0001_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_AJ0001_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_AJ0001.jpg",
+        "original_filename": "EDD2020_AJ0001.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "EDD2020_AJ0002",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_AJ0002",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_AJ0002_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_AJ0002_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_AJ0002.jpg",
+        "original_filename": "EDD2020_AJ0002.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "EDD2020_AJ0003",
+      "class": "BE",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "edd2020_endoscopy_detection_and_segmentation2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "EDD2020_AJ0003",
+        "label_file": null,
+        "mask_file": "data/EDD2020/masks/EDD2020_AJ0003_BE.tif",
+        "seg_file": "data/EDD2020/masks/EDD2020_AJ0003_BE.tif",
+        "source_file": "data/EDD2020/originalImages/EDD2020_AJ0003.jpg",
+        "original_filename": "EDD2020_AJ0003.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Prostate-MSD",
+  "description": "Medical Segmentation Decathlon Task05 Prostate 数据集。多参数前列腺 MRI (T2 + ADC) 体素分割，标签 0=background, 1=PZ (peripheral zone), 2=TZ (transition zone)。imagesTr 在 labelsTr 有金标准，imagesTs 无公开标签。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Prostate-MSD",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "prostate_zonal_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Prostate-MSD"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "PZ",
+    "TZ"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "prostate_40",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_40",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_40.nii",
+        "original_filename": "prostate_40.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_40.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_40.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_40.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "prostate_03",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_03",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_03.nii",
+        "original_filename": "prostate_03.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "prostate_34",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_34",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_34.nii",
+        "original_filename": "prostate_34.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_34.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_34.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_34.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "prostate_01",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_01",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_01.nii",
+        "original_filename": "prostate_01.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_01.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_01.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_01.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "prostate_26",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_26",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_26.nii",
+        "original_filename": "prostate_26.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "prostate_09",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_09",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_09.nii",
+        "original_filename": "prostate_09.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "prostate_41",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_41",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_41.nii",
+        "original_filename": "prostate_41.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_41.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_41.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_41.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "prostate_24",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_24",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_24.nii",
+        "original_filename": "prostate_24.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_24.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_24.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_24.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "prostate_08",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_08",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_08.nii",
+        "original_filename": "prostate_08.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "prostate_47",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_47",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_47.nii",
+        "original_filename": "prostate_47.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_47.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_47.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_47.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "prostate_19",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_19",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_19.nii",
+        "original_filename": "prostate_19.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "prostate_45",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_45",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_45.nii",
+        "original_filename": "prostate_45.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "prostate_37",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_37",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_37.nii",
+        "original_filename": "prostate_37.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_37.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_37.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_37.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "prostate_10",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_10",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_10.nii",
+        "original_filename": "prostate_10.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_10.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_10.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_10.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "prostate_17",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_17",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_17.nii",
+        "original_filename": "prostate_17.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_17.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_17.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_17.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "prostate_38",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_38",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_38.nii",
+        "original_filename": "prostate_38.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_38.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_38.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_38.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "prostate_02",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_02",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_02.nii",
+        "original_filename": "prostate_02.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_02.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_02.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_02.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "prostate_21",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_21",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_21.nii",
+        "original_filename": "prostate_21.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_21.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_21.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_21.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "prostate_22",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_22",
+        "source_file": "data/Task05_Prostate/imagesTs/prostate_22.nii",
+        "original_filename": "prostate_22.nii",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "prostate_42",
+      "class": "Multi-parametric prostate MRI zonal segmentation (MSD)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Prostate-MSD"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "prostate_42",
+        "source_file": "data/Task05_Prostate/imagesTr/prostate_42.nii",
+        "original_filename": "prostate_42.nii",
+        "label_file": "data/Task05_Prostate/labelsTr/prostate_42.nii",
+        "mask_file": "data/Task05_Prostate/labelsTr/prostate_42.nii",
+        "seg_file": "data/Task05_Prostate/labelsTr/prostate_42.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

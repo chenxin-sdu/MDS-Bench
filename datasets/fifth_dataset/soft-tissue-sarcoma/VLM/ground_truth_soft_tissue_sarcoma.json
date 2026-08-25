@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "soft_tissue_sarcoma_IDC",
+  "description": "soft_tissue_sarcoma_IDC: soft_tissue_sarcoma_gtv_contouring (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "soft_tissue_sarcoma_IDC",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "soft_tissue_sarcoma_gtv_contouring",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "GTV_Mass",
+    "GTV_Edema"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "f1dd8b03-f3d8-4ee2-96ea-39100bef0492",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_038",
+        "source_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.130756620538148500668401629854/f1dd8b03-f3d8-4ee2-96ea-39100bef0492.dcm",
+        "original_filename": "f1dd8b03-f3d8-4ee2-96ea-39100bef0492.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.130756620538148500668401629854/f1dd8b03-f3d8-4ee2-96ea-39100bef0492.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.130756620538148500668401629854/f1dd8b03-f3d8-4ee2-96ea-39100bef0492.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.130756620538148500668401629854/f1dd8b03-f3d8-4ee2-96ea-39100bef0492.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "a3096cc9-8f92-497d-a080-453cbf6311da",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_041",
+        "source_file": "data/soft_tissue_sarcoma/STS_041/1.3.6.1.4.1.14519.5.2.1.5168.1900.122864728403518147104917985376/1.3.6.1.4.1.14519.5.2.1.5168.1900.774282824211445184724368928687/a3096cc9-8f92-497d-a080-453cbf6311da.dcm",
+        "original_filename": "a3096cc9-8f92-497d-a080-453cbf6311da.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_041/1.3.6.1.4.1.14519.5.2.1.5168.1900.122864728403518147104917985376/1.3.6.1.4.1.14519.5.2.1.5168.1900.774282824211445184724368928687/a3096cc9-8f92-497d-a080-453cbf6311da.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_041/1.3.6.1.4.1.14519.5.2.1.5168.1900.122864728403518147104917985376/1.3.6.1.4.1.14519.5.2.1.5168.1900.774282824211445184724368928687/a3096cc9-8f92-497d-a080-453cbf6311da.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_041/1.3.6.1.4.1.14519.5.2.1.5168.1900.122864728403518147104917985376/1.3.6.1.4.1.14519.5.2.1.5168.1900.774282824211445184724368928687/a3096cc9-8f92-497d-a080-453cbf6311da.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "6ac895da-fe72-4e31-ad7a-ff886cfaa97a",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_003",
+        "source_file": "data/soft_tissue_sarcoma/STS_003/1.3.6.1.4.1.14519.5.2.1.5168.1900.117905762169211414862001680366/1.3.6.1.4.1.14519.5.2.1.5168.1900.260219333088105788083554721109/6ac895da-fe72-4e31-ad7a-ff886cfaa97a.dcm",
+        "original_filename": "6ac895da-fe72-4e31-ad7a-ff886cfaa97a.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_003/1.3.6.1.4.1.14519.5.2.1.5168.1900.117905762169211414862001680366/1.3.6.1.4.1.14519.5.2.1.5168.1900.260219333088105788083554721109/6ac895da-fe72-4e31-ad7a-ff886cfaa97a.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_003/1.3.6.1.4.1.14519.5.2.1.5168.1900.117905762169211414862001680366/1.3.6.1.4.1.14519.5.2.1.5168.1900.260219333088105788083554721109/6ac895da-fe72-4e31-ad7a-ff886cfaa97a.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_003/1.3.6.1.4.1.14519.5.2.1.5168.1900.117905762169211414862001680366/1.3.6.1.4.1.14519.5.2.1.5168.1900.260219333088105788083554721109/6ac895da-fe72-4e31-ad7a-ff886cfaa97a.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "229ae2f5-a4ff-407b-ab4b-3a7b803cd023",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_039",
+        "source_file": "data/soft_tissue_sarcoma/STS_039/1.3.6.1.4.1.14519.5.2.1.5168.1900.182345182624714620341375019001/1.3.6.1.4.1.14519.5.2.1.5168.1900.122982333133160398995070072851/229ae2f5-a4ff-407b-ab4b-3a7b803cd023.dcm",
+        "original_filename": "229ae2f5-a4ff-407b-ab4b-3a7b803cd023.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_039/1.3.6.1.4.1.14519.5.2.1.5168.1900.182345182624714620341375019001/1.3.6.1.4.1.14519.5.2.1.5168.1900.122982333133160398995070072851/229ae2f5-a4ff-407b-ab4b-3a7b803cd023.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_039/1.3.6.1.4.1.14519.5.2.1.5168.1900.182345182624714620341375019001/1.3.6.1.4.1.14519.5.2.1.5168.1900.122982333133160398995070072851/229ae2f5-a4ff-407b-ab4b-3a7b803cd023.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_039/1.3.6.1.4.1.14519.5.2.1.5168.1900.182345182624714620341375019001/1.3.6.1.4.1.14519.5.2.1.5168.1900.122982333133160398995070072851/229ae2f5-a4ff-407b-ab4b-3a7b803cd023.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "7d1efb99-4366-471a-87af-0cd08e2c3809",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_016",
+        "source_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.303720832406418275057423472122/7d1efb99-4366-471a-87af-0cd08e2c3809.dcm",
+        "original_filename": "7d1efb99-4366-471a-87af-0cd08e2c3809.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.303720832406418275057423472122/7d1efb99-4366-471a-87af-0cd08e2c3809.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.303720832406418275057423472122/7d1efb99-4366-471a-87af-0cd08e2c3809.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.303720832406418275057423472122/7d1efb99-4366-471a-87af-0cd08e2c3809.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "68e7e621-4dfb-4d88-a48a-287acfcfdc21",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_021",
+        "source_file": "data/soft_tissue_sarcoma/STS_021/1.3.6.1.4.1.14519.5.2.1.5168.1900.181069758808563380996767573109/1.3.6.1.4.1.14519.5.2.1.5168.1900.899578314688904421849430769317/68e7e621-4dfb-4d88-a48a-287acfcfdc21.dcm",
+        "original_filename": "68e7e621-4dfb-4d88-a48a-287acfcfdc21.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_021/1.3.6.1.4.1.14519.5.2.1.5168.1900.181069758808563380996767573109/1.3.6.1.4.1.14519.5.2.1.5168.1900.899578314688904421849430769317/68e7e621-4dfb-4d88-a48a-287acfcfdc21.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_021/1.3.6.1.4.1.14519.5.2.1.5168.1900.181069758808563380996767573109/1.3.6.1.4.1.14519.5.2.1.5168.1900.899578314688904421849430769317/68e7e621-4dfb-4d88-a48a-287acfcfdc21.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_021/1.3.6.1.4.1.14519.5.2.1.5168.1900.181069758808563380996767573109/1.3.6.1.4.1.14519.5.2.1.5168.1900.899578314688904421849430769317/68e7e621-4dfb-4d88-a48a-287acfcfdc21.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "802e8430-a6e4-44df-a9c9-878ab802c2ea",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_016",
+        "source_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.147148200898069708586187792692/802e8430-a6e4-44df-a9c9-878ab802c2ea.dcm",
+        "original_filename": "802e8430-a6e4-44df-a9c9-878ab802c2ea.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.147148200898069708586187792692/802e8430-a6e4-44df-a9c9-878ab802c2ea.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.147148200898069708586187792692/802e8430-a6e4-44df-a9c9-878ab802c2ea.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_016/1.3.6.1.4.1.14519.5.2.1.5168.1900.292175062573676029841774637313/1.3.6.1.4.1.14519.5.2.1.5168.1900.147148200898069708586187792692/802e8430-a6e4-44df-a9c9-878ab802c2ea.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "ef503142-2d52-4cdc-9523-1c06388fe31b",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_048",
+        "source_file": "data/soft_tissue_sarcoma/STS_048/1.3.6.1.4.1.14519.5.2.1.5168.1900.144872797786633980009202939938/1.3.6.1.4.1.14519.5.2.1.5168.1900.100810106392866374474424222764/ef503142-2d52-4cdc-9523-1c06388fe31b.dcm",
+        "original_filename": "ef503142-2d52-4cdc-9523-1c06388fe31b.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_048/1.3.6.1.4.1.14519.5.2.1.5168.1900.144872797786633980009202939938/1.3.6.1.4.1.14519.5.2.1.5168.1900.100810106392866374474424222764/ef503142-2d52-4cdc-9523-1c06388fe31b.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_048/1.3.6.1.4.1.14519.5.2.1.5168.1900.144872797786633980009202939938/1.3.6.1.4.1.14519.5.2.1.5168.1900.100810106392866374474424222764/ef503142-2d52-4cdc-9523-1c06388fe31b.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_048/1.3.6.1.4.1.14519.5.2.1.5168.1900.144872797786633980009202939938/1.3.6.1.4.1.14519.5.2.1.5168.1900.100810106392866374474424222764/ef503142-2d52-4cdc-9523-1c06388fe31b.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "c93a51d5-4891-4fc1-90ed-d92abf1cad4d",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_051",
+        "source_file": "data/soft_tissue_sarcoma/STS_051/1.3.6.1.4.1.14519.5.2.1.5168.1900.133896917491638871391974813493/1.3.6.1.4.1.14519.5.2.1.5168.1900.467626364736687022472972303077/c93a51d5-4891-4fc1-90ed-d92abf1cad4d.dcm",
+        "original_filename": "c93a51d5-4891-4fc1-90ed-d92abf1cad4d.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_051/1.3.6.1.4.1.14519.5.2.1.5168.1900.133896917491638871391974813493/1.3.6.1.4.1.14519.5.2.1.5168.1900.467626364736687022472972303077/c93a51d5-4891-4fc1-90ed-d92abf1cad4d.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_051/1.3.6.1.4.1.14519.5.2.1.5168.1900.133896917491638871391974813493/1.3.6.1.4.1.14519.5.2.1.5168.1900.467626364736687022472972303077/c93a51d5-4891-4fc1-90ed-d92abf1cad4d.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_051/1.3.6.1.4.1.14519.5.2.1.5168.1900.133896917491638871391974813493/1.3.6.1.4.1.14519.5.2.1.5168.1900.467626364736687022472972303077/c93a51d5-4891-4fc1-90ed-d92abf1cad4d.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1254d51d-ebbc-4c44-8e16-241a7f48def0",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_031",
+        "source_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/1254d51d-ebbc-4c44-8e16-241a7f48def0.dcm",
+        "original_filename": "1254d51d-ebbc-4c44-8e16-241a7f48def0.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/1254d51d-ebbc-4c44-8e16-241a7f48def0.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/1254d51d-ebbc-4c44-8e16-241a7f48def0.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/1254d51d-ebbc-4c44-8e16-241a7f48def0.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "c50ec6cf-7e24-4f8b-b20c-174b397fbaa9",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_022",
+        "source_file": "data/soft_tissue_sarcoma/STS_022/1.3.6.1.4.1.14519.5.2.1.5168.1900.203787444806068950769308567105/1.3.6.1.4.1.14519.5.2.1.5168.1900.154664832055237836297899153059/c50ec6cf-7e24-4f8b-b20c-174b397fbaa9.dcm",
+        "original_filename": "c50ec6cf-7e24-4f8b-b20c-174b397fbaa9.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_022/1.3.6.1.4.1.14519.5.2.1.5168.1900.203787444806068950769308567105/1.3.6.1.4.1.14519.5.2.1.5168.1900.154664832055237836297899153059/c50ec6cf-7e24-4f8b-b20c-174b397fbaa9.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_022/1.3.6.1.4.1.14519.5.2.1.5168.1900.203787444806068950769308567105/1.3.6.1.4.1.14519.5.2.1.5168.1900.154664832055237836297899153059/c50ec6cf-7e24-4f8b-b20c-174b397fbaa9.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_022/1.3.6.1.4.1.14519.5.2.1.5168.1900.203787444806068950769308567105/1.3.6.1.4.1.14519.5.2.1.5168.1900.154664832055237836297899153059/c50ec6cf-7e24-4f8b-b20c-174b397fbaa9.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "c53ed193-6870-439d-a9f4-952d061af88c",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_031",
+        "source_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/c53ed193-6870-439d-a9f4-952d061af88c.dcm",
+        "original_filename": "c53ed193-6870-439d-a9f4-952d061af88c.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/c53ed193-6870-439d-a9f4-952d061af88c.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/c53ed193-6870-439d-a9f4-952d061af88c.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_031/1.3.6.1.4.1.14519.5.2.1.5168.1900.997719825337156275761392546652/1.3.6.1.4.1.14519.5.2.1.5168.1900.745180706677815731101200799908/c53ed193-6870-439d-a9f4-952d061af88c.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "18e95243-a309-486e-93a0-8bb17c5a86fb",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_038",
+        "source_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.128236400784850212969105003036/18e95243-a309-486e-93a0-8bb17c5a86fb.dcm",
+        "original_filename": "18e95243-a309-486e-93a0-8bb17c5a86fb.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.128236400784850212969105003036/18e95243-a309-486e-93a0-8bb17c5a86fb.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.128236400784850212969105003036/18e95243-a309-486e-93a0-8bb17c5a86fb.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_038/1.3.6.1.4.1.14519.5.2.1.5168.1900.279303591429737871478983010497/1.3.6.1.4.1.14519.5.2.1.5168.1900.128236400784850212969105003036/18e95243-a309-486e-93a0-8bb17c5a86fb.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "4464dc7d-8e84-46fb-bf0c-c543c925f0a8",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_037",
+        "source_file": "data/soft_tissue_sarcoma/STS_037/1.3.6.1.4.1.14519.5.2.1.5168.1900.109604548854137743153429633943/1.3.6.1.4.1.14519.5.2.1.5168.1900.806003955463396110734980428715/4464dc7d-8e84-46fb-bf0c-c543c925f0a8.dcm",
+        "original_filename": "4464dc7d-8e84-46fb-bf0c-c543c925f0a8.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_037/1.3.6.1.4.1.14519.5.2.1.5168.1900.109604548854137743153429633943/1.3.6.1.4.1.14519.5.2.1.5168.1900.806003955463396110734980428715/4464dc7d-8e84-46fb-bf0c-c543c925f0a8.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_037/1.3.6.1.4.1.14519.5.2.1.5168.1900.109604548854137743153429633943/1.3.6.1.4.1.14519.5.2.1.5168.1900.806003955463396110734980428715/4464dc7d-8e84-46fb-bf0c-c543c925f0a8.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_037/1.3.6.1.4.1.14519.5.2.1.5168.1900.109604548854137743153429633943/1.3.6.1.4.1.14519.5.2.1.5168.1900.806003955463396110734980428715/4464dc7d-8e84-46fb-bf0c-c543c925f0a8.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "50100561-ee49-4315-8feb-5155d802be56",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_032",
+        "source_file": "data/soft_tissue_sarcoma/STS_032/1.3.6.1.4.1.14519.5.2.1.5168.1900.294580060814654933657507661256/1.3.6.1.4.1.14519.5.2.1.5168.1900.717230604857378246114103907765/50100561-ee49-4315-8feb-5155d802be56.dcm",
+        "original_filename": "50100561-ee49-4315-8feb-5155d802be56.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_032/1.3.6.1.4.1.14519.5.2.1.5168.1900.294580060814654933657507661256/1.3.6.1.4.1.14519.5.2.1.5168.1900.717230604857378246114103907765/50100561-ee49-4315-8feb-5155d802be56.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_032/1.3.6.1.4.1.14519.5.2.1.5168.1900.294580060814654933657507661256/1.3.6.1.4.1.14519.5.2.1.5168.1900.717230604857378246114103907765/50100561-ee49-4315-8feb-5155d802be56.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_032/1.3.6.1.4.1.14519.5.2.1.5168.1900.294580060814654933657507661256/1.3.6.1.4.1.14519.5.2.1.5168.1900.717230604857378246114103907765/50100561-ee49-4315-8feb-5155d802be56.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "4804ccad-62eb-4508-933c-7214f914d18a",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_043",
+        "source_file": "data/soft_tissue_sarcoma/STS_043/1.3.6.1.4.1.14519.5.2.1.5168.1900.175581067844872215813644429059/1.3.6.1.4.1.14519.5.2.1.5168.1900.187333476409221178353189652627/4804ccad-62eb-4508-933c-7214f914d18a.dcm",
+        "original_filename": "4804ccad-62eb-4508-933c-7214f914d18a.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_043/1.3.6.1.4.1.14519.5.2.1.5168.1900.175581067844872215813644429059/1.3.6.1.4.1.14519.5.2.1.5168.1900.187333476409221178353189652627/4804ccad-62eb-4508-933c-7214f914d18a.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_043/1.3.6.1.4.1.14519.5.2.1.5168.1900.175581067844872215813644429059/1.3.6.1.4.1.14519.5.2.1.5168.1900.187333476409221178353189652627/4804ccad-62eb-4508-933c-7214f914d18a.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_043/1.3.6.1.4.1.14519.5.2.1.5168.1900.175581067844872215813644429059/1.3.6.1.4.1.14519.5.2.1.5168.1900.187333476409221178353189652627/4804ccad-62eb-4508-933c-7214f914d18a.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "75639a85-4b95-46e4-9e8b-5f8e6df41546",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_023",
+        "source_file": "data/soft_tissue_sarcoma/STS_023/1.3.6.1.4.1.14519.5.2.1.5168.1900.182300223456390922381153270596/1.3.6.1.4.1.14519.5.2.1.5168.1900.150093535961687685184105982200/75639a85-4b95-46e4-9e8b-5f8e6df41546.dcm",
+        "original_filename": "75639a85-4b95-46e4-9e8b-5f8e6df41546.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_023/1.3.6.1.4.1.14519.5.2.1.5168.1900.182300223456390922381153270596/1.3.6.1.4.1.14519.5.2.1.5168.1900.150093535961687685184105982200/75639a85-4b95-46e4-9e8b-5f8e6df41546.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_023/1.3.6.1.4.1.14519.5.2.1.5168.1900.182300223456390922381153270596/1.3.6.1.4.1.14519.5.2.1.5168.1900.150093535961687685184105982200/75639a85-4b95-46e4-9e8b-5f8e6df41546.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_023/1.3.6.1.4.1.14519.5.2.1.5168.1900.182300223456390922381153270596/1.3.6.1.4.1.14519.5.2.1.5168.1900.150093535961687685184105982200/75639a85-4b95-46e4-9e8b-5f8e6df41546.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_036",
+        "source_file": "data/soft_tissue_sarcoma/STS_036/1.3.6.1.4.1.14519.5.2.1.5168.1900.739872692999810211030639243048/1.3.6.1.4.1.14519.5.2.1.5168.1900.258849160780848406883606293851/c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4.dcm",
+        "original_filename": "c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_036/1.3.6.1.4.1.14519.5.2.1.5168.1900.739872692999810211030639243048/1.3.6.1.4.1.14519.5.2.1.5168.1900.258849160780848406883606293851/c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_036/1.3.6.1.4.1.14519.5.2.1.5168.1900.739872692999810211030639243048/1.3.6.1.4.1.14519.5.2.1.5168.1900.258849160780848406883606293851/c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_036/1.3.6.1.4.1.14519.5.2.1.5168.1900.739872692999810211030639243048/1.3.6.1.4.1.14519.5.2.1.5168.1900.258849160780848406883606293851/c77fe7e5-d5d6-4eab-82e6-ebac49ea4cc4.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "3d2617b2-b8b5-4a21-84c1-a11487fbc299",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_027",
+        "source_file": "data/soft_tissue_sarcoma/STS_027/1.3.6.1.4.1.14519.5.2.1.5168.1900.143126631131134961580421011282/1.3.6.1.4.1.14519.5.2.1.5168.1900.267736592284106428483820263587/3d2617b2-b8b5-4a21-84c1-a11487fbc299.dcm",
+        "original_filename": "3d2617b2-b8b5-4a21-84c1-a11487fbc299.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_027/1.3.6.1.4.1.14519.5.2.1.5168.1900.143126631131134961580421011282/1.3.6.1.4.1.14519.5.2.1.5168.1900.267736592284106428483820263587/3d2617b2-b8b5-4a21-84c1-a11487fbc299.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_027/1.3.6.1.4.1.14519.5.2.1.5168.1900.143126631131134961580421011282/1.3.6.1.4.1.14519.5.2.1.5168.1900.267736592284106428483820263587/3d2617b2-b8b5-4a21-84c1-a11487fbc299.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_027/1.3.6.1.4.1.14519.5.2.1.5168.1900.143126631131134961580421011282/1.3.6.1.4.1.14519.5.2.1.5168.1900.267736592284106428483820263587/3d2617b2-b8b5-4a21-84c1-a11487fbc299.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1",
+      "class": "GTV_Mass | GTV_Edema",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "soft_tissue_sarcoma_IDC"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "STS_034",
+        "source_file": "data/soft_tissue_sarcoma/STS_034/1.3.6.1.4.1.14519.5.2.1.5168.1900.147641713597648034846374361819/1.3.6.1.4.1.14519.5.2.1.5168.1900.144439911844543278375693492502/a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1.dcm",
+        "original_filename": "a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1.dcm",
+        "label_file": "data/soft_tissue_sarcoma/STS_034/1.3.6.1.4.1.14519.5.2.1.5168.1900.147641713597648034846374361819/1.3.6.1.4.1.14519.5.2.1.5168.1900.144439911844543278375693492502/a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1.dcm",
+        "mask_file": "data/soft_tissue_sarcoma/STS_034/1.3.6.1.4.1.14519.5.2.1.5168.1900.147641713597648034846374361819/1.3.6.1.4.1.14519.5.2.1.5168.1900.144439911844543278375693492502/a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1.dcm",
+        "seg_file": "data/soft_tissue_sarcoma/STS_034/1.3.6.1.4.1.14519.5.2.1.5168.1900.147641713597648034846374361819/1.3.6.1.4.1.14519.5.2.1.5168.1900.144439911844543278375693492502/a6e83cdc-a7fb-40a9-b658-a8ac0e3e6ae1.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

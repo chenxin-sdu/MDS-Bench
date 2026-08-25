@@ -1,0 +1,746 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Tibial-Plateau-Fracture",
+  "description": "Zenodo 18007397 胫骨平台骨折 (Tibial Plateau Fracture) 数据集。每例为单个 .mat 文件，包含 3D CT 体素与元数据；金标签 Schatzker 分型来源于 Tibial Plateau Fracture Metadata.xlsx（按 'Patient ID' 关联）。类别为 7 类：Normal + Schatzker_Type_1..6。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Tibial-Plateau-Fracture",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "tibial_plateau_fracture_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Normal",
+    "Schatzker_Type_1",
+    "Schatzker_Type_2",
+    "Schatzker_Type_3",
+    "Schatzker_Type_4",
+    "Schatzker_Type_5",
+    "Schatzker_Type_6"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "Patient_ID_201",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_201",
+        "source_file": "data/Patient Data_Part 3/Patient Data_Part 3/Patient_ID_201.mat",
+        "original_filename": "Patient_ID_201.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "Patient_ID_208",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_2)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_208",
+        "source_file": "data/Patient Data_Part 3/Patient Data_Part 3/Patient_ID_208.mat",
+        "original_filename": "Patient_ID_208.mat",
+        "label_text": "Schatzker_Type_2",
+        "class_name": "Schatzker_Type_2"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Schatzker_Type_2"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "Patient_ID_172",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_3)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_172",
+        "source_file": "data/Patient Data_Part 2/Patient Data_Part 2/Patient_ID_172.mat",
+        "original_filename": "Patient_ID_172.mat",
+        "label_text": "Schatzker_Type_3",
+        "class_name": "Schatzker_Type_3"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "Schatzker_Type_3"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "Patient_ID_003",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_1)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_003",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_003.mat",
+        "original_filename": "Patient_ID_003.mat",
+        "label_text": "Schatzker_Type_1",
+        "class_name": "Schatzker_Type_1"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "Schatzker_Type_1"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "Patient_ID_216",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_216",
+        "source_file": "data/Patient Data_Part 3/Patient Data_Part 3/Patient_ID_216.mat",
+        "original_filename": "Patient_ID_216.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "Patient_ID_273",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_273",
+        "source_file": "data/Patient Data_Part 5/Patient Data_Part 5/Patient_ID_273.mat",
+        "original_filename": "Patient_ID_273.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "Patient_ID_081",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_081",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_081.mat",
+        "original_filename": "Patient_ID_081.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "Patient_ID_095",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_2)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_095",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_095.mat",
+        "original_filename": "Patient_ID_095.mat",
+        "label_text": "Schatzker_Type_2",
+        "class_name": "Schatzker_Type_2"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Schatzker_Type_2"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "Patient_ID_142",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_142",
+        "source_file": "data/Patient Data_Part 2/Patient Data_Part 2/Patient_ID_142.mat",
+        "original_filename": "Patient_ID_142.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "Patient_ID_028",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_2)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_028",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_028.mat",
+        "original_filename": "Patient_ID_028.mat",
+        "label_text": "Schatzker_Type_2",
+        "class_name": "Schatzker_Type_2"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Schatzker_Type_2"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "Patient_ID_196",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_196",
+        "source_file": "data/Patient Data_Part 3/Patient Data_Part 3/Patient_ID_196.mat",
+        "original_filename": "Patient_ID_196.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "Patient_ID_024",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_024",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_024.mat",
+        "original_filename": "Patient_ID_024.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "Patient_ID_016",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_2)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_016",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_016.mat",
+        "original_filename": "Patient_ID_016.mat",
+        "label_text": "Schatzker_Type_2",
+        "class_name": "Schatzker_Type_2"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Schatzker_Type_2"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "Patient_ID_290",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_290",
+        "source_file": "data/Patient Data_Part 5/Patient Data_Part 5/Patient_ID_290.mat",
+        "original_filename": "Patient_ID_290.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "Patient_ID_021",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_2)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_021",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_021.mat",
+        "original_filename": "Patient_ID_021.mat",
+        "label_text": "Schatzker_Type_2",
+        "class_name": "Schatzker_Type_2"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Schatzker_Type_2"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "Patient_ID_022",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_022",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_022.mat",
+        "original_filename": "Patient_ID_022.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "Patient_ID_278",
+      "class": "Tibial plateau fracture Schatzker classification (Normal)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_278",
+        "source_file": "data/Patient Data_Part 5/Patient Data_Part 5/Patient_ID_278.mat",
+        "original_filename": "Patient_ID_278.mat",
+        "label_text": "Normal",
+        "class_name": "Normal"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Normal"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "Patient_ID_164",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_164",
+        "source_file": "data/Patient Data_Part 2/Patient Data_Part 2/Patient_ID_164.mat",
+        "original_filename": "Patient_ID_164.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "Patient_ID_116",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_6)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_116",
+        "source_file": "data/Patient Data_Part 2/Patient Data_Part 2/Patient_ID_116.mat",
+        "original_filename": "Patient_ID_116.mat",
+        "label_text": "Schatzker_Type_6",
+        "class_name": "Schatzker_Type_6"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Schatzker_Type_6"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "Patient_ID_068",
+      "class": "Tibial plateau fracture Schatzker classification (Schatzker_Type_5)",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Tibial-Plateau-Fracture"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "Patient_ID_068",
+        "source_file": "data/Patient Data_Part 1/Patient Data_Part 1/Patient_ID_068.mat",
+        "original_filename": "Patient_ID_068.mat",
+        "label_text": "Schatzker_Type_5",
+        "class_name": "Schatzker_Type_5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "Schatzker_Type_5"
+        }
+      }
+    }
+  }
+}

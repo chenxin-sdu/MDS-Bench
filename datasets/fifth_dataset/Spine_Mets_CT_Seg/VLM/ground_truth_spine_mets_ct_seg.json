@@ -1,0 +1,725 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Spine_Mets_CT_Seg",
+  "description": "Spine_Mets_CT_Seg: spine_vertebra_segmentation (segmentation, CT, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Spine_Mets_CT_Seg",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "spine_vertebra_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "T7 vertebra",
+    "T8 vertebra",
+    "T9 vertebra",
+    "T10 vertebra",
+    "T11 vertebra",
+    "T12 vertebra",
+    "L1 vertebra",
+    "L2 vertebra",
+    "L3 vertebra",
+    "L4 vertebra",
+    "L5 vertebra"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "14316",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14316",
+        "source_file": "data/14316",
+        "original_filename": "14316",
+        "label_file": "data/14316",
+        "mask_file": "data/14316",
+        "seg_file": "data/14316"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "14434",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14434",
+        "source_file": "data/14434",
+        "original_filename": "14434",
+        "label_file": "data/14434",
+        "mask_file": "data/14434",
+        "seg_file": "data/14434"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "13055",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "13055",
+        "source_file": "data/13055",
+        "original_filename": "13055",
+        "label_file": "data/13055",
+        "mask_file": "data/13055",
+        "seg_file": "data/13055"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "10352",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "10352",
+        "source_file": "data/10352",
+        "original_filename": "10352",
+        "label_file": "data/10352",
+        "mask_file": "data/10352",
+        "seg_file": "data/10352"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "14874",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14874",
+        "source_file": "data/14874",
+        "original_filename": "14874",
+        "label_file": "data/14874",
+        "mask_file": "data/14874",
+        "seg_file": "data/14874"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "11084",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "11084",
+        "source_file": "data/11084",
+        "original_filename": "11084",
+        "label_file": "data/11084",
+        "mask_file": "data/11084",
+        "seg_file": "data/11084"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "10456",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "10456",
+        "source_file": "data/10456",
+        "original_filename": "10456",
+        "label_file": "data/10456",
+        "mask_file": "data/10456",
+        "seg_file": "data/10456"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "14643",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14643",
+        "source_file": "data/14643",
+        "original_filename": "14643",
+        "label_file": "data/14643",
+        "mask_file": "data/14643",
+        "seg_file": "data/14643"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "13683",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "13683",
+        "source_file": "data/13683",
+        "original_filename": "13683",
+        "label_file": "data/13683",
+        "mask_file": "data/13683",
+        "seg_file": "data/13683"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "14659",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14659",
+        "source_file": "data/14659",
+        "original_filename": "14659",
+        "label_file": "data/14659",
+        "mask_file": "data/14659",
+        "seg_file": "data/14659"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "15094",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "15094",
+        "source_file": "data/15094",
+        "original_filename": "15094",
+        "label_file": "data/15094",
+        "mask_file": "data/15094",
+        "seg_file": "data/15094"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "11084",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "11084",
+        "source_file": "data/11084",
+        "original_filename": "11084",
+        "label_file": "data/11084",
+        "mask_file": "data/11084",
+        "seg_file": "data/11084"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "13089",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "13089",
+        "source_file": "data/13089",
+        "original_filename": "13089",
+        "label_file": "data/13089",
+        "mask_file": "data/13089",
+        "seg_file": "data/13089"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "10456",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "10456",
+        "source_file": "data/10456",
+        "original_filename": "10456",
+        "label_file": "data/10456",
+        "mask_file": "data/10456",
+        "seg_file": "data/10456"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "13089",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "13089",
+        "source_file": "data/13089",
+        "original_filename": "13089",
+        "label_file": "data/13089",
+        "mask_file": "data/13089",
+        "seg_file": "data/13089"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "14138",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14138",
+        "source_file": "data/14138",
+        "original_filename": "14138",
+        "label_file": "data/14138",
+        "mask_file": "data/14138",
+        "seg_file": "data/14138"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "15001",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "15001",
+        "source_file": "data/15001",
+        "original_filename": "15001",
+        "label_file": "data/15001",
+        "mask_file": "data/15001",
+        "seg_file": "data/15001"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "15040",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "15040",
+        "source_file": "data/15040",
+        "original_filename": "15040",
+        "label_file": "data/15040",
+        "mask_file": "data/15040",
+        "seg_file": "data/15040"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "13697",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "13697",
+        "source_file": "data/13697",
+        "original_filename": "13697",
+        "label_file": "data/13697",
+        "mask_file": "data/13697",
+        "seg_file": "data/13697"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "14643",
+      "class": "T7 vertebra | T8 vertebra | T9 vertebra | T10 vertebra | T11 vertebra | T12 vertebra | L1 vertebra | L2 vertebra | L3 vertebra | L4 vertebra | L5 vertebra",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Spine_Mets_CT_Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "14643",
+        "source_file": "data/14643",
+        "original_filename": "14643",
+        "label_file": "data/14643",
+        "mask_file": "data/14643",
+        "seg_file": "data/14643"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

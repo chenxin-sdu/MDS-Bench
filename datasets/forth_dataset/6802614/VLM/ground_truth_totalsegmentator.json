@@ -1,0 +1,818 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Totalsegmentator",
+  "description": "TotalSegmentator (Zenodo 6802614) 全身 CT 多器官 3D 分割数据集，覆盖 104 种解剖结构 (脏器/骨骼/血管/肌肉/椎体等)。样本 0-19 以 VLM/random.txt 为准；每例 sXXXX/ct.nii.gz 为原图，sXXXX/segmentations/<class>.nii.gz 为每个结构一份的二值掩膜。label_file 指向该 case 的 segmentations/ 目录（含 104 个 .nii.gz）。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Totalsegmentator",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "whole_body_multi_organ_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Totalsegmentator"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "adrenal_gland_left",
+    "adrenal_gland_right",
+    "aorta",
+    "autochthon_left",
+    "autochthon_right",
+    "brain",
+    "clavicula_left",
+    "clavicula_right",
+    "colon",
+    "duodenum",
+    "esophagus",
+    "face",
+    "femur_left",
+    "femur_right",
+    "gallbladder",
+    "gluteus_maximus_left",
+    "gluteus_maximus_right",
+    "gluteus_medius_left",
+    "gluteus_medius_right",
+    "gluteus_minimus_left",
+    "gluteus_minimus_right",
+    "heart_atrium_left",
+    "heart_atrium_right",
+    "heart_myocardium",
+    "heart_ventricle_left",
+    "heart_ventricle_right",
+    "hip_left",
+    "hip_right",
+    "humerus_left",
+    "humerus_right",
+    "iliac_artery_left",
+    "iliac_artery_right",
+    "iliac_vena_left",
+    "iliac_vena_right",
+    "iliopsoas_left",
+    "iliopsoas_right",
+    "inferior_vena_cava",
+    "kidney_left",
+    "kidney_right",
+    "liver",
+    "lung_lower_lobe_left",
+    "lung_lower_lobe_right",
+    "lung_middle_lobe_right",
+    "lung_upper_lobe_left",
+    "lung_upper_lobe_right",
+    "pancreas",
+    "portal_vein_and_splenic_vein",
+    "pulmonary_artery",
+    "rib_left_1",
+    "rib_left_2",
+    "rib_left_3",
+    "rib_left_4",
+    "rib_left_5",
+    "rib_left_6",
+    "rib_left_7",
+    "rib_left_8",
+    "rib_left_9",
+    "rib_left_10",
+    "rib_left_11",
+    "rib_left_12",
+    "rib_right_1",
+    "rib_right_2",
+    "rib_right_3",
+    "rib_right_4",
+    "rib_right_5",
+    "rib_right_6",
+    "rib_right_7",
+    "rib_right_8",
+    "rib_right_9",
+    "rib_right_10",
+    "rib_right_11",
+    "rib_right_12",
+    "sacrum",
+    "scapula_left",
+    "scapula_right",
+    "small_bowel",
+    "spleen",
+    "stomach",
+    "trachea",
+    "urinary_bladder",
+    "vertebrae_C1",
+    "vertebrae_C2",
+    "vertebrae_C3",
+    "vertebrae_C4",
+    "vertebrae_C5",
+    "vertebrae_C6",
+    "vertebrae_C7",
+    "vertebrae_L1",
+    "vertebrae_L2",
+    "vertebrae_L3",
+    "vertebrae_L4",
+    "vertebrae_L5",
+    "vertebrae_T1",
+    "vertebrae_T2",
+    "vertebrae_T3",
+    "vertebrae_T4",
+    "vertebrae_T5",
+    "vertebrae_T6",
+    "vertebrae_T7",
+    "vertebrae_T8",
+    "vertebrae_T9",
+    "vertebrae_T10",
+    "vertebrae_T11",
+    "vertebrae_T12"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "s0557",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0557",
+        "source_file": "data/Totalsegmentator_dataset/s0557/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0557/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0557/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0557/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "s0796",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0796",
+        "source_file": "data/Totalsegmentator_dataset/s0796/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0796/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0796/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0796/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "s0197",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0197",
+        "source_file": "data/Totalsegmentator_dataset/s0197/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0197/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0197/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0197/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "s0189",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0189",
+        "source_file": "data/Totalsegmentator_dataset/s0189/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0189/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0189/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0189/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "s1000",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1000",
+        "source_file": "data/Totalsegmentator_dataset/s1000/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1000/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1000/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1000/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "s1226",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1226",
+        "source_file": "data/Totalsegmentator_dataset/s1226/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1226/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1226/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1226/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "s0107",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0107",
+        "source_file": "data/Totalsegmentator_dataset/s0107/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0107/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0107/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0107/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "s1403",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1403",
+        "source_file": "data/Totalsegmentator_dataset/s1403/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1403/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1403/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1403/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "s0090",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0090",
+        "source_file": "data/Totalsegmentator_dataset/s0090/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0090/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0090/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0090/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "s0470",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0470",
+        "source_file": "data/Totalsegmentator_dataset/s0470/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0470/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0470/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0470/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "s0513",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0513",
+        "source_file": "data/Totalsegmentator_dataset/s0513/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0513/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0513/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0513/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "s0800",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0800",
+        "source_file": "data/Totalsegmentator_dataset/s0800/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0800/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0800/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0800/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "s1273",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1273",
+        "source_file": "data/Totalsegmentator_dataset/s1273/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1273/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1273/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1273/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "s0044",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0044",
+        "source_file": "data/Totalsegmentator_dataset/s0044/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0044/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0044/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0044/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "s1338",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1338",
+        "source_file": "data/Totalsegmentator_dataset/s1338/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1338/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1338/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1338/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "s0608",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0608",
+        "source_file": "data/Totalsegmentator_dataset/s0608/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0608/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0608/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0608/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "s1006",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1006",
+        "source_file": "data/Totalsegmentator_dataset/s1006/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1006/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1006/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1006/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "s0247",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0247",
+        "source_file": "data/Totalsegmentator_dataset/s0247/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0247/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0247/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0247/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "s1246",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s1246",
+        "source_file": "data/Totalsegmentator_dataset/s1246/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s1246/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s1246/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s1246/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "s0977",
+      "class": "TotalSegmentator whole-body multi-organ CT segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Totalsegmentator"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "s0977",
+        "source_file": "data/Totalsegmentator_dataset/s0977/ct.nii.gz",
+        "original_filename": "ct.nii.gz",
+        "label_file": "data/Totalsegmentator_dataset/s0977/segmentations",
+        "mask_file": "data/Totalsegmentator_dataset/s0977/segmentations",
+        "seg_file": "data/Totalsegmentator_dataset/s0977/segmentations"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

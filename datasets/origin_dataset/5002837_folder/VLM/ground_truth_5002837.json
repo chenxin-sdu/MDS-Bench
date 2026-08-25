@@ -1,0 +1,919 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "RetinalAVM_CaseStudy_5002837",
+  "description": "5002837 眼科病例分类 GT（20样本）。按用户给定规则重定义类别：A) SymphonyWeb 1-10=右眼术后眼底，11-12=右眼红外眼底，13-21=左眼眼底，22-78=术后FA；B) OCT_OD/OS 分别为右/左眼黄斑OCT；C) ODUSBscan* 为右眼术前超声。",
+  "expected_count": 20,
+  "modality_primary": "Ophthalmic",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "source_path",
+      "source_file_name",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "original_filename"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。",
+    "expected_dataset_name": "RetinalAVM_CaseStudy_5002837",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "source_path",
+        "source_file_name",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name",
+        "laterality"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "ophthalmic_imaging_modality_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "image_level_label",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Fundus photo (Right eye, post-surgery)",
+    "Infrared fundus photo (Right eye)",
+    "Fundus photo (Left eye)",
+    "Fluorescein angiography (Right/Left eye, post-surgery)",
+    "OCT of macula (Right eye)",
+    "OCT of macula (Left eye)",
+    "Ultrasonography (Right eye, pre-surgery)"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "OCT_OD",
+      "class": "OCT of macula (Right eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "OCT"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/OCT_OD.png",
+        "original_filename": "OCT_OD.png",
+        "label_text": "OCT of macula (Right eye)",
+        "class_name": "OCT of macula (Right eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 4,
+          "label_name": "OCT of macula (Right eye)"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "OCT_OS",
+      "class": "OCT of macula (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "OCT"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/OCT_OS.png",
+        "original_filename": "OCT_OS.png",
+        "label_text": "OCT of macula (Left eye)",
+        "class_name": "OCT of macula (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 5,
+          "label_name": "OCT of macula (Left eye)"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "ODUSBscan",
+      "class": "Ultrasonography (Right eye, pre-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/ODUSBscan.png",
+        "original_filename": "ODUSBscan.png",
+        "label_text": "Ultrasonography (Right eye, pre-surgery)",
+        "class_name": "Ultrasonography (Right eye, pre-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 6,
+          "label_name": "Ultrasonography (Right eye, pre-surgery)"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "ODUSBscan2",
+      "class": "Ultrasonography (Right eye, pre-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/ODUSBscan2.png",
+        "original_filename": "ODUSBscan2.png",
+        "label_text": "Ultrasonography (Right eye, pre-surgery)",
+        "class_name": "Ultrasonography (Right eye, pre-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 6,
+          "label_name": "Ultrasonography (Right eye, pre-surgery)"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "ODUSBscan3",
+      "class": "Ultrasonography (Right eye, pre-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Ultrasound"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/ODUSBscan3.png",
+        "original_filename": "ODUSBscan3.png",
+        "label_text": "Ultrasonography (Right eye, pre-surgery)",
+        "class_name": "Ultrasonography (Right eye, pre-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 6,
+          "label_name": "Ultrasonography (Right eye, pre-surgery)"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "SymphonyWeb204877_1",
+      "class": "Fundus photo (Right eye, post-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_1.TIF",
+        "original_filename": "SymphonyWeb204877_1.TIF",
+        "label_text": "Fundus photo (Right eye, post-surgery)",
+        "class_name": "Fundus photo (Right eye, post-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 0,
+          "label_name": "Fundus photo (Right eye, post-surgery)"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "SymphonyWeb204877_10",
+      "class": "Fundus photo (Right eye, post-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_10.TIF",
+        "original_filename": "SymphonyWeb204877_10.TIF",
+        "label_text": "Fundus photo (Right eye, post-surgery)",
+        "class_name": "Fundus photo (Right eye, post-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 0,
+          "label_name": "Fundus photo (Right eye, post-surgery)"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "SymphonyWeb204877_11",
+      "class": "Infrared fundus photo (Right eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_11.TIF",
+        "original_filename": "SymphonyWeb204877_11.TIF",
+        "label_text": "Infrared fundus photo (Right eye)",
+        "class_name": "Infrared fundus photo (Right eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 1,
+          "label_name": "Infrared fundus photo (Right eye)"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "SymphonyWeb204877_12",
+      "class": "Infrared fundus photo (Right eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_12.TIF",
+        "original_filename": "SymphonyWeb204877_12.TIF",
+        "label_text": "Infrared fundus photo (Right eye)",
+        "class_name": "Infrared fundus photo (Right eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 1,
+          "label_name": "Infrared fundus photo (Right eye)"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "SymphonyWeb204877_13",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_13.TIF",
+        "original_filename": "SymphonyWeb204877_13.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "SymphonyWeb204877_14",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_14.TIF",
+        "original_filename": "SymphonyWeb204877_14.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "SymphonyWeb204877_15",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_15.TIF",
+        "original_filename": "SymphonyWeb204877_15.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "SymphonyWeb204877_16",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_16.TIF",
+        "original_filename": "SymphonyWeb204877_16.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "SymphonyWeb204877_17",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_17.TIF",
+        "original_filename": "SymphonyWeb204877_17.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "SymphonyWeb204877_18",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_18.TIF",
+        "original_filename": "SymphonyWeb204877_18.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "SymphonyWeb204877_19",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_19.TIF",
+        "original_filename": "SymphonyWeb204877_19.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "SymphonyWeb204877_2",
+      "class": "Fundus photo (Right eye, post-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_2.TIF",
+        "original_filename": "SymphonyWeb204877_2.TIF",
+        "label_text": "Fundus photo (Right eye, post-surgery)",
+        "class_name": "Fundus photo (Right eye, post-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 0,
+          "label_name": "Fundus photo (Right eye, post-surgery)"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "SymphonyWeb204877_20",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_20.TIF",
+        "original_filename": "SymphonyWeb204877_20.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "SymphonyWeb204877_21",
+      "class": "Fundus photo (Left eye)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_21.TIF",
+        "original_filename": "SymphonyWeb204877_21.TIF",
+        "label_text": "Fundus photo (Left eye)",
+        "class_name": "Fundus photo (Left eye)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 2,
+          "label_name": "Fundus photo (Left eye)"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "SymphonyWeb204877_23",
+      "class": "Fluorescein angiography (Right/Left eye, post-surgery)",
+      "map_type": "image_level_label",
+      "expected_record": {
+        "dataset_name": "RetinalAVM_CaseStudy_5002837"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Fundus"
+      },
+      "expected_extra": {
+        "subject_id": null,
+        "source_file": "data/SymphonyWeb204877_23.TIF",
+        "original_filename": "SymphonyWeb204877_23.TIF",
+        "label_text": "Fluorescein angiography (Right/Left eye, post-surgery)",
+        "class_name": "Fluorescein angiography (Right/Left eye, post-surgery)"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "class_names": {
+            "0": "Fundus photo (Right eye, post-surgery)",
+            "1": "Infrared fundus photo (Right eye)",
+            "2": "Fundus photo (Left eye)",
+            "3": "Fluorescein angiography (Right/Left eye, post-surgery)",
+            "4": "OCT of macula (Right eye)",
+            "5": "OCT of macula (Left eye)",
+            "6": "Ultrasonography (Right eye, pre-surgery)"
+          },
+          "label": 3,
+          "label_name": "Fluorescein angiography (Right/Left eye, post-surgery)"
+        }
+      }
+    }
+  }
+}

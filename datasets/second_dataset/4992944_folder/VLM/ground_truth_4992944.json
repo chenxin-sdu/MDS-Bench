@@ -1,0 +1,715 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs",
+  "description": "Granger2018 AOSLO 数据集 2D 分割 GT。按字典序 DFS 采样前 20 个样本，字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "aoslo_rpe_pr_roi_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "AdaptiveOpticsScanningLightOphthalmoscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "foreground"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "nor011_rpe_montage",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/NOR011_RPE_Montage.tif",
+        "original_filename": "NOR011_RPE_Montage.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "n_10_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/N_10_cones_bin.tif",
+        "original_filename": "N_10_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "n_12_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/N_12_cones_bin.tif",
+        "original_filename": "N_12_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "n_1_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/N_1_cones_bin.tif",
+        "original_filename": "N_1_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "n_2_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/N_2_cones_bin.tif",
+        "original_filename": "N_2_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "t_16_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/T_16_cones_bin.tif",
+        "original_filename": "T_16_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "t_1_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/T_1_cones_bin.tif",
+        "original_filename": "T_1_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "t_2_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/T_2_cones_bin.tif",
+        "original_filename": "T_2_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "t_9_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/T_9_cones_bin.tif",
+        "original_filename": "T_9_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "ul_1_cones_bin",
+      "class": "foreground",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Marked Cones/UL_1_cones_bin.tif",
+        "original_filename": "UL_1_cones_bin.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "n_10_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_10_PR.tif",
+        "original_filename": "N_10_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "n_11_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_11_PR.tif",
+        "original_filename": "N_11_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "n_12_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_12_PR.tif",
+        "original_filename": "N_12_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "n_13_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_13_PR.tif",
+        "original_filename": "N_13_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "n_1_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_1_PR.tif",
+        "original_filename": "N_1_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "n_2_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_2_PR.tif",
+        "original_filename": "N_2_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "n_7_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_7_PR.tif",
+        "original_filename": "N_7_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "n_9_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/N_9_PR.tif",
+        "original_filename": "N_9_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "t_10_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/T_10_PR.tif",
+        "original_filename": "T_10_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "t_11_pr",
+      "class": "structure_of_interest",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "Granger2018_AOSLO_RPE_PR_ROIs"
+      },
+      "expected_context_sample": {
+        "modality_primary": "AdaptiveOpticsScanningLightOphthalmoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NOR011",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/NOR011/PR ROIs - Raw/T_11_PR.tif",
+        "original_filename": "T_11_PR.tif"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

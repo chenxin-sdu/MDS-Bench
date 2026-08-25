@@ -1,0 +1,9 @@
+0 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/Bmode_artery.mat
+1 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/Bmode_inclusion3.mat
+2 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/Bmode_inclusion7.mat
+3 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/displacement_artery.mat
+4 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/displacement_inclusion3.mat
+5 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/displacement_inclusion7.mat
+6 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/velocity_artery.mat
+7 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/velocity_inclusion3.mat
+8 /data3/chenxin/Agent_test/origin_dataset/4939348_folder/data/elastographic map/velocity_inclusion7.mat

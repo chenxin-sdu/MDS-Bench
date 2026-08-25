@@ -1,0 +1,727 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal",
+  "description": "BTCV + TCIA Pancreas-CT 多器官腹部分割数据 (Zenodo 1169361)。本目录仅含 label_btcv_multiorgan/labelXXXX.nii.gz 与 label_tcia_multiorgan/labelXXXX.nii.gz 两套体素金标准；原始 CT 体素 (img*.nii.gz) 需从 BTCV 与 TCIA Pancreas-CT 官方分别下载。BTCV 含 13 种器官（脾、左/右肾、胆囊、食管、肝、胃、主动脉、下腔静脉、门静脉/脾静脉、胰腺、左/右肾上腺）；TCIA Pancreas-CT 主要标注胰腺。因此本 GT 中 source_file/label/mask/seg 均指向同一份 label*.nii.gz （与 random.txt 一致）。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "abdominal_multi_organ_segmentation_btcv_tcia",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "spleen",
+    "right_kidney",
+    "left_kidney",
+    "gallbladder",
+    "esophagus",
+    "liver",
+    "stomach",
+    "aorta",
+    "inferior_vena_cava",
+    "portal_and_splenic_vein",
+    "pancreas",
+    "right_adrenal_gland",
+    "left_adrenal_gland"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "label0064",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0064",
+        "source_file": "data/label_btcv_multiorgan/label0064.nii.gz",
+        "original_filename": "label0064.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0064.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0064.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0064.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "label0037",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0037",
+        "source_file": "data/label_btcv_multiorgan/label0037.nii.gz",
+        "original_filename": "label0037.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0037.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0037.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0037.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "label0061",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0061",
+        "source_file": "data/label_btcv_multiorgan/label0061.nii.gz",
+        "original_filename": "label0061.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0061.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0061.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0061.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "label0044",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0044",
+        "source_file": "data/label_tcia_multiorgan/label0044.nii.gz",
+        "original_filename": "label0044.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0044.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0044.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0044.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "label0032",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0032",
+        "source_file": "data/label_tcia_multiorgan/label0032.nii.gz",
+        "original_filename": "label0032.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0032.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0032.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0032.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "label0047",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0047",
+        "source_file": "data/label_tcia_multiorgan/label0047.nii.gz",
+        "original_filename": "label0047.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0047.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0047.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0047.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "label0003",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0003",
+        "source_file": "data/label_btcv_multiorgan/label0003.nii.gz",
+        "original_filename": "label0003.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0003.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0003.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0003.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "label0007",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0007",
+        "source_file": "data/label_tcia_multiorgan/label0007.nii.gz",
+        "original_filename": "label0007.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0007.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0007.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0007.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "label0027",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0027",
+        "source_file": "data/label_btcv_multiorgan/label0027.nii.gz",
+        "original_filename": "label0027.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0027.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0027.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0027.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "label0026",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0026",
+        "source_file": "data/label_tcia_multiorgan/label0026.nii.gz",
+        "original_filename": "label0026.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0026.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0026.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0026.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "label0077",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0077",
+        "source_file": "data/label_btcv_multiorgan/label0077.nii.gz",
+        "original_filename": "label0077.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0077.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0077.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0077.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "label0062",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0062",
+        "source_file": "data/label_btcv_multiorgan/label0062.nii.gz",
+        "original_filename": "label0062.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0062.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0062.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0062.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "label0066",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0066",
+        "source_file": "data/label_btcv_multiorgan/label0066.nii.gz",
+        "original_filename": "label0066.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0066.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0066.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0066.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "label0021",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0021",
+        "source_file": "data/label_tcia_multiorgan/label0021.nii.gz",
+        "original_filename": "label0021.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0021.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0021.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0021.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "label0040",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0040",
+        "source_file": "data/label_tcia_multiorgan/label0040.nii.gz",
+        "original_filename": "label0040.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0040.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0040.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0040.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "label0040",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0040",
+        "source_file": "data/label_btcv_multiorgan/label0040.nii.gz",
+        "original_filename": "label0040.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0040.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0040.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0040.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "label0039",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0039",
+        "source_file": "data/label_btcv_multiorgan/label0039.nii.gz",
+        "original_filename": "label0039.nii.gz",
+        "label_file": "data/label_btcv_multiorgan/label0039.nii.gz",
+        "mask_file": "data/label_btcv_multiorgan/label0039.nii.gz",
+        "seg_file": "data/label_btcv_multiorgan/label0039.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "label0042",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0042",
+        "source_file": "data/label_tcia_multiorgan/label0042.nii.gz",
+        "original_filename": "label0042.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0042.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0042.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0042.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "label0016",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0016",
+        "source_file": "data/label_tcia_multiorgan/label0016.nii.gz",
+        "original_filename": "label0016.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0016.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0016.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0016.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "label0008",
+      "class": "BTCV/TCIA multi-organ abdominal CT segmentation labels",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "BTCV-TCIA-MultiOrgan-Abdominal"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "label0008",
+        "source_file": "data/label_tcia_multiorgan/label0008.nii.gz",
+        "original_filename": "label0008.nii.gz",
+        "label_file": "data/label_tcia_multiorgan/label0008.nii.gz",
+        "mask_file": "data/label_tcia_multiorgan/label0008.nii.gz",
+        "seg_file": "data/label_tcia_multiorgan/label0008.nii.gz"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

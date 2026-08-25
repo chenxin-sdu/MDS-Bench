@@ -1,0 +1,740 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "fazekas-mri",
+  "description": "基于 data/：README 与 Hugging Face 说明本示例为 Fazekas I（局灶性胶质增生）脑部 MRI。brain_mri_5.csv 仅给出各序列 (SE*) 的 .dcm 数量，无逐片分级差异，故 GT 将每张切片视为同一临床分级标签 Fazekas_I。采样：排除 .cache 后，对全部 *.dcm 的相对路径按字典序排序，取前 20 个文件（ST000001/SE000001/IM000001.dcm 起）。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "fazekas-mri",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "brain_mri_fazekas_grade",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "fazekas-mri"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Fazekas_I"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "IM000001",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000001",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000001.dcm",
+        "original_filename": "IM000001.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "IM000002",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000002",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000002.dcm",
+        "original_filename": "IM000002.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "IM000003",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000003",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000003.dcm",
+        "original_filename": "IM000003.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "IM000004",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000004",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000004.dcm",
+        "original_filename": "IM000004.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "IM000005",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000005",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000005.dcm",
+        "original_filename": "IM000005.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "IM000006",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000006",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000006.dcm",
+        "original_filename": "IM000006.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "IM000007",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000007",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000007.dcm",
+        "original_filename": "IM000007.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "IM000008",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000008",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000008.dcm",
+        "original_filename": "IM000008.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "IM000009",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000009",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000009.dcm",
+        "original_filename": "IM000009.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "IM000010",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000010",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000010.dcm",
+        "original_filename": "IM000010.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "IM000011",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000011",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000011.dcm",
+        "original_filename": "IM000011.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "IM000012",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000012",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000012.dcm",
+        "original_filename": "IM000012.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "IM000013",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000013",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000013.dcm",
+        "original_filename": "IM000013.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "IM000014",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000014",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000014.dcm",
+        "original_filename": "IM000014.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "IM000015",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000015",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000015.dcm",
+        "original_filename": "IM000015.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "IM000016",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000016",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000016.dcm",
+        "original_filename": "IM000016.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "IM000017",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000017",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000017.dcm",
+        "original_filename": "IM000017.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "IM000018",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000018",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000018.dcm",
+        "original_filename": "IM000018.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "IM000019",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000019",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000019.dcm",
+        "original_filename": "IM000019.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "IM000020",
+      "class": "Fazekas_I",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "fazekas-mri"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "IM000020",
+        "label_text": "Fazekas_I",
+        "class_name": "Fazekas_I",
+        "source_file": "data/ST000001/SE000001/IM000020.dcm",
+        "original_filename": "IM000020.dcm"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Fazekas_I"
+        }
+      }
+    }
+  }
+}

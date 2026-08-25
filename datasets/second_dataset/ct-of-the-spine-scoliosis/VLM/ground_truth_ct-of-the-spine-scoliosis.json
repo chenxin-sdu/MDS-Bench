@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "ct-of-the-spine-scoliosis",
+  "description": "基于 data/ 目录：按字典序 DFS 遍历（跳过 .cache 与 __MACOSX），仅将 .jpg/.jpeg/.png 视为独立样本（与同一切片的 .dcm 成对存在时不重复计入），按出现顺序取前 20 个切片。README 说明该集合为脊柱侧弯患者的 CT 脊柱扫描；无独立阴性切片标签文件，故二分类 GT 采用 no_scoliosis/scoliosis，本批样本均为病例数据，期望类别为 scoliosis。字段结构与 cls_gt 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "ct-of-the-spine-scoliosis",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "ct_spine_scoliosis_binary",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "no_scoliosis",
+    "scoliosis"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "0",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/0.jpg",
+        "original_filename": "0.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "1",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/1.jpg",
+        "original_filename": "1.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "10",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/10.jpg",
+        "original_filename": "10.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "100",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/100.jpg",
+        "original_filename": "100.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "101",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/101.jpg",
+        "original_filename": "101.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "102",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/102.jpg",
+        "original_filename": "102.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "103",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/103.jpg",
+        "original_filename": "103.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "104",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/104.jpg",
+        "original_filename": "104.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "105",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/105.jpg",
+        "original_filename": "105.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "106",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/106.jpg",
+        "original_filename": "106.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "107",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/107.jpg",
+        "original_filename": "107.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "108",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/108.jpg",
+        "original_filename": "108.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "109",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/109.jpg",
+        "original_filename": "109.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "11",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/11.jpg",
+        "original_filename": "11.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "110",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/110.jpg",
+        "original_filename": "110.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "111",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/111.jpg",
+        "original_filename": "111.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "112",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/112.jpg",
+        "original_filename": "112.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "113",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/113.jpg",
+        "original_filename": "113.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "114",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/114.jpg",
+        "original_filename": "114.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "115",
+      "class": "scoliosis",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "ct-of-the-spine-scoliosis"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "1",
+        "label_text": "scoliosis",
+        "class_name": "scoliosis",
+        "source_file": "data/files/1/115.jpg",
+        "original_filename": "115.jpg"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "scoliosis"
+        }
+      }
+    }
+  }
+}

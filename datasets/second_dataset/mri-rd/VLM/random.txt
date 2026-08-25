@@ -1,0 +1,3 @@
+0 /data3/chenxin/Agent_test/second_dataset/mri-rd/data/test.dcm
+1 /data3/chenxin/Agent_test/second_dataset/mri-rd/data/test.jpg
+2 /data3/chenxin/Agent_test/second_dataset/mri-rd/data/test2.dcm

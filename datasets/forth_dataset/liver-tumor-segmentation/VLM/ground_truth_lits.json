@@ -1,0 +1,716 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "LiTS-Liver-Tumor-Segmentation",
+  "description": "LiTS (Liver Tumor Segmentation Challenge) 数据集。腹部 CT 体素分割，标签 0=background, 1=liver, 2=tumor。原图位于 volume_pt{1..5}/volume-N.nii，金标准位于 segmentations/segmentation-N.nii。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "LiTS-Liver-Tumor-Segmentation",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "liver_and_tumor_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "liver",
+    "tumor"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "volume-18",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-18",
+        "source_file": "data/volume_pt2/volume-18.nii",
+        "original_filename": "volume-18.nii",
+        "label_file": "data/segmentations/segmentation-18.nii",
+        "mask_file": "data/segmentations/segmentation-18.nii",
+        "seg_file": "data/segmentations/segmentation-18.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "volume-25",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-25",
+        "source_file": "data/volume_pt3/volume-25.nii",
+        "original_filename": "volume-25.nii",
+        "label_file": "data/segmentations/segmentation-25.nii",
+        "mask_file": "data/segmentations/segmentation-25.nii",
+        "seg_file": "data/segmentations/segmentation-25.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "volume-32",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-32",
+        "source_file": "data/volume_pt4/volume-32.nii",
+        "original_filename": "volume-32.nii",
+        "label_file": "data/segmentations/segmentation-32.nii",
+        "mask_file": "data/segmentations/segmentation-32.nii",
+        "seg_file": "data/segmentations/segmentation-32.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "volume-20",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-20",
+        "source_file": "data/volume_pt2/volume-20.nii",
+        "original_filename": "volume-20.nii",
+        "label_file": "data/segmentations/segmentation-20.nii",
+        "mask_file": "data/segmentations/segmentation-20.nii",
+        "seg_file": "data/segmentations/segmentation-20.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "volume-4",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-4",
+        "source_file": "data/volume_pt1/volume-4.nii",
+        "original_filename": "volume-4.nii",
+        "label_file": "data/segmentations/segmentation-4.nii",
+        "mask_file": "data/segmentations/segmentation-4.nii",
+        "seg_file": "data/segmentations/segmentation-4.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "volume-24",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-24",
+        "source_file": "data/volume_pt3/volume-24.nii",
+        "original_filename": "volume-24.nii",
+        "label_file": "data/segmentations/segmentation-24.nii",
+        "mask_file": "data/segmentations/segmentation-24.nii",
+        "seg_file": "data/segmentations/segmentation-24.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "volume-29",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-29",
+        "source_file": "data/volume_pt3/volume-29.nii",
+        "original_filename": "volume-29.nii",
+        "label_file": "data/segmentations/segmentation-29.nii",
+        "mask_file": "data/segmentations/segmentation-29.nii",
+        "seg_file": "data/segmentations/segmentation-29.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "volume-16",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-16",
+        "source_file": "data/volume_pt2/volume-16.nii",
+        "original_filename": "volume-16.nii",
+        "label_file": "data/segmentations/segmentation-16.nii",
+        "mask_file": "data/segmentations/segmentation-16.nii",
+        "seg_file": "data/segmentations/segmentation-16.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "volume-40",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-40",
+        "source_file": "data/volume_pt4/volume-40.nii",
+        "original_filename": "volume-40.nii",
+        "label_file": "data/segmentations/segmentation-40.nii",
+        "mask_file": "data/segmentations/segmentation-40.nii",
+        "seg_file": "data/segmentations/segmentation-40.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "volume-34",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-34",
+        "source_file": "data/volume_pt4/volume-34.nii",
+        "original_filename": "volume-34.nii",
+        "label_file": "data/segmentations/segmentation-34.nii",
+        "mask_file": "data/segmentations/segmentation-34.nii",
+        "seg_file": "data/segmentations/segmentation-34.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "volume-28",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-28",
+        "source_file": "data/volume_pt3/volume-28.nii",
+        "original_filename": "volume-28.nii",
+        "label_file": "data/segmentations/segmentation-28.nii",
+        "mask_file": "data/segmentations/segmentation-28.nii",
+        "seg_file": "data/segmentations/segmentation-28.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "volume-36",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-36",
+        "source_file": "data/volume_pt4/volume-36.nii",
+        "original_filename": "volume-36.nii",
+        "label_file": "data/segmentations/segmentation-36.nii",
+        "mask_file": "data/segmentations/segmentation-36.nii",
+        "seg_file": "data/segmentations/segmentation-36.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "volume-6",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-6",
+        "source_file": "data/volume_pt1/volume-6.nii",
+        "original_filename": "volume-6.nii",
+        "label_file": "data/segmentations/segmentation-6.nii",
+        "mask_file": "data/segmentations/segmentation-6.nii",
+        "seg_file": "data/segmentations/segmentation-6.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "volume-10",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-10",
+        "source_file": "data/volume_pt1/volume-10.nii",
+        "original_filename": "volume-10.nii",
+        "label_file": "data/segmentations/segmentation-10.nii",
+        "mask_file": "data/segmentations/segmentation-10.nii",
+        "seg_file": "data/segmentations/segmentation-10.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "volume-17",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-17",
+        "source_file": "data/volume_pt2/volume-17.nii",
+        "original_filename": "volume-17.nii",
+        "label_file": "data/segmentations/segmentation-17.nii",
+        "mask_file": "data/segmentations/segmentation-17.nii",
+        "seg_file": "data/segmentations/segmentation-17.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "volume-41",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-41",
+        "source_file": "data/volume_pt5/volume-41.nii",
+        "original_filename": "volume-41.nii",
+        "label_file": "data/segmentations/segmentation-41.nii",
+        "mask_file": "data/segmentations/segmentation-41.nii",
+        "seg_file": "data/segmentations/segmentation-41.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "volume-19",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-19",
+        "source_file": "data/volume_pt2/volume-19.nii",
+        "original_filename": "volume-19.nii",
+        "label_file": "data/segmentations/segmentation-19.nii",
+        "mask_file": "data/segmentations/segmentation-19.nii",
+        "seg_file": "data/segmentations/segmentation-19.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "volume-39",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-39",
+        "source_file": "data/volume_pt4/volume-39.nii",
+        "original_filename": "volume-39.nii",
+        "label_file": "data/segmentations/segmentation-39.nii",
+        "mask_file": "data/segmentations/segmentation-39.nii",
+        "seg_file": "data/segmentations/segmentation-39.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "volume-48",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-48",
+        "source_file": "data/volume_pt5/volume-48.nii",
+        "original_filename": "volume-48.nii",
+        "label_file": "data/segmentations/segmentation-48.nii",
+        "mask_file": "data/segmentations/segmentation-48.nii",
+        "seg_file": "data/segmentations/segmentation-48.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "volume-47",
+      "class": "Liver and liver-tumor segmentation (LiTS)",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "LiTS-Liver-Tumor-Segmentation"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "volume-47",
+        "source_file": "data/volume_pt5/volume-47.nii",
+        "original_filename": "volume-47.nii",
+        "label_file": "data/segmentations/segmentation-47.nii",
+        "mask_file": "data/segmentations/segmentation-47.nii",
+        "seg_file": "data/segmentations/segmentation-47.nii"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

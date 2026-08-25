@@ -1,0 +1,746 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "medical-7-2020",
+  "description": "Medical-7-2020：径向采样 MRI 体数据（.mat）。在 data/ 下按字典序 DFS 遍历，跳过 .cache、__MACOSX；仅将 .mat 体数据文件视为 sample。共 7 类体积，类名即文件名去扩展名（3DMR_Chest、3DMR_Renal_Arteries、Brain、Brain_data1、Brain_data2、Bust、Heart）。遇到 sample 按顺序收集，累计到 20 个即停止。source_stem/subject_id 使用相对路径去扩展名并将路径分隔符替换为下划线，以保证同类别不同 radial/子目录下的样本可区分。目录 radial_128_{2,4,8}/ 与子目录 5/10/15 为不同采样与视图设置，不作为独立类别。字段结构与 cls_gt.json 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "medical-7-2020",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "medical_7_radial_mri_volume_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "medical-7-2020"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "3DMR_Chest",
+    "3DMR_Renal_Arteries",
+    "Brain",
+    "Brain_data1",
+    "Brain_data2",
+    "Bust",
+    "Heart"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "radial_128_2_10_3DMR_Chest",
+      "class": "3DMR_Chest",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_3DMR_Chest",
+        "label_text": "3DMR_Chest",
+        "class_name": "3DMR_Chest",
+        "source_file": "data/radial_128_2/10/3DMR_Chest.mat",
+        "original_filename": "3DMR_Chest.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "3DMR_Chest"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "radial_128_2_10_3DMR_Renal_Arteries",
+      "class": "3DMR_Renal_Arteries",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_3DMR_Renal_Arteries",
+        "label_text": "3DMR_Renal_Arteries",
+        "class_name": "3DMR_Renal_Arteries",
+        "source_file": "data/radial_128_2/10/3DMR_Renal_Arteries.mat",
+        "original_filename": "3DMR_Renal_Arteries.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "3DMR_Renal_Arteries"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "radial_128_2_10_Brain",
+      "class": "Brain",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_Brain",
+        "label_text": "Brain",
+        "class_name": "Brain",
+        "source_file": "data/radial_128_2/10/Brain.mat",
+        "original_filename": "Brain.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Brain"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "radial_128_2_10_Brain_data1",
+      "class": "Brain_data1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_Brain_data1",
+        "label_text": "Brain_data1",
+        "class_name": "Brain_data1",
+        "source_file": "data/radial_128_2/10/Brain_data1.mat",
+        "original_filename": "Brain_data1.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "Brain_data1"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "radial_128_2_10_Brain_data2",
+      "class": "Brain_data2",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_Brain_data2",
+        "label_text": "Brain_data2",
+        "class_name": "Brain_data2",
+        "source_file": "data/radial_128_2/10/Brain_data2.mat",
+        "original_filename": "Brain_data2.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Brain_data2"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "radial_128_2_10_Bust",
+      "class": "Bust",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_Bust",
+        "label_text": "Bust",
+        "class_name": "Bust",
+        "source_file": "data/radial_128_2/10/Bust.mat",
+        "original_filename": "Bust.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "Bust"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "radial_128_2_10_Heart",
+      "class": "Heart",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_10_Heart",
+        "label_text": "Heart",
+        "class_name": "Heart",
+        "source_file": "data/radial_128_2/10/Heart.mat",
+        "original_filename": "Heart.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Heart"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "radial_128_2_15_3DMR_Chest",
+      "class": "3DMR_Chest",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_3DMR_Chest",
+        "label_text": "3DMR_Chest",
+        "class_name": "3DMR_Chest",
+        "source_file": "data/radial_128_2/15/3DMR_Chest.mat",
+        "original_filename": "3DMR_Chest.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "3DMR_Chest"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "radial_128_2_15_3DMR_Renal_Arteries",
+      "class": "3DMR_Renal_Arteries",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_3DMR_Renal_Arteries",
+        "label_text": "3DMR_Renal_Arteries",
+        "class_name": "3DMR_Renal_Arteries",
+        "source_file": "data/radial_128_2/15/3DMR_Renal_Arteries.mat",
+        "original_filename": "3DMR_Renal_Arteries.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "3DMR_Renal_Arteries"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "radial_128_2_15_Brain",
+      "class": "Brain",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_Brain",
+        "label_text": "Brain",
+        "class_name": "Brain",
+        "source_file": "data/radial_128_2/15/Brain.mat",
+        "original_filename": "Brain.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Brain"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "radial_128_2_15_Brain_data1",
+      "class": "Brain_data1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_Brain_data1",
+        "label_text": "Brain_data1",
+        "class_name": "Brain_data1",
+        "source_file": "data/radial_128_2/15/Brain_data1.mat",
+        "original_filename": "Brain_data1.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "Brain_data1"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "radial_128_2_15_Brain_data2",
+      "class": "Brain_data2",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_Brain_data2",
+        "label_text": "Brain_data2",
+        "class_name": "Brain_data2",
+        "source_file": "data/radial_128_2/15/Brain_data2.mat",
+        "original_filename": "Brain_data2.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Brain_data2"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "radial_128_2_15_Bust",
+      "class": "Bust",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_Bust",
+        "label_text": "Bust",
+        "class_name": "Bust",
+        "source_file": "data/radial_128_2/15/Bust.mat",
+        "original_filename": "Bust.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "Bust"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "radial_128_2_15_Heart",
+      "class": "Heart",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_15_Heart",
+        "label_text": "Heart",
+        "class_name": "Heart",
+        "source_file": "data/radial_128_2/15/Heart.mat",
+        "original_filename": "Heart.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 6,
+          "label_name": "Heart"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "radial_128_2_5_3DMR_Chest",
+      "class": "3DMR_Chest",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_3DMR_Chest",
+        "label_text": "3DMR_Chest",
+        "class_name": "3DMR_Chest",
+        "source_file": "data/radial_128_2/5/3DMR_Chest.mat",
+        "original_filename": "3DMR_Chest.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "3DMR_Chest"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "radial_128_2_5_3DMR_Renal_Arteries",
+      "class": "3DMR_Renal_Arteries",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_3DMR_Renal_Arteries",
+        "label_text": "3DMR_Renal_Arteries",
+        "class_name": "3DMR_Renal_Arteries",
+        "source_file": "data/radial_128_2/5/3DMR_Renal_Arteries.mat",
+        "original_filename": "3DMR_Renal_Arteries.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "3DMR_Renal_Arteries"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "radial_128_2_5_Brain",
+      "class": "Brain",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_Brain",
+        "label_text": "Brain",
+        "class_name": "Brain",
+        "source_file": "data/radial_128_2/5/Brain.mat",
+        "original_filename": "Brain.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 2,
+          "label_name": "Brain"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "radial_128_2_5_Brain_data1",
+      "class": "Brain_data1",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_Brain_data1",
+        "label_text": "Brain_data1",
+        "class_name": "Brain_data1",
+        "source_file": "data/radial_128_2/5/Brain_data1.mat",
+        "original_filename": "Brain_data1.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 3,
+          "label_name": "Brain_data1"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "radial_128_2_5_Brain_data2",
+      "class": "Brain_data2",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_Brain_data2",
+        "label_text": "Brain_data2",
+        "class_name": "Brain_data2",
+        "source_file": "data/radial_128_2/5/Brain_data2.mat",
+        "original_filename": "Brain_data2.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 4,
+          "label_name": "Brain_data2"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "radial_128_2_5_Bust",
+      "class": "Bust",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "medical-7-2020"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "radial_128_2_5_Bust",
+        "label_text": "Bust",
+        "class_name": "Bust",
+        "source_file": "data/radial_128_2/5/Bust.mat",
+        "original_filename": "Bust.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 5,
+          "label_name": "Bust"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,742 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "capsule_endoscopy_dataset_kauhc2025",
+  "description": "KAUHC 胶囊内镜数据集（kauhc2025）。在 data/ 下按字典序 DFS 遍历整棵目录树，仅将常见医学图像扩展名视为 sample；标签为图像所在一级子目录名（AVM / Normal / Ulcer）之三分类。遇到 sample 按遍历顺序收集，累计到 20 个即停止。因 DFS 下 AVM 字典序先于 Normal 与 Ulcer，前 20 个样本均来自 AVM/。字段结构与 cls_gt.json 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Capsule endoscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "capsule_endoscopy_dataset_kauhc2025",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "capsule_endoscopy_multiclass_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Capsule endoscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "AVM",
+    "Normal",
+    "Ulcer"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "AVM_2024-08-07-08-01-08_15875",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_15875",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_15875.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_15875.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "AVM_2024-08-07-08-01-08_23124",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_23124",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_23124.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_23124.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "AVM_2024-08-07-08-01-08_42215",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_42215",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_42215.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_42215.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "AVM_2024-08-07-08-01-08_46388",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_46388",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_46388.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_46388.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "AVM_2024-08-07-08-01-08_51838",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_51838",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_51838.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_51838.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "AVM_2024-08-07-08-01-08_58479",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_58479",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_58479.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_58479.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "AVM_2024-08-07-08-01-08_64109",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_64109",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_64109.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_64109.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "AVM_2024-08-07-08-01-08_77185",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-08_77185",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-08_77185.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-08_77185.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "AVM_2024-08-07-08-01-24_12288",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_12288",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_12288.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_12288.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "AVM_2024-08-07-08-01-24_12437",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_12437",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_12437.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_12437.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "AVM_2024-08-07-08-01-24_13276",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_13276",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_13276.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_13276.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "AVM_2024-08-07-08-01-24_28696",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_28696",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_28696.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_28696.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "AVM_2024-08-07-08-01-24_36065",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_36065",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_36065.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_36065.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "AVM_2024-08-07-08-01-24_40458",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_40458",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_40458.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_40458.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "AVM_2024-08-07-08-01-24_48748",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_48748",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_48748.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_48748.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "AVM_2024-08-07-08-01-24_52501",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_52501",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_52501.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_52501.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "AVM_2024-08-07-08-01-24_58219",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_58219",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_58219.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_58219.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "AVM_2024-08-07-08-01-24_61202",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_61202",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_61202.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_61202.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "AVM_2024-08-07-08-01-24_62503",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_62503",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_62503.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_62503.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "AVM_2024-08-07-08-01-24_63454",
+      "class": "AVM",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "capsule_endoscopy_dataset_kauhc2025"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Capsule endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "AVM_2024-08-07-08-01-24_63454",
+        "label_text": "AVM",
+        "class_name": "AVM",
+        "source_file": "data/AVM/AVM_2024-08-07-08-01-24_63454.bmp",
+        "original_filename": "AVM_2024-08-07-08-01-24_63454.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "AVM"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "fluorescence-microscopy-image-denoising-dataset",
+  "description": "fluorescence-microscopy-image-denoising-dataset segmentation GT（真·DFS 重建版，前 14 个样本）",
+  "expected_count": 14,
+  "modality_primary": "Microscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "fluorescence-microscopy-image-denoising-dataset",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "<leaf-task-text>",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "Microscopy",
+      "data_volume.total": 14
+    }
+  },
+  "classes": [
+    "laser power 110 - 1000",
+    "laser power 40 - 1000",
+    "laser power 75 - 1000",
+    "laser power 200 - 1000",
+    "laser power 400 - 1000"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "dataset_20210226_denoising_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210226_denoising_ZIM504.h5",
+        "original_filename": "dataset_20210226_denoising_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "dataset_20210331_denoising_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210331_denoising_ZIM504.h5",
+        "original_filename": "dataset_20210331_denoising_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "dataset_20210407_denoising_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210407_denoising_ZIM504.h5",
+        "original_filename": "dataset_20210407_denoising_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "dataset_20210421_magnify_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210421_magnify_ZIM504.h5",
+        "original_filename": "dataset_20210421_magnify_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "dataset_20210527_denoising_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210527_denoising_ZIM504.h5",
+        "original_filename": "dataset_20210527_denoising_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "dataset_20210604_denoising_zim504",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210604_denoising_ZIM504.h5",
+        "original_filename": "dataset_20210604_denoising_ZIM504.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "dataset_20210626_denoising_oh16230_20x",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210626_denoising_OH16230_20X.h5",
+        "original_filename": "dataset_20210626_denoising_OH16230_20X.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "dataset_20210627_denoising_oh16230_20x",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210627_denoising_OH16230_20x.h5",
+        "original_filename": "dataset_20210627_denoising_OH16230_20x.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "dataset_20210630_denoising_oh16230_20x",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210630_denoising_OH16230_20x.h5",
+        "original_filename": "dataset_20210630_denoising_OH16230_20x.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "dataset_20210705_denoising_oh16230_20x",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210705_denoising_OH16230_20x.h5",
+        "original_filename": "dataset_20210705_denoising_OH16230_20x.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "dataset_20210710_denoising_pvd_array",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210710_denoising_PVD_array.h5",
+        "original_filename": "dataset_20210710_denoising_PVD_array.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "dataset_20210714_denoising_pvd_array",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210714_denoising_PVD_array.h5",
+        "original_filename": "dataset_20210714_denoising_PVD_array.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "dataset_20210721_denoising_pvd_array",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210721_denoising_PVD_array.h5",
+        "original_filename": "dataset_20210721_denoising_PVD_array.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "dataset_20210729_denoising_pvd_array",
+      "class": null,
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "fluorescence-microscopy-image-denoising-dataset"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Microscopy"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "source_file": "data/collated_image_data/collated_data/dataset_20210729_denoising_PVD_array.h5",
+        "original_filename": "dataset_20210729_denoising_PVD_array.h5"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  }
+}

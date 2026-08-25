@@ -1,0 +1,8 @@
+0 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD058.bmp
+1 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD063.bmp
+2 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD064.bmp
+3 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD080.bmp
+4 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD088.bmp
+5 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD090.bmp
+6 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD219.bmp
+7 /data3/chenxin/Agent_test/second_dataset/melanoma-train/data/PH2_Labelled_Images/IMD240.bmp

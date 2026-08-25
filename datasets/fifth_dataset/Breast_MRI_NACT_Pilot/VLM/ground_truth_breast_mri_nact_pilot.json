@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "Breast-MRI-NACT-Pilot",
+  "description": "Breast-MRI-NACT-Pilot: neoadjuvant_breast_mri_clinical_outcomes (classification, MRI, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "Breast-MRI-NACT-Pilot",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "neoadjuvant_breast_mri_clinical_outcomes",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "NED, no evidence of disease",
+    ">1/3 decrease clinical longest diameter",
+    "<1/3 decrease LD",
+    "SD, steady disease/PD, progressive disease"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "1-22",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-61",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-61/07-20-1994-723433-MR BREASTUNI UE-04098/51000.000000-Dynamic-3dfgre SER-75428/1-22.dcm",
+        "original_filename": "1-22.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "2-091",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-53",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-53/12-07-1993-435209-MR BREASTUNI UE-88737/5.000000-Dynamic-3dfgre-35520/2-091.dcm",
+        "original_filename": "2-091.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "1-25",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-53",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-53/01-05-1994-188122-MR BREAST BI UE-84348/410.000000-PJN-92547/1-25.dcm",
+        "original_filename": "1-25.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "2-050",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-41",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-41/01-02-1990-981066-MR BREAST-86040/3.000000-Sagittal-IR3DFGRE-15237/2-050.dcm",
+        "original_filename": "2-050.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "1-10",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-15",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-15/05-30-1991-801824-MR BREAS UNIT-39572/621.000000-PJN-17102/1-10.dcm",
+        "original_filename": "1-10.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "1-028",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-21",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-21/06-30-1992-506120-MR BREAS UNIT-54250/3.000000-Dynamic-3dfgre-55993/1-028.dcm",
+        "original_filename": "1-028.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "2-060",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-35",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-35/12-13-1990-025232-MR BREAS UNIT-06674/3.000000-Sagittal-IR3DFGRE-29877/2-060.dcm",
+        "original_filename": "2-060.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "1-10",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-58",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-58/11-27-1991-855867-MR BREAS UNIT-40284/1.000000-T1-axial-locator-61609/1-10.dcm",
+        "original_filename": "1-10.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "1-48",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-51",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-51/05-28-1991-569837-MR BREAS UNIT-33726/31000.000000-Sagittal-IR3DFGRE SER-32873/1-48.dcm",
+        "original_filename": "1-48.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "1-46",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-42",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-42/03-30-1992-028558-MR BREAS UNIT-79237/6.000000-DWSSFSE Diffusion-72399/1-46.dcm",
+        "original_filename": "1-46.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "1-56",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-45",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-45/05-31-1990-182826-MR BREAST-83883/31000.000000-Sagittal-IR3DFGRE SER-85649/1-56.dcm",
+        "original_filename": "1-56.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "1-42",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-22",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-22/10-09-1990-657690-MR BREAS UNIT-67649/31001.000000-Sagittal-IR3DFGRE PE1-10243/1-42.dcm",
+        "original_filename": "1-42.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "1-48",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-11",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-11/06-10-1992-023095-MR BREAS UNIT-82974/301.000000-1459536114595361-16137/1-48.dcm",
+        "original_filename": "1-48.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "1-012",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-29",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-29/07-12-1989-079440-MR BREAST-89850/3.000000-Sagittal-IR3DFGRE-35820/1-012.dcm",
+        "original_filename": "1-012.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "1-34",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-65",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-65/06-16-1992-795225-MR BREAS UNIT-38128/5.000000-DWSSFSE Diffusion-08405/1-34.dcm",
+        "original_filename": "1-34.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "1-057",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-68",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-68/04-11-1991-365480-MR BREAS UNIT-53690/3.000000-Sagittal-IR3DFGRE-13123/1-057.dcm",
+        "original_filename": "1-057.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "1-20",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-47",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-47/03-27-1991-428535-MR BREAS UNIT-53517/31000.000000-Sagittal-IR3DFGRE SER-56367/1-20.dcm",
+        "original_filename": "1-20.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "2-20",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-07",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-07/07-09-1991-588047-MR BREAS UNIT-45404/5.000000-Sagittal-EPI-94341/2-20.dcm",
+        "original_filename": "2-20.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "1-44",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-20",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-20/03-16-1992-095384-MR BREAS UNIT-25865/6.000000-DWSSFSE Diffusion-83362/1-44.dcm",
+        "original_filename": "1-44.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "1-18",
+      "class": "NED, no evidence of disease | >1/3 decrease clinical longest diameter | <1/3 decrease LD | SD, steady disease/PD, progressive disease",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "Breast-MRI-NACT-Pilot"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "UCSF-BR-19",
+        "source_file": "data/Breast-MRI-NACT-Pilot/UCSF-BR-19/08-10-1993-132603-MR BREASTUNI UE-75132/31001.000000-Dynamic-3dfgre PE1-01537/1-18.dcm",
+        "original_filename": "1-18.dcm",
+        "label_text": "NED, no evidence of disease",
+        "class_name": "NED, no evidence of disease"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "NED, no evidence of disease"
+        }
+      }
+    }
+  }
+}

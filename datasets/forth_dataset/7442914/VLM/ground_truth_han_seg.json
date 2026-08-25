@@ -1,0 +1,804 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "HaN-Seg",
+  "description": "HaN-Seg (Zenodo 7442914) 头颈部危及器官 (OAR) 3D 分割数据集，提供配对 CT 与 MR-T1 体素及 30 种 OAR 的 .seg.nrrd 金标准。随机样本路径多为 .seg.nrrd（单个 OAR 的金标准）或 IMG_CT.nrrd（原图）；对前者 source_file 自动改为同 case 的 case_XX_IMG_CT.nrrd 原图。样本 0-19 以 VLM/random.txt 为准。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "3d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "HaN-Seg",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "head_and_neck_oar_segmentation",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "HaN-Seg"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "3D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "background",
+    "Arytenoid",
+    "A_Carotid_L",
+    "A_Carotid_R",
+    "Bone_Mandible",
+    "Brainstem",
+    "BuccalMucosa",
+    "Cavity_Oral",
+    "Cochlea_L",
+    "Cochlea_R",
+    "Esophagus_S",
+    "Eye_AL",
+    "Eye_AR",
+    "Eye_PL",
+    "Eye_PR",
+    "Glnd_Lacrimal_L",
+    "Glnd_Lacrimal_R",
+    "Glnd_Submand_L",
+    "Glnd_Submand_R",
+    "Glnd_Thyroid",
+    "Larynx_SG",
+    "Lips",
+    "OpticChiasm",
+    "OpticNrv_L",
+    "OpticNrv_R",
+    "Parotid_L",
+    "Parotid_R",
+    "Pituitary",
+    "SpinalCord",
+    "Cricopharyngeus",
+    "Esophagus"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "case_22_OAR_Arytenoid",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_22",
+        "source_file": "data/HaN-Seg/set_1/case_22/case_22_IMG_CT.nrrd",
+        "original_filename": "case_22_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_22/case_22_OAR_Arytenoid.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_22/case_22_OAR_Arytenoid.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_22/case_22_OAR_Arytenoid.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_22_oar_arytenoidsegnrrd"
+      ]
+    },
+    "1": {
+      "source_stem": "case_24_OAR_Eye_AR",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_24",
+        "source_file": "data/HaN-Seg/set_1/case_24/case_24_IMG_CT.nrrd",
+        "original_filename": "case_24_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_24/case_24_OAR_Eye_AR.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_24/case_24_OAR_Eye_AR.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_24/case_24_OAR_Eye_AR.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_24_oar_eye_arsegnrrd"
+      ]
+    },
+    "2": {
+      "source_stem": "case_23_OAR_Eye_PR",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_23",
+        "source_file": "data/HaN-Seg/set_1/case_23/case_23_IMG_CT.nrrd",
+        "original_filename": "case_23_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_Eye_PR.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_Eye_PR.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_Eye_PR.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_23_oar_eye_prsegnrrd"
+      ]
+    },
+    "3": {
+      "source_stem": "case_29_OAR_Glnd_Lacrimal_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_29",
+        "source_file": "data/HaN-Seg/set_1/case_29/case_29_IMG_CT.nrrd",
+        "original_filename": "case_29_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_29/case_29_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_29/case_29_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_29/case_29_OAR_Glnd_Lacrimal_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_29_oar_glnd_lacrimal_lsegnrrd"
+      ]
+    },
+    "4": {
+      "source_stem": "case_20_OAR_OpticChiasm",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_20",
+        "source_file": "data/HaN-Seg/set_1/case_20/case_20_IMG_CT.nrrd",
+        "original_filename": "case_20_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_20/case_20_OAR_OpticChiasm.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_20/case_20_OAR_OpticChiasm.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_20/case_20_OAR_OpticChiasm.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_20_oar_opticchiasmsegnrrd"
+      ]
+    },
+    "5": {
+      "source_stem": "case_26_OAR_A_Carotid_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_26",
+        "source_file": "data/HaN-Seg/set_1/case_26/case_26_IMG_CT.nrrd",
+        "original_filename": "case_26_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_A_Carotid_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_A_Carotid_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_A_Carotid_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_26_oar_a_carotid_lsegnrrd"
+      ]
+    },
+    "6": {
+      "source_stem": "case_03_OAR_Parotid_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_03",
+        "source_file": "data/HaN-Seg/set_1/case_03/case_03_IMG_CT.nrrd",
+        "original_filename": "case_03_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_03/case_03_OAR_Parotid_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_03/case_03_OAR_Parotid_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_03/case_03_OAR_Parotid_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_03_oar_parotid_lsegnrrd"
+      ]
+    },
+    "7": {
+      "source_stem": "case_07_OAR_Glnd_Lacrimal_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_07",
+        "source_file": "data/HaN-Seg/set_1/case_07/case_07_IMG_CT.nrrd",
+        "original_filename": "case_07_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_07/case_07_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_07/case_07_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_07/case_07_OAR_Glnd_Lacrimal_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_07_oar_glnd_lacrimal_lsegnrrd"
+      ]
+    },
+    "8": {
+      "source_stem": "case_23_OAR_OpticNrv_R",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_23",
+        "source_file": "data/HaN-Seg/set_1/case_23/case_23_IMG_CT.nrrd",
+        "original_filename": "case_23_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_OpticNrv_R.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_OpticNrv_R.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_23/case_23_OAR_OpticNrv_R.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_23_oar_opticnrv_rsegnrrd"
+      ]
+    },
+    "9": {
+      "source_stem": "case_04_OAR_Glnd_Lacrimal_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_04",
+        "source_file": "data/HaN-Seg/set_1/case_04/case_04_IMG_CT.nrrd",
+        "original_filename": "case_04_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_04/case_04_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_04/case_04_OAR_Glnd_Lacrimal_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_04/case_04_OAR_Glnd_Lacrimal_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_04_oar_glnd_lacrimal_lsegnrrd"
+      ]
+    },
+    "10": {
+      "source_stem": "case_18_OAR_Cavity_Oral",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_18",
+        "source_file": "data/HaN-Seg/set_1/case_18/case_18_IMG_CT.nrrd",
+        "original_filename": "case_18_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Cavity_Oral.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Cavity_Oral.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Cavity_Oral.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_18_oar_cavity_oralsegnrrd"
+      ]
+    },
+    "11": {
+      "source_stem": "case_26_OAR_Eye_AR",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_26",
+        "source_file": "data/HaN-Seg/set_1/case_26/case_26_IMG_CT.nrrd",
+        "original_filename": "case_26_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_Eye_AR.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_Eye_AR.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_26/case_26_OAR_Eye_AR.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_26_oar_eye_arsegnrrd"
+      ]
+    },
+    "12": {
+      "source_stem": "case_31_OAR_Bone_Mandible",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_31",
+        "source_file": "data/HaN-Seg/set_1/case_31/case_31_IMG_CT.nrrd",
+        "original_filename": "case_31_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_Bone_Mandible.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_Bone_Mandible.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_Bone_Mandible.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_31_oar_bone_mandiblesegnrrd"
+      ]
+    },
+    "13": {
+      "source_stem": "case_18_OAR_Parotid_R",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_18",
+        "source_file": "data/HaN-Seg/set_1/case_18/case_18_IMG_CT.nrrd",
+        "original_filename": "case_18_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Parotid_R.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Parotid_R.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_18/case_18_OAR_Parotid_R.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_18_oar_parotid_rsegnrrd"
+      ]
+    },
+    "14": {
+      "source_stem": "case_31_OAR_SpinalCord",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_31",
+        "source_file": "data/HaN-Seg/set_1/case_31/case_31_IMG_CT.nrrd",
+        "original_filename": "case_31_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_SpinalCord.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_SpinalCord.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_31/case_31_OAR_SpinalCord.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_31_oar_spinalcordsegnrrd"
+      ]
+    },
+    "15": {
+      "source_stem": "case_02_OAR_SpinalCord",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_02",
+        "source_file": "data/HaN-Seg/set_1/case_02/case_02_IMG_CT.nrrd",
+        "original_filename": "case_02_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_02/case_02_OAR_SpinalCord.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_02/case_02_OAR_SpinalCord.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_02/case_02_OAR_SpinalCord.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_02_oar_spinalcordsegnrrd"
+      ]
+    },
+    "16": {
+      "source_stem": "case_16_IMG_CT",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_16",
+        "source_file": "data/HaN-Seg/set_1/case_16/case_16_IMG_CT.nrrd",
+        "original_filename": "case_16_IMG_CT.nrrd",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_16_img_ctnrrd"
+      ]
+    },
+    "17": {
+      "source_stem": "case_13_OAR_Glnd_Submand_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_13",
+        "source_file": "data/HaN-Seg/set_1/case_13/case_13_IMG_CT.nrrd",
+        "original_filename": "case_13_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_13/case_13_OAR_Glnd_Submand_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_13/case_13_OAR_Glnd_Submand_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_13/case_13_OAR_Glnd_Submand_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_13_oar_glnd_submand_lsegnrrd"
+      ]
+    },
+    "18": {
+      "source_stem": "case_42_OAR_OpticChiasm",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_42",
+        "source_file": "data/HaN-Seg/set_1/case_42/case_42_IMG_CT.nrrd",
+        "original_filename": "case_42_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_42/case_42_OAR_OpticChiasm.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_42/case_42_OAR_OpticChiasm.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_42/case_42_OAR_OpticChiasm.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_42_oar_opticchiasmsegnrrd"
+      ]
+    },
+    "19": {
+      "source_stem": "case_32_OAR_Glnd_Submand_L",
+      "class": "HaN-Seg head-and-neck OAR (organ at risk) segmentation",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "HaN-Seg"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "case_32",
+        "source_file": "data/HaN-Seg/set_1/case_32/case_32_IMG_CT.nrrd",
+        "original_filename": "case_32_IMG_CT.nrrd",
+        "label_file": "data/HaN-Seg/set_1/case_32/case_32_OAR_Glnd_Submand_L.seg.nrrd",
+        "mask_file": "data/HaN-Seg/set_1/case_32/case_32_OAR_Glnd_Submand_L.seg.nrrd",
+        "seg_file": "data/HaN-Seg/set_1/case_32/case_32_OAR_Glnd_Submand_L.seg.nrrd"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "3d_mask"
+        }
+      },
+      "expected_sources": [
+        "case_32_oar_glnd_submand_lsegnrrd"
+      ]
+    }
+  }
+}

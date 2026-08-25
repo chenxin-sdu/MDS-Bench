@@ -1,0 +1,718 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "6355622_folder",
+  "description": "MAT 掩膜数据 2D 语义分割 GT。按字典序 DFS 采样前 20 个样本，字段结构与 seg_gt 模版一致。",
+  "expected_count": 20,
+  "modality_primary": "NA",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "segmentation",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "segmentation": [
+        "schema_variant"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "6355622_folder",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_file",
+        "mask_file",
+        "seg_file"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "semantic_mask",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "6355622_folder"
+      },
+      "context_sample": {
+        "modality_primary": "NA"
+      },
+      "media": {
+        "task_type": "segmentation",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "segmentation",
+      "modality_primary.0": "NA",
+      "data_volume.total": 300
+    }
+  },
+  "classes": [
+    "background",
+    "semantic_label_1",
+    "semantic_label_2",
+    "semantic_label_3",
+    "semantic_label_4"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "gt_slice_001",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_001.mat",
+        "original_filename": "GT_Slice_001.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "gt_slice_002",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_002.mat",
+        "original_filename": "GT_Slice_002.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "gt_slice_003",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_003.mat",
+        "original_filename": "GT_Slice_003.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "gt_slice_004",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_004.mat",
+        "original_filename": "GT_Slice_004.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "gt_slice_005",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_005.mat",
+        "original_filename": "GT_Slice_005.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "gt_slice_006",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_006.mat",
+        "original_filename": "GT_Slice_006.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "gt_slice_007",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_007.mat",
+        "original_filename": "GT_Slice_007.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "gt_slice_008",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_008.mat",
+        "original_filename": "GT_Slice_008.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "gt_slice_009",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_009.mat",
+        "original_filename": "GT_Slice_009.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "gt_slice_010",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_010.mat",
+        "original_filename": "GT_Slice_010.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "gt_slice_011",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_011.mat",
+        "original_filename": "GT_Slice_011.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "gt_slice_012",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_012.mat",
+        "original_filename": "GT_Slice_012.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "gt_slice_013",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_013.mat",
+        "original_filename": "GT_Slice_013.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "gt_slice_014",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_014.mat",
+        "original_filename": "GT_Slice_014.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "gt_slice_015",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_015.mat",
+        "original_filename": "GT_Slice_015.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "gt_slice_016",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_016.mat",
+        "original_filename": "GT_Slice_016.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "gt_slice_017",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_017.mat",
+        "original_filename": "GT_Slice_017.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "gt_slice_018",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_018.mat",
+        "original_filename": "GT_Slice_018.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "gt_slice_019",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_019.mat",
+        "original_filename": "GT_Slice_019.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "gt_slice_020",
+      "class": "semantic_label_1|semantic_label_2|semantic_label_3|semantic_label_4",
+      "map_type": "pixel_mask",
+      "expected_record": {
+        "dataset_name": "6355622_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "NA"
+      },
+      "expected_extra": {
+        "subject_id": "NA",
+        "label_file": null,
+        "mask_file": null,
+        "seg_file": null,
+        "source_file": "data/GT_Slice_020.mat",
+        "original_filename": "GT_Slice_020.mat"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "segmentation": {
+          "schema_variant": "2d_coco"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "15680730_folder",
+  "description": "UNICORN Task02 肺结节恶性风险数据，按 cls_gt 模版统一为标准分类结构（multiclass），并依据风险分数映射为 benign/malignant。",
+  "expected_count": 20,
+  "modality_primary": "CT",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "15680730_folder",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "Task02_classifying_lung_nodule_malignancy_in_ct",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "15680730_folder"
+      },
+      "context_sample": {
+        "modality_primary": "CT"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "CT",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "benign",
+    "malignant"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "100655",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "100655",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/100655/images/chest-ct-region-of-interest-cropout/100655.mha",
+        "original_filename": "100655.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "100771",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "100771",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/100771/images/chest-ct-region-of-interest-cropout/100771.mha",
+        "original_filename": "100771.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "100994",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "100994",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/100994/images/chest-ct-region-of-interest-cropout/100994.mha",
+        "original_filename": "100994.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "102451",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "102451",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/102451/images/chest-ct-region-of-interest-cropout/102451.mha",
+        "original_filename": "102451.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "102608",
+      "class": "malignant",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "102608",
+        "label_text": "malignant",
+        "class_name": "malignant",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/102608/images/chest-ct-region-of-interest-cropout/102608.mha",
+        "original_filename": "102608.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "malignant"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "104707",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "104707",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/104707/images/chest-ct-region-of-interest-cropout/104707.mha",
+        "original_filename": "104707.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "105205",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "105205",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/105205/images/chest-ct-region-of-interest-cropout/105205.mha",
+        "original_filename": "105205.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "106760",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "106760",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/106760/images/chest-ct-region-of-interest-cropout/106760.mha",
+        "original_filename": "106760.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "106837",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "106837",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/106837/images/chest-ct-region-of-interest-cropout/106837.mha",
+        "original_filename": "106837.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "107487",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "107487",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/107487/images/chest-ct-region-of-interest-cropout/107487.mha",
+        "original_filename": "107487.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "107974",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "107974",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/107974/images/chest-ct-region-of-interest-cropout/107974.mha",
+        "original_filename": "107974.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "109127",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "109127",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/109127/images/chest-ct-region-of-interest-cropout/109127.mha",
+        "original_filename": "109127.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "110580",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "110580",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/110580/images/chest-ct-region-of-interest-cropout/110580.mha",
+        "original_filename": "110580.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "110716",
+      "class": "malignant",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "110716",
+        "label_text": "malignant",
+        "class_name": "malignant",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/110716/images/chest-ct-region-of-interest-cropout/110716.mha",
+        "original_filename": "110716.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "malignant"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "110775",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "110775",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/110775/images/chest-ct-region-of-interest-cropout/110775.mha",
+        "original_filename": "110775.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "112362",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "112362",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/112362/images/chest-ct-region-of-interest-cropout/112362.mha",
+        "original_filename": "112362.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "112893",
+      "class": "malignant",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "112893",
+        "label_text": "malignant",
+        "class_name": "malignant",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/112893/images/chest-ct-region-of-interest-cropout/112893.mha",
+        "original_filename": "112893.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 1,
+          "label_name": "malignant"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "114672",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "114672",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/114672/images/chest-ct-region-of-interest-cropout/114672.mha",
+        "original_filename": "114672.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "115314",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "115314",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/115314/images/chest-ct-region-of-interest-cropout/115314.mha",
+        "original_filename": "115314.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "116266",
+      "class": "benign",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "15680730_folder"
+      },
+      "expected_context_sample": {
+        "modality_primary": "CT"
+      },
+      "expected_extra": {
+        "subject_id": "116266",
+        "label_text": "benign",
+        "class_name": "benign",
+        "source_file": "data/Task02_classifying_lung_nodule_malignancy_in_ct/shots-public/116266/images/chest-ct-region-of-interest-cropout/116266.mha",
+        "original_filename": "116266.mha"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "benign"
+        }
+      }
+    }
+  }
+}

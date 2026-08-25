@@ -1,0 +1,741 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "gastrointestinal_bleeding_images_dataset2024",
+  "description": "胃肠道出血内镜图像数据集。在 data/ 下按字典序 DFS 遍历整棵目录树，仅将常见医学图像扩展名视为 sample；标签为 GastrointestinalBleeding/ 下的一级子目录名（Lesion=出血病灶帧，Normal=正常对照）。遇到 sample 按遍历顺序收集，累计到 20 个即停止；因 DFS 下 Lesion 字典序先于 Normal，前 20 个样本均来自 Lesion/。字段结构与 cls_gt.json 模版完全一致。",
+  "expected_count": 20,
+  "modality_primary": "Endoscopy",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（和 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id",
+      "label_text",
+      "class_name"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "gastrointestinal_bleeding_images_dataset2024",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename",
+      "label_text",
+      "class_name"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "gastrointestinal_bleeding_lesion_vs_normal_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": false
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "media": {
+        "task_type": "classification",
+        "annotation_type": "multiclass",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "Endoscopy",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "Lesion",
+    "Normal"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "72140001224_20211123_00022",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20211123_00022",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20211123_00022.bmp",
+        "original_filename": "72140001224_20211123_00022.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "72140001224_20211123_00023",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20211123_00023",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20211123_00023.bmp",
+        "original_filename": "72140001224_20211123_00023.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "72140001224_20211123_00024",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20211123_00024",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20211123_00024.bmp",
+        "original_filename": "72140001224_20211123_00024.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "72140001224_20220701_00001",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00001",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00001.bmp",
+        "original_filename": "72140001224_20220701_00001.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "72140001224_20220701_00002",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00002",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00002.bmp",
+        "original_filename": "72140001224_20220701_00002.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "72140001224_20220701_00003",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00003",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00003.bmp",
+        "original_filename": "72140001224_20220701_00003.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "72140001224_20220701_00008",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00008",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00008.bmp",
+        "original_filename": "72140001224_20220701_00008.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "72140001224_20220701_00009",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00009",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00009.bmp",
+        "original_filename": "72140001224_20220701_00009.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "72140001224_20220701_00010",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00010",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00010.bmp",
+        "original_filename": "72140001224_20220701_00010.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "72140001224_20220701_00011",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00011",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00011.bmp",
+        "original_filename": "72140001224_20220701_00011.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "72140001224_20220701_00030",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00030",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00030.bmp",
+        "original_filename": "72140001224_20220701_00030.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "72140001224_20220701_00031",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00031",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00031.bmp",
+        "original_filename": "72140001224_20220701_00031.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "72140001224_20220701_00035",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00035",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00035.bmp",
+        "original_filename": "72140001224_20220701_00035.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "72140001224_20220701_00036",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140001224_20220701_00036",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140001224_20220701_00036.bmp",
+        "original_filename": "72140001224_20220701_00036.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "72140026681_20220628_00001",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00001",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00001.bmp",
+        "original_filename": "72140026681_20220628_00001.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "72140026681_20220628_00003",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00003",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00003.bmp",
+        "original_filename": "72140026681_20220628_00003.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "72140026681_20220628_00004",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00004",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00004.bmp",
+        "original_filename": "72140026681_20220628_00004.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "72140026681_20220628_00007",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00007",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00007.bmp",
+        "original_filename": "72140026681_20220628_00007.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "72140026681_20220628_00008",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00008",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00008.bmp",
+        "original_filename": "72140026681_20220628_00008.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "72140026681_20220628_00013",
+      "class": "Lesion",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "gastrointestinal_bleeding_images_dataset2024"
+      },
+      "expected_context_sample": {
+        "modality_primary": "Endoscopy"
+      },
+      "expected_extra": {
+        "subject_id": "72140026681_20220628_00013",
+        "label_text": "Lesion",
+        "class_name": "Lesion",
+        "source_file": "data/GastrointestinalBleeding/Lesion/72140026681_20220628_00013.bmp",
+        "original_filename": "72140026681_20220628_00013.bmp"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "Lesion"
+        }
+      }
+    }
+  }
+}

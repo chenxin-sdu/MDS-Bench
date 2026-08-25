@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "QIN-BREAST",
+  "description": "QIN-BREAST: imaging_modality_series_classification (classification, MRI, 2D)。样本 0-19 取 random.txt 顺序前 20 个 case，source_stem 由 9 模型多数票确定。",
+  "expected_count": 20,
+  "modality_primary": "MRI",
+  "metrics": [
+    "source_selection_accuracy",
+    "coverage",
+    "schema_validity",
+    "semantic",
+    "information_quality",
+    "content_fidelity",
+    "dataset_metadata_quality"
+  ],
+  "evaluation_protocol": {
+    "instance_level_metrics": [
+      "source_selection_accuracy",
+      "coverage",
+      "schema_validity",
+      "semantic",
+      "information_quality",
+      "content_fidelity"
+    ],
+    "dataset_level_metrics": [
+      "dataset_metadata_quality"
+    ]
+  },
+  "match_annotations_to_gt": "by_index",
+  "task_type": "classification",
+  "dimension": "2d",
+  "format": {
+    "description": "标注 JSON 必须包含的顶层块与关键字段（与 evaluate.py 对齐）。",
+    "strict_mode": true,
+    "top_level_blocks": [
+      "record",
+      "context",
+      "media_geometry",
+      "tasks"
+    ],
+    "record_required": [
+      "schema_version",
+      "dataset_name",
+      "image_path"
+    ],
+    "context_sample_required": [
+      "extra"
+    ],
+    "sample_required_fields": [
+      "modality_primary"
+    ],
+    "sample_non_missing_fields": [
+      "sex",
+      "race_ethnicity",
+      "site_id"
+    ],
+    "extra_required_any": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "extra_non_missing_fields": [
+      "source_file",
+      "original_filename",
+      "subject_id"
+    ],
+    "media_required": [
+      "task_type",
+      "dimension"
+    ],
+    "task_required_fields": {
+      "classification": [
+        "schema_variant",
+        "label",
+        "label_name"
+      ]
+    }
+  },
+  "content": {
+    "description": "信息质量与内容一致性用。expected_extra_keys_mode=all 表示每组都要命中；any 表示任一组命中即可。",
+    "expected_dataset_name": "QIN-BREAST",
+    "expected_extra_keys_mode": "all",
+    "expected_extra_key_groups": {
+      "source": [
+        "source_file",
+        "original_filename",
+        "original_path",
+        "source_rel_path",
+        "source_relpath"
+      ],
+      "id_or_label": [
+        "subject_id",
+        "label_text",
+        "class_name"
+      ]
+    },
+    "strict_required_extra_keys": [
+      "source_file",
+      "original_filename"
+    ],
+    "strict_dataset_name_match": true,
+    "strict_source_require_subject_or_label": false,
+    "strict_group_all_keys": true,
+    "hard_content_constraints": {
+      "leaf_task_expected": "imaging_modality_series_classification",
+      "confidence_global_min": 0.0,
+      "pixel_spacing_mm_positive": true
+    },
+    "global_expected_blocks": {
+      "record": {
+        "schema_version": "1.0.1",
+        "dataset_name": "QIN-BREAST"
+      },
+      "context_sample": {
+        "modality_primary": "MRI"
+      },
+      "media": {
+        "task_type": "classification",
+        "dimension": "2D"
+      },
+      "tasks": {
+        "classification": {
+          "schema_variant": "multiclass"
+        }
+      }
+    }
+  },
+  "data_meta_expected": {
+    "description": "用于评估 Dataset Metadata Quality（数据集级指标）",
+    "required_keys": [
+      "dataset_name",
+      "modality_primary",
+      "data_volume",
+      "task_type"
+    ],
+    "optional_but_recommended": [
+      "num_classes_per_task",
+      "anatomical_structure",
+      "domain"
+    ],
+    "data_volume_required_fields": [
+      "total"
+    ],
+    "strict_equals": {
+      "task_type.0": "classification",
+      "modality_primary.0": "MRI",
+      "data_volume.total": 20
+    }
+  },
+  "classes": [
+    "MR",
+    "CT",
+    "PT",
+    "OT"
+  ],
+  "samples": {
+    "0": {
+      "source_stem": "QIN-BREAST-01-0055",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0055",
+        "source_file": "data/QIN-BREAST-01-0055",
+        "original_filename": "QIN-BREAST-01-0055",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "1": {
+      "source_stem": "QIN-BREAST-01-0040",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0040",
+        "source_file": "data/QIN-BREAST-01-0040",
+        "original_filename": "QIN-BREAST-01-0040",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "2": {
+      "source_stem": "QIN-BREAST-01-0044",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0044",
+        "source_file": "data/QIN-BREAST-01-0044",
+        "original_filename": "QIN-BREAST-01-0044",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "3": {
+      "source_stem": "QIN-BREAST-01-0047",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0047",
+        "source_file": "data/QIN-BREAST-01-0047",
+        "original_filename": "QIN-BREAST-01-0047",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "4": {
+      "source_stem": "QIN-BREAST-01-0016",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0016",
+        "source_file": "data/QIN-BREAST-01-0016",
+        "original_filename": "QIN-BREAST-01-0016",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "5": {
+      "source_stem": "QIN-BREAST-01-0050",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0050",
+        "source_file": "data/QIN-BREAST-01-0050",
+        "original_filename": "QIN-BREAST-01-0050",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "6": {
+      "source_stem": "QIN-BREAST-01-0014",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0014",
+        "source_file": "data/QIN-BREAST-01-0014",
+        "original_filename": "QIN-BREAST-01-0014",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "7": {
+      "source_stem": "QIN-BREAST-01-0050",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0050",
+        "source_file": "data/QIN-BREAST-01-0050",
+        "original_filename": "QIN-BREAST-01-0050",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "8": {
+      "source_stem": "QIN-BREAST-01-0046",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0046",
+        "source_file": "data/QIN-BREAST-01-0046",
+        "original_filename": "QIN-BREAST-01-0046",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "9": {
+      "source_stem": "QIN-BREAST-01-0037",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0037",
+        "source_file": "data/QIN-BREAST-01-0037",
+        "original_filename": "QIN-BREAST-01-0037",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "10": {
+      "source_stem": "QIN-BREAST-01-0066",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0066",
+        "source_file": "data/QIN-BREAST-01-0066",
+        "original_filename": "QIN-BREAST-01-0066",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "11": {
+      "source_stem": "QIN-BREAST-01-0009",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0009",
+        "source_file": "data/QIN-BREAST-01-0009",
+        "original_filename": "QIN-BREAST-01-0009",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "12": {
+      "source_stem": "QIN-BREAST-01-0007",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0007",
+        "source_file": "data/QIN-BREAST-01-0007",
+        "original_filename": "QIN-BREAST-01-0007",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "13": {
+      "source_stem": "QIN-BREAST-01-0053",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0053",
+        "source_file": "data/QIN-BREAST-01-0053",
+        "original_filename": "QIN-BREAST-01-0053",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "14": {
+      "source_stem": "QIN-BREAST-01-0059",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0059",
+        "source_file": "data/QIN-BREAST-01-0059",
+        "original_filename": "QIN-BREAST-01-0059",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "15": {
+      "source_stem": "QIN-BREAST-01-0019",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0019",
+        "source_file": "data/QIN-BREAST-01-0019",
+        "original_filename": "QIN-BREAST-01-0019",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "16": {
+      "source_stem": "QIN-BREAST-01-0041",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0041",
+        "source_file": "data/QIN-BREAST-01-0041",
+        "original_filename": "QIN-BREAST-01-0041",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "17": {
+      "source_stem": "QIN-BREAST-01-0051",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0051",
+        "source_file": "data/QIN-BREAST-01-0051",
+        "original_filename": "QIN-BREAST-01-0051",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "18": {
+      "source_stem": "QIN-BREAST-01-0049",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0049",
+        "source_file": "data/QIN-BREAST-01-0049",
+        "original_filename": "QIN-BREAST-01-0049",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    },
+    "19": {
+      "source_stem": "QIN-BREAST-01-0021",
+      "class": "MR | CT | PT | OT",
+      "map_type": "label",
+      "expected_record": {
+        "dataset_name": "QIN-BREAST"
+      },
+      "expected_context_sample": {
+        "modality_primary": "MRI"
+      },
+      "expected_extra": {
+        "subject_id": "QIN-BREAST-01-0021",
+        "source_file": "data/QIN-BREAST-01-0021",
+        "original_filename": "QIN-BREAST-01-0021",
+        "label_text": "MR",
+        "class_name": "MR"
+      },
+      "expected_extra_keys": [
+        "source_file",
+        "original_filename"
+      ],
+      "expected_tasks": {
+        "classification": {
+          "schema_variant": "multiclass",
+          "label": 0,
+          "label_name": "MR"
+        }
+      }
+    }
+  }
+}
