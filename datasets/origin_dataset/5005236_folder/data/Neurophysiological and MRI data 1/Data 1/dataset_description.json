@@ -1,0 +1,12 @@
+{
+"Name": "Patients with primary biliary cholangitis and fatigue present with depressive symptoms and selected cognitive deficits, but with normal attention performance and brain structure",
+"Authors": ["Roman Zenouzi", "Janina von der Gablentz", "Marcus Heldmann", "Martin Göttlich", "Christina Weiler-Normann", "Marcial Sebode", "Hanno Ehlken", "Johannes Hartl", "Anja Fellbrich", "Susanne Siemonsen", "Christoph Schramm", "Thomas F. Münte", "Ansgar W. Lohse"],
+"InstitutionNames": ["Department of Medicine, University Medical Center Hamburg-Eppendorf, Hamburg, Germany", "Department of Neurology, University of Lübeck, Lübeck, Germany", "Department of Interdisciplinary Endoscopy, University Medical Center Hamburg-Eppendorf, Hamburg, Germany", "Department of Diagnostic and Interventional Neuroradiology, University Medical Center Hamburg-Eppendorf, Hamburg, Germany"],
+"BIDSVersion": "1.0.2",
+"License": "CCo",
+"Acknowledgements": "n/a",
+"HowToAcknowledge": "",
+"Funding": "no funding",
+"ReferencesAndLinks": "a resource to be cited when using the data",
+"DatasetDOI": ""
+} 

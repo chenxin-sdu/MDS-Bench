@@ -1,0 +1,122 @@
+{  "SP": {    "LongName": "Study participant",    "Levels": {      "P": "Patient",      "K": "Control"  },
+  "Al1w/o": {    "LongName": "Alertness I w/o signal mean reaction time",
+    "Units": "ms"
+  },
+  "Al1w": {    "LongName": "Alertness 1 with signal mean reaction time",
+    "Units": "ms“
+  },
+  "Al2w/o": {    "LongName": "Alertness 2 w/o signal mean reaction time",
+    "Units": "ms"
+  },
+  "Al2w": {    "LongName": "Alertness 2 with signal mean reaction time",
+    "Units": "ms"
+  },
+  "DaA": {    "LongName": "Devided attention auditive mean rection time",
+    "Units": "ms"
+  },
+  "DaV": {    "LongName": "Devided attention visual mean reaction time",
+    "Units": "ms"
+  },
+  "V1": {    "LongName": "Vigilance 1st half mean reaction time",
+    "Units": "ms“
+  },
+  "V2“: {    "LongName": "Vigilance 2nd half mean reaction time",
+    "Units": "ms"
+  },
+  "VT": {    "LongName": "Vigilance total mean reaction time",
+    "Units": "ms"
+  },
+  "WEIp": {    "LongName": "WEIMUS physical",
+    "Units": "score"
+  },
+  "WEIc": {    "LongName": "WEIMUS cognitive",
+    "Units": "score"
+  },
+  "WEIt": {    "LongName": "WEIMUS total",
+    "Units": "score"
+  },
+  "BDI": {    "LongName": "Beck Depression Inventory",
+    "Units": "score"
+  },
+  "SCL-S": {    "LongName": "SCL-90 Somatization",
+    "Units": "score"
+  },
+  "SCL-C": {    "LongName": "SCL-90 Compulsion",
+    "Units": "score"
+  },
+  "SCL-U“: {    "LongName": "SCL-90 Uncertainty",
+    "Units": "score"
+  },
+  "SCL-D": {    "LongName": "SCL-90 Depression",
+    "Units": "score"
+  },
+  "SCL-A": {    "LongName": "SCL-90 Anxiety",
+    "Units": "score"
+  },
+  "SCL-Ag": {    "LongName": "SCL-90 Aggressiveness",
+    "Units": "score"
+  },
+  "SCL-P": {    "LongName": "SCL-90 Phobia",
+    "Units": "score"
+  },
+  "SCL-Pa": {    "LongName": "SCL-90 Paranoia",
+    "Units": "score"
+  },
+  "SCL-Ps": {    "LongName": "SCL-90 Psychiatric",
+    "Units": "score"
+  },
+  "SCL-Ad": {    "LongName": "SCL-90 Additional",
+    "Units": "score"
+  },
+  "DS": {    "LongName": "Digit span",
+    "Units": "score"
+  },
+  "LexV": {    "LongName": "Lexical verbal fluency",
+    "Units": "number of words"
+  },
+  "SemV": {    "LongName": "Semantic verbal fluency",
+    "Units": "number of words"
+  },
+  "TRAIa": {    "LongName": "Trailmaking A",
+    "Units": "seconds"
+  },
+  "TRAIb": {    "LongName": "Trailmaking B",
+    "Units": "seconds"
+  },
+  "DOTa": {    "LongName": "DOT-A",
+    "Units": "score"
+  },
+  "DOTb": {    "LongName": "DOT-B",
+    "Units": "score"
+  },
+  "ALT": {    "LongName": "alanine aminotransferase",
+    "Units": "U/l"
+  },
+  "ALP": {    "LongName": "alkaline phosphatase",
+    "Units": "U/l"
+  },
+  "BILI": {    "LongName": "Total bilirubin",
+    "Units": "mg/dl"
+  },
+  "INR": {    "LongName": "international normalized ratio",
+    "Units": „n/a“
+  },
+  "INR": {    "LongName": "international normalized ratio",
+    "Units": "n/a"
+  },
+  "AMA": {    "LongName": "presence of antimitochondrial antibodies",
+    "Units": "n/a"
+  },
+  "Sp100": {    "LongName": "presence of soluble acidic protein-100",
+    "Units": "n/a"
+  },
+  "Gp210": {    "LongName": "presence of nuclear pore glycoprotein-210",
+    "Units": "n/a"
+  },
+  "IgM": {    "LongName": "Immunoglobulin M",
+    "Units": "g/l"
+  },
+  "FS": {    "LongName": "Fibroscan value",
+    "Units": "kPa"
+  }
+}  
