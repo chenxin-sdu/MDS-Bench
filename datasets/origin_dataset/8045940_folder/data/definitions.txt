@@ -1,0 +1,85 @@
+Definition format
+
+The definitions.json contains a serialized Python dictionary. The dictionary
+structure shown below defines the properties of and operations performed to
+a spectral image cube. The description below has been extracted from a comment
+in our spectral image processing code.
+
+definitions = {
+  'unique name of the output file 1 (key name)': {
+      'reference type':   Optional str-field with allowed values:
+                              'bright': this sample may be used as a bright
+                                        reference sample,
+                              'dark': this sample may be used as a dark-current
+                                      reference sample.
+                          This field must be present for reference samples.
+      'reference spectrum file':
+                          Optional pathlib.Path-object to the reference spectrum
+                          of the bright reference sample. This field must be present
+                          for bright reference samples. The file is expected to be 
+                          a numpy npy-file containing an array with columns
+                          [wavelength, reflectance] with shape (n, 2), where wavelength
+                          unit matches the spectral image metadata, and the reflectance
+                          is expressed in [0.0, 1.0] range.
+      'preprocess': {
+          'container':    A pathlib.Path-object either to a directory or a Zip-file
+                          containing the raw spectral image file to be preprocessed.
+          'file':         a str-object denoting the file path inside the container.
+                          This must be in Posix-format, i.e., the the path separator
+                          character is '/'.
+          'use wl range': limit the preprocessed file within the given wavelength
+                          range. The system will complain if the range is larger than
+                          that of the spectral image. Tuple[min: num, max: num], optional.
+          'rotate':       rotate the preprocessed spectral image cube's image plane by
+                          X=n*90 degrees (i.e., the angle must be a positive or negative
+                          multiple of 90 degrees). The current implementation calls
+                          numpy.rot90 to perform the rotation.
+      },
+      'preprocess-tile-height': [
+          ('name of the first tile', 0),
+          ('name of the second tile', 100),
+          ('name of the third tile', 200),
+                          Preprocessing tool for vertical tiling of multiple pieces.
+                          Used mainly for stitching together a reference sample. List
+                          of tuples of form tuple[name of sample: str, start row for
+                          copying: int]. Assumes all images have the same shape and
+                          constructs a new image with the same shape!
+      ],
+      'flat-field correction': {
+          'bright':       name of the preprocessed sample that is to be used as the
+                          bright reference.
+          'dark':         name of the preprocessed sample that is to be used as the
+                          dark reference.
+          'bright inset location':
+                          location of the bright reference within the current image. 
+                          Alternative for field 'bright'. It is an error to define both
+                          'bright' and 'bright inset location' simultaneously.
+                          WARNING! The marked area will be averaged (mean) into a single
+                          pixel reference. Uneven illumination, lens system artifacts,
+                          etc., must be handled with other means as this form of
+                          flat-field correction will not fix them.
+                          Field type Tuple[x: int, y: int, w: int, h: int]
+          'bright reference spectrum file':
+                          this field mirrors the main level "reference spectrum file"
+                          field, which is an expected field for (bright) reference
+                          spectral images. When "bright inset location" is used, a
+                          reference spectral image is not referenced, but spectrum is
+                          still needed and thus this field will be used to find the
+                          appropriate reference spectrum.
+          'clamp':        clip pixel values of the corrected image into [min, max]
+                          range. Optional field with type Tuple[min: num, max: num]
+          'scale':        scaling method for pixel values. Optional str-field, allowed
+                          values:
+                              'min-max':    scale the cube by its min-max values
+                                            into [0,1] range.
+                              '0-max':      scale the cube by its max value into [0,1]
+                                            range.
+      },
+      'manual segmentation': {
+          'container':    A pathlib.Path-object either to a directory or a Zip-file
+                          containing the SpimLab manual segmentation file with name
+                          mathing the name of this definition (key name).
+      },
+  },
+}
+

@@ -1,0 +1,2486 @@
+{
+    "DS1": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS1.csv"
+        }
+    },
+    "RP1D1": {
+        "reference type": "dark",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP1D1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "DS3": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS3.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS3.csv"
+        }
+    },
+    "P054": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P054.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P054.csv"
+        }
+    },
+    "P007": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P007.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P007.csv"
+        }
+    },
+    "P055": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P055.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P055.csv"
+        }
+    },
+    "P008": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P008.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P008.csv"
+        }
+    },
+    "P056": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P056.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P056.csv"
+        }
+    },
+    "P009": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P009.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P009.csv"
+        }
+    },
+    "P057": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P057.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P057.csv"
+        }
+    },
+    "P010": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P010.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P010.csv"
+        }
+    },
+    "P058": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P058.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P058.csv"
+        }
+    },
+    "P011": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P011.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P011.csv"
+        }
+    },
+    "P059": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P059.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P059.csv"
+        }
+    },
+    "P012": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P012.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P012.csv"
+        }
+    },
+    "P060": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P060.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P060.csv"
+        }
+    },
+    "P013": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P013.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P013.csv"
+        }
+    },
+    "P061": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P061.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P061.csv"
+        }
+    },
+    "P014": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P014.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P014.csv"
+        }
+    },
+    "P062": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P062.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P062.csv"
+        }
+    },
+    "P015": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P015.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P015.csv"
+        }
+    },
+    "P063": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P063.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P063.csv"
+        }
+    },
+    "DS5": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS5.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS5.csv"
+        }
+    },
+    "P016": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P016.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P016.csv"
+        }
+    },
+    "P017": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P017.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P017.csv"
+        }
+    },
+    "P064": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P064.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P064.csv"
+        }
+    },
+    "P018": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P018.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P018.csv"
+        }
+    },
+    "P065": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P065.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P065.csv"
+        }
+    },
+    "P019": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P019.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P019.csv"
+        }
+    },
+    "P066": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P066.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P066.csv"
+        }
+    },
+    "P020": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P020.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P020.csv"
+        }
+    },
+    "P067": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P067.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P067.csv"
+        }
+    },
+    "P021": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P021.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P021.csv"
+        }
+    },
+    "P068": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P068.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P068.csv"
+        }
+    },
+    "P022": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P022.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P022.csv"
+        }
+    },
+    "P069": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P069.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P069.csv"
+        }
+    },
+    "P023": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P023.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P023.csv"
+        }
+    },
+    "P070": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P070.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P070.csv"
+        }
+    },
+    "P024": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P024.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P024.csv"
+        }
+    },
+    "P071": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P071.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P071.csv"
+        }
+    },
+    "P025": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P025.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P025.csv"
+        }
+    },
+    "P072": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P072.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P072.csv"
+        }
+    },
+    "P026": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P026.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P026.csv"
+        }
+    },
+    "P073": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P073.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP1W3",
+            "dark": "RP1D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P073.csv"
+        }
+    },
+    "RP1W1": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP1W1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "RP1W3": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess-tile-height": [
+            [
+                "RP1W1",
+                0
+            ],
+            [
+                "RP1W2",
+                700
+            ]
+        ]
+    },
+    "RP1W2": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP1W2.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "P027": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P027.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P027.csv"
+        }
+    },
+    "P028": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P028.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P028.csv"
+        }
+    },
+    "P029": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P029.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P029.csv"
+        }
+    },
+    "P030": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P030.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P030.csv"
+        }
+    },
+    "P031": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P031.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P031.csv"
+        }
+    },
+    "P032": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P032.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P032.csv"
+        }
+    },
+    "P001": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P001.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P001.csv"
+        }
+    },
+    "P002": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P002.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P002.csv"
+        }
+    },
+    "P003": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P003.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P003.csv"
+        }
+    },
+    "P004": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P004.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P004.csv"
+        }
+    },
+    "P005": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P005.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P005.csv"
+        }
+    },
+    "P006": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P006.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P006.csv"
+        }
+    },
+    "P034": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P034.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P034.csv"
+        }
+    },
+    "P035": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P035.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P035.csv"
+        }
+    },
+    "P033": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P033.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P033.csv"
+        }
+    },
+    "P036": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P036.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P036.csv"
+        }
+    },
+    "P037": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P037.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P037.csv"
+        }
+    },
+    "P038": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P038.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W1",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P038.csv"
+        }
+    },
+    "DS2": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS2.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS2.csv"
+        }
+    },
+    "DS4": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS4.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS4.csv"
+        }
+    },
+    "DS6": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "DS6.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "DS6.csv"
+        }
+    },
+    "P074": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P074.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P074.csv"
+        }
+    },
+    "P075": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P075.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P075.csv"
+        }
+    },
+    "P076": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P076.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P076.csv"
+        }
+    },
+    "P077": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P077.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P077.csv"
+        }
+    },
+    "P078": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P078.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P078.csv"
+        }
+    },
+    "P079": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P079.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P079.csv"
+        }
+    },
+    "P080": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P080.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P080.csv"
+        }
+    },
+    "P081": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P081.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P081.csv"
+        }
+    },
+    "P082": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P082.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P082.csv"
+        }
+    },
+    "P083": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P083.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P083.csv"
+        }
+    },
+    "P084": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P084.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P084.csv"
+        }
+    },
+    "P085": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P085.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P085.csv"
+        }
+    },
+    "P086": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P086.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P086.csv"
+        }
+    },
+    "P087": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P087.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP4W1",
+            "dark": "RP4D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P087.csv"
+        }
+    },
+    "P039": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P039.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P039.csv"
+        }
+    },
+    "P040": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P040.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P040.csv"
+        }
+    },
+    "P041": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P041.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P041.csv"
+        }
+    },
+    "P042": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P042.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P042.csv"
+        }
+    },
+    "P043": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P043.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P043.csv"
+        }
+    },
+    "P044": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P044.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P044.csv"
+        }
+    },
+    "P045": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P045.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P045.csv"
+        }
+    },
+    "P046": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P046.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P046.csv"
+        }
+    },
+    "P047": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P047.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P047.csv"
+        }
+    },
+    "P048": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P048.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P048.csv"
+        }
+    },
+    "P049": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P049.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P049.csv"
+        }
+    },
+    "P050": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P050.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P050.csv"
+        }
+    },
+    "P051": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P051.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P051.csv"
+        }
+    },
+    "P052": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P052.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P052.csv"
+        }
+    },
+    "P053": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P053.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP2W2",
+            "dark": "RP2D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P053.csv"
+        }
+    },
+    "RP2D1": {
+        "reference type": "dark",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP2D1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "RP2W1": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP2W1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "RP2W2": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP2W2.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "RP4D1": {
+        "reference type": "dark",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP4D1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "RP4W1": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP4W1.hdr",
+            "use wl range": [
+                515,
+                700
+            ]
+        }
+    },
+    "P088": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P088.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P088.csv"
+        }
+    },
+    "P089": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P089.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P089.csv"
+        }
+    },
+    "P090": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P090.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P090.csv"
+        }
+    },
+    "P091": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P091.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P091.csv"
+        }
+    },
+    "P092": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P092.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P092.csv"
+        }
+    },
+    "P093": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P093.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P093.csv"
+        }
+    },
+    "P094": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P094.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P094.csv"
+        }
+    },
+    "P095": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P095.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P095.csv"
+        }
+    },
+    "P096": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P096.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P096.csv"
+        }
+    },
+    "P097": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P097.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P097.csv"
+        }
+    },
+    "P098": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P098.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P098.csv"
+        }
+    },
+    "P099": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P099.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P099.csv"
+        }
+    },
+    "P100": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P100.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P100.csv"
+        }
+    },
+    "P101": {
+        "preprocess": {
+            "container": "ENVI",
+            "file": "P101.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        },
+        "flat-field correction": {
+            "bright": "RP3W1",
+            "dark": "RP3D1",
+            "clamp": [
+                0.0,
+                1.0
+            ]
+        },
+        "manual segmentation": {
+            "container": "Spimlab-annotations",
+            "file": "P101.csv"
+        }
+    },
+    "RP3D1": {
+        "reference type": "dark",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP3D1.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        }
+    },
+    "RP3W1": {
+        "reference type": "bright",
+        "reference spectrum file": "white reference reflectance.npy",
+        "preprocess": {
+            "container": "ENVI",
+            "file": "RP3W1.hdr",
+            "use wl range": [
+                515,
+                900
+            ]
+        }
+    }
+}
