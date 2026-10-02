@@ -1,9 +1,0 @@
-{
-"RepetitionTime": "7200ms",
-"EchoTime": "86ms",
-"FlipAngle": "80°",
-"Manufacturer": "Siemens",
-"SliceThickness": "2mm",
-"intersliceGap": "2mm",
-"NumberSlices": "50"
-}
