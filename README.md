@@ -4,7 +4,8 @@
 
 > Paper: *[Solve the Missing First Step: Can VLMs Standardize Raw Heterogeneous Medical Data?](https://arxiv.org/abs/2607.04694)*  
 > arXiv: [2607.04694](https://arxiv.org/pdf/2607.04694)  
-> **Accepted to EMNLP 2026.**
+> **Accepted to EMNLP 2026.**  
+> Raw data (Hugging Face): [sdu-chenxin/MDS-Bench-data](https://huggingface.co/datasets/sdu-chenxin/MDS-Bench-data)
 
 现有医学 VLM 评测大多默认输入已是整理好的图像 / 文本 / QA。真实临床与科研场景中，数据往往是**原始、异构、目录分散**的。MDS-Bench 评测的正是被忽略的上游步骤：**原始医学数据标准化（raw medical data standardization）**——模型拿到原始数据集文件夹后，能否识别信息源、将原始影像转为 VLM 可用图像、抽取文本与标注，并组织为统一的 **image + JSON**。
 
@@ -32,11 +33,11 @@ datasets/<group>/<dataset_id>/VLM/
 └── random.txt            # 目标样本清单（index + source path）
 ```
 
-完整本地实验目录还需自行放置原始数据：
+完整本地实验目录还需放置原始数据（从 Hugging Face 下载，见下文）：
 
 ```text
 <dataset_id>/
-├── data/                 # 原始异构数据（需自行下载）
+├── data/                 # 原始异构数据（Hugging Face 下载）
 ├── VLM/
 │   ├── random.txt
 │   └── ground_truth_*.json
@@ -71,6 +72,25 @@ datasets/<group>/<dataset_id>/VLM/
 ```
 
 评测按索引对齐 GT；路径可能需映射到你本地的数据根目录。
+
+---
+
+## 原始数据下载
+
+100 个数据集的原始 `data/` 目录（约 2 TB）托管在 Hugging Face：
+[sdu-chenxin/MDS-Bench-data](https://huggingface.co/datasets/sdu-chenxin/MDS-Bench-data)。
+Hub 上的 `<group>/<dataset_id>/data/` 与本仓库 `datasets/<group>/<dataset_id>/` 一一对应，建议按需下载：
+
+```bash
+# 下载单个数据集到 datasets/<group>/<dataset_id>/data/
+hf download sdu-chenxin/MDS-Bench-data --repo-type dataset \
+  --include "fifth_dataset/LCTSC/data/*" --local-dir datasets
+```
+
+- `second_dataset/fomo-mri`：受 Hub 单仓库文件数上限限制，部分文件打包在 `data/fomo-60k-shards/shard_*.tar`，
+  需在 `data/` 下执行 `tar -xf shard_XXX.tar -C .` 还原，`INDEX.tsv` 记录每个文件所在分片。
+- `third_dataset/brats2020-training-data`、`fifth_dataset/rsna-pneumonia-detection-challenge`：
+  因单目录文件数上限，部分文件被移入子目录，`random.txt` 中的路径需相应调整。
 
 ---
 
@@ -118,7 +138,7 @@ S1–S4 均禁止读取 GT 与评测结果文件。
 
 ## 快速开始
 
-1. 下载某个数据集的原始文件到 `<dataset_id>/data/`，并修正 `VLM/random.txt` 中的路径。
+1. 从 [Hugging Face](https://huggingface.co/datasets/sdu-chenxin/MDS-Bench-data) 下载某个数据集的原始文件到 `<dataset_id>/data/`，并修正 `VLM/random.txt` 中的路径。
 2. 将 **`datasets/standard.md`** 作为主 prompt，在可访问文件系统的 agentic VLM 环境中运行。
 3. 产出 `agent1_data_organization/{images,standardized_annotations,data_meta.json}`。
 4. 用 `evaluate/` 脚本对照 `VLM/ground_truth_*.json` 打分。
@@ -127,7 +147,7 @@ S1–S4 均禁止读取 GT 与评测结果文件。
 
 ## 许可与数据版权
 
-- 本仓库公开：**主实验 prompt、GT JSON、样本清单、评测与消融代码**。
+- 本仓库公开：**主实验 prompt、GT JSON、样本清单、评测与消融代码**；原始数据见 Hugging Face 仓库。
 - 各数据集原始影像的版权与许可归原发布方；使用前请遵守其条款并正确引用。
 
 ---
